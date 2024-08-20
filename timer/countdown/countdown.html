@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Study Timer</h1>
+        <form id="timerForm">
+            <label for="subject">What subject do you want to study today?</label>
+            <input type="text" id="subject" name="subject" required>
+            
+            <label for="time">How long do you want to study for (in seconds)?</label>
+            <input type="number" id="time" name="time" required min="1">
+            
+            <button type="button" onclick="startTimer()">Start Timer</button>
+        </form>
+        
+        <div class="timer-display">
+            <p id="timer">00:00</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

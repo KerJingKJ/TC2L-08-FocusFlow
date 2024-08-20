@@ -24,6 +24,7 @@ p {
     display: flex;
 }
 
+
 .title:hover{
     color: brown;
 }

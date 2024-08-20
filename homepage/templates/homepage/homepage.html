@@ -7,9 +7,15 @@
     <title>Home</title>
 </head>
 <body>
-    <h1><b>FocusFlow</b></h1>
+<div class="container">
+    <a href = "{% url 'homepage' %}" class="title">FocusFlow</a>
+    <a href="{% url 'goals' %}" class="goals">Goals</a>
+</div>
+
+<div class="text">
     <p>Welcome to FocusFlow</p>
     <p id="slogan">Turn Focus Into Achievement.</p>
+</div>
     
 </body>
 </html>

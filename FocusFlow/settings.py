@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
     'goals.apps.GoalsConfig',
+    'timer.apps.TimerConfig',
 ]
 
 MIDDLEWARE = [

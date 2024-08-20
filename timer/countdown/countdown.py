@@ -1,26 +1,26 @@
 import time
 
-def countdown_timer(seconds):
-    paused = False 
-    while seconds > 0:
+def countdown_timer(seconds): # take seconds
+    paused = False # this sets an intial state kalau timer isn't paused
+    while seconds > 0:  # as long as it's not 0
         if not paused:
             mins = seconds // 60 #sec to min
             secs = seconds % 60 #min to sec
-            timer = '{:02d}:{:02d}.format(mins, secs)'
+            timer = '{:02d}:{:02d}'.format(mins, secs) #formats the min and sec format for display
             print(timer,end="\r")
             time.sleep(1) # rest for 1 sec b4 countdown
             seconds -= 1
         else:
             time.sleep(0.5) #sleep for short time
 # Asking for user's input like pause, resume or stop
-        info_for_user = input("You can type pause, resume or stop")
-        if info_for_user == 'Pause' or "pause":
+        info_for_user = input("You can type pause, resume or stop").strip().lower()
+        if info_for_user ==  "pause":
             paused = True
             print("You've just paused.")
-        elif info_for_user == 'Resume' or "resume":
+        elif info_for_user == "resume":
             paused = True
             print("You've just resumed.")
-        elif info_for_user == 'Stop' or "stop":
+        elif info_for_user == "stop":
             paused = True
             print("You've just stopped.")
             break

@@ -1,21 +1,15 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
 <head>
     <link href="{% static 'homepage/homepage.css' %}" type="text/css" rel="stylesheet" />
     <title>Home</title>
 </head>
-<body>
-<div class="container">
-    <a href = "{% url 'homepage' %}" class="title">FocusFlow</a>
-    <a href="{% url 'goals' %}" class="goals">Goals</a>
-</div>
 
 <div class="text">
     <p>Welcome to FocusFlow</p>
     <p id="slogan">Turn Focus Into Achievement.</p>
 </div>
-    
-</body>
-</html>
+{% endblock %}

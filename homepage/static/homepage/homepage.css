@@ -16,6 +16,50 @@ p {
     text-align: center;
 }
 
+<<<<<<< HEAD
+.container{
+    background-color:cadetblue;
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+}
+
+
+.title:hover{
+    color: brown;
+}
+
+.goals:hover{
+    color: brown;
+}
+
+.title{
+    margin-right: 20px;
+    margin-left: 20px;
+    color: whitesmoke;
+    text-decoration: none;
+    text-align: center;
+    width: 100px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+.goals{
+    margin-left: 20px;
+    margin-right: 20px;
+    color: whitesmoke;
+    text-decoration: none;
+    text-align: center;
+    width: 100px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+
+=======
+>>>>>>> 1d1ca59bfe8bcc0ca5fee2820ef2af908632c18e
 #slogan {
     color: coral;
 }

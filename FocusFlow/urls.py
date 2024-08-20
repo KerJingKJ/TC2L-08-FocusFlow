@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("homepage.urls")),
     path('', include("goals.urls")),
+    path('', include("timer.urls")),
 ]

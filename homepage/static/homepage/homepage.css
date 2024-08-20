@@ -3,7 +3,6 @@ body {
 
 }
 
-
 h1 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 20px;
@@ -17,12 +16,14 @@ p {
     text-align: center;
 }
 
+<<<<<<< HEAD
 .container{
     background-color:cadetblue;
     height: 60px;
     overflow: hidden;
     display: flex;
 }
+
 
 .title:hover{
     color: brown;
@@ -57,6 +58,8 @@ p {
 }
 
 
+=======
+>>>>>>> 1d1ca59bfe8bcc0ca5fee2820ef2af908632c18e
 #slogan {
     color: coral;
 }

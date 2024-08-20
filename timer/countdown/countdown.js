@@ -1,4 +1,4 @@
-let countdown;
+let countdown; 
 let paused = false;
 let secondsLeft;
 

@@ -1,45 +1,45 @@
-let countdown; 
-let paused = false;
-let secondsLeft;
+let countdown; // to control pause or stop
+let paused = false; // means the timer isn't pause
+let secondsLeft; // track how many secs left or remainder
 
-function startTimer() {
-    const subject = document.getElementById('subject').value;
-    let seconds = parseInt(document.getElementById('time').value);
+function startTimer() { // minta input
+    const subject = document.getElementById('subject').value; // get study subject
+    let seconds = parseInt(document.getElementById('time').value); // gets num of secs
 
-    if (isNaN(seconds) || seconds <= 0) {
+    if (isNaN(seconds) || seconds <= 0) { // only accepts +ve num from user
         alert('Please enter a valid number of seconds.');
         return;
     }
 
-    document.getElementById('timer').textContent = formatTime(seconds);
+    document.getElementById('timer').textContent = formatTime(seconds); //formatting
     secondsLeft = seconds;
 
-    countdown = setInterval(() => {
-        if (!paused && secondsLeft > 0) {
+    countdown = setInterval(() => { // nak start countdownn
+        if (!paused && secondsLeft > 0) { // cek kalau bukan pause kena decrease 1
             secondsLeft--;
-            document.getElementById('timer').textContent = formatTime(secondsLeft);
-        } else if (secondsLeft <= 0) {
-            clearInterval(countdown);
+            document.getElementById('timer').textContent = formatTime(secondsLeft); // cek display
+        } else if (secondsLeft <= 0) { // bila dh 0 timer stop 
+            clearInterval(countdown); 
             document.getElementById('timer').textContent = "Blast off!";
         }
-    }, 1000);
+    }, 1000); // buat loop every 1000 miliseccond = 1 sec 
 }
 
-function formatTime(seconds) {
+function formatTime(seconds) { // convert
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`; // formatt
 }
 
-function pauseTimer() {
+function pauseTimer() { // pause countfown
     paused = true;
 }
 
-function resumeTimer() {
+function resumeTimer() { // resume countdown
     paused = false;
 }
 
-function stopTimer() {
+function stopTimer() { // stop countdown
     clearInterval(countdown);
     document.getElementById('timer').textContent = "Stopped";
 }

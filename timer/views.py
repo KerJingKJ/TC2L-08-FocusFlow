@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def countdown(response):
-    return render(response,'countdown/countdown.html')
+def timer(response):
+    return render(response,'timer/countdown.html')

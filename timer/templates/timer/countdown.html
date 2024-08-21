@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="B.css">
 </head>
 <body>
+<<<<<<< HEAD
     <div class="box-container">
         <div class="timer-box">
             <h2>🕒 Study Timer</h2>
@@ -26,5 +27,24 @@
         </div>
     </div>
     <script src="C.js"></script>
+=======
+    <div class="containers">
+        <h1>Study Timer</h1>
+        <form id="timerForm">
+            <label for="subject">What subject do you want to study today?</label>
+            <input type="text" id="subject" name="subject" required>
+            
+            <label for="time">How long do you want to study for (in seconds)?</label>
+            <input type="number" id="time" name="time" required min="1">
+            
+            <button type="button" onclick="startTimer()">Start Timer</button>
+        </form>
+        
+        <div class="timer-display">
+            <p id="timer">00:00</p>
+        </div>
+    </div>
+    <script src="{% static 'timer/countdown.js' %}"></script>
+>>>>>>> main
 </body>
 </html>

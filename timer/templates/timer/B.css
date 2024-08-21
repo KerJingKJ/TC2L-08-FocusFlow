@@ -6,17 +6,17 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-}
-
-.box-container {
+  }
+  
+  .box-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-}
-
-.timer-box {
+  }
+  
+  .timer-box {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 15px;
@@ -25,32 +25,32 @@ body {
     max-width: 400px;
     width: 100%;
     transition: transform 0.3s ease;
-}
-
-.timer-box:hover {
+  }
+  
+  .timer-box:hover {
     transform: translateY(-5px);
-}
-
-h2 {
+  }
+  
+  h2 {
     margin-bottom: 30px;
     font-size: 28px;
     color: #343a40;
-}
-
-form {
+  }
+  
+  form {
     margin-bottom: 20px;
-}
-
-label {
+  }
+  
+  label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 16px;
     color: #495057;
     text-align: left;
-}
-
-input {
+  }
+  
+  input {
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 20px;
@@ -58,14 +58,14 @@ input {
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease;
-}
-
-input:focus {
+  }
+  
+  input:focus {
     border-color: #80bdff;
     outline: none;
-}
-
-button {
+  }
+  
+  button {
     padding: 12px 20px;
     background-color: #28a745;
     color: white;
@@ -74,14 +74,14 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     background-color: #218838;
     transform: scale(1.05);
-}
-
-#timerDisplay {
+  }
+  
+  #timerDisplay {
     font-size: 3em;
     font-weight: bold;
     color: #495057;
@@ -91,9 +91,10 @@ button:hover {
     border-radius: 10px;
     border: 1px solid #ced4da;
     transition: background-color 0.3s ease;
-}
-
-#timerDisplay.active {
+  }
+  
+  #timerDisplay.active {
     background-color: #d4edda;
     border-color: #c3e6cb;
-}
+  }
+  

@@ -1,4 +1,4 @@
-{% load static %} 
+<!-- {% load static %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'timer/countdown.css' %}" type="text/css" rel="stylesheet"/>
     <title>Study Timer</title>
+    <link rel="stylesheet" href="A.css">
 </head>
 <body>
     <div class="container">
@@ -24,6 +25,34 @@
             <p id="timer">00:00</p>
         </div>
     </div>
-    <script src="{% static 'countdown.js' %}"></script>
+    <script src="B.js"></script>
+</body> -->
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'timer/countdown.css' %}" type="text/css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <link rel="stylesheet" href="B.css">
+</head>
+<body>
+    <div class="box-container">
+        <div class="timer-box">
+            <h2>🕒 Study Timer</h2>
+            <form id="studyForm">
+                <label for="subject">What subject do you want to study today?</label>
+                <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+
+                <label for="time">How long do you want to study for? (in seconds)</label>
+                <input type="number" id="time" name="time" placeholder="Enter time in seconds" required>
+
+                <button type="button" id="startBtn">Start Timer</button>
+            </form>
+            <div id="timerDisplay">00:00:00:00</div>
+        </div>
+    </div>
+    <script src="C.js"></script>
 </body>
 </html>

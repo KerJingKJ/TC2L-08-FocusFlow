@@ -1,9 +1,8 @@
+document.getElementById('startBtn').addEventListener('click', function() {
+    const timeInput = document.getElementById('time').value;
+    let time = parseInt(timeInput);
 
-document.getElementById('startBtn').addEventListener('click', function() {   // wait for input , triggers function
-    const timeInput = document.getElementById('time').value; // get value 
-    let time = parseInt(timeInput); 
-
-    const timerDisplay = document.getElementById('timerDisplay'); 
+    const timerDisplay = document.getElementById('timerDisplay');
     timerDisplay.classList.add('active');
 
     // Set the date we're counting down to
@@ -19,11 +18,11 @@ document.getElementById('startBtn').addEventListener('click', function() {   // 
         // Time calculations for days, hours, minutes, and seconds
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));Í
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="timerDisplay"
-        timerDisplay.innerHTML = '${days}d ${hours}h ${minutes}m ${seconds}s';
+        timerDisplay.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
         // If the countdown is finished, display "EXPIRED"
         if (distance < 0) {

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'goals.apps.GoalsConfig',
     'timer.apps.TimerConfig',
+    'account.apps.AccountConfig',
+    'mood.apps.MoodConfig',
 ]
 
 MIDDLEWARE = [

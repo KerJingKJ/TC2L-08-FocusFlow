@@ -1,6 +1,5 @@
 .container{
     background-color:cadetblue;
-    height: 60px;
     overflow: hidden;
     display: flex;
 }
@@ -13,13 +12,16 @@
     color: brown;
 }
 
-.title, .goals{
+.timer:hover{
+    color:brown;
+}
+
+.title, .goals, .timer{
     margin-right: 20px;
     margin-left: 20px;
     color: whitesmoke;
     text-decoration: none;
     text-align: center;
-    width: 100px;
     text-align: center;
     line-height: 60px;
     font-size: 30px;

@@ -13,10 +13,23 @@ Goals
 
 <body>
     <h1>Set your goals!</h1>
-    {{form}}
-    <form method="post" action="/goals/">
-        <button type="submit", name="save">Set goals</button>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
     </form>
+
+    <h2>Your Goals</h2>
+        {% for goal in goals %}
+            <strong>{{ goal.title }}</strong>
+            {{ goal.description }}
+            {{goal.progress}}
+
+            <a href="{% url 'edit' goal.id %}">Edit</a>
+            <a href="{% url 'delete' goal.id %}">Delete</a>
+        {% endfor %}
+
 </body>
 
 {% endblock %}
+

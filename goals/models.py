@@ -14,9 +14,9 @@ class ToDoList(models.Model):
 
     def progress(self):
         if self.completed:
-            return "Goals completed"
+            return "Completed."
         else:
-            return "Goals not completed yet."
+            return "Not completed."
 
 
 # Notes:

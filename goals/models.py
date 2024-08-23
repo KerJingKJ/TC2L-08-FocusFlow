@@ -16,7 +16,7 @@ class ToDoList(models.Model):
         if self.completed:
             return "Completed."
         else:
-            return "Not completed."
+            return "Not complete."
 
 
 # Notes:

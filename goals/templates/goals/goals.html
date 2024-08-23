@@ -16,15 +16,15 @@ Goals
     <h1>Set your goals!</h1>
     <form method="POST">
         {% csrf_token %}
-    <div class="title-container"><span><p>Title: </p>  {{ form.title }}</span></div>
+    <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
     
     <div class="description">
-        <p>Description: (if any)</p>
+        <p><strong>Description (if any): </strong></p>
         {{ form.description }}
     </div>
 
     <div class="complete">    
-        <span>Complete: {{ form.completed }}</span>
+        <span><strong>Complete:</strong> {{ form.completed }}</span>
         <span><button type="submit">Save</button></span>
     </div>
     

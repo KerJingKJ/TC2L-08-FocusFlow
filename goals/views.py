@@ -3,11 +3,6 @@ from .models import ToDoList
 from .forms import GoalForm
 # Create your views here.
 
-#def goals(response):
- #   return render(response,'goals/goals.html')
-
-#allow user to set their goals. This codes basically track the text that user inputs, and save it.
-
 def set_goals(request):
     goals = ToDoList.objects.all()
     if request.method == 'POST':

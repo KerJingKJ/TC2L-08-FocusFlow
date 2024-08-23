@@ -9,7 +9,7 @@ h1 {
 
 .forms{
     background-color:rgb(237, 235, 235);
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 10px;
     border-radius: 12px;
     margin: 10px;
@@ -17,12 +17,46 @@ h1 {
 }
 
 
+.forms textarea{
+    border-radius: 12px;
+    border: 5px black;
+    margin:10px;
+    width:97%;
+    resize:vertical;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.forms input[type="text"] {
+    border-radius: 12px;
+    border: 5px black;
+    margin:10px;
+    width:90%;
+    resize:vertical;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+}
 
 .seperate{
-    width: 100%;
     display:grid;
     grid-template-columns: repeat(2, 1fr); 
     margin:20px;
+}
+
+button{
+    background-color:rgba(0, 100, 0, 0.58);
+    border: 0px;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 12px;
+    margin-left: 48%;
+}
+
+button:hover{
+    color: whitesmoke;
 }
 
 .box{
@@ -72,7 +106,6 @@ a{
     padding: 5px;
 }
 
-
 .edit:hover{
     color: whitesmoke;
 }
@@ -82,16 +115,3 @@ a{
 }
 
 
-button{
-    background-color:rgba(0, 100, 0, 0.58);
-    border: 0px;
-    text-align: center;
-    padding: 10px;
-    font-size: 20px;
-    border-radius: 12px;
-
-}
-
-button:hover{
-    color: whitesmoke;
-}

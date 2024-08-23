@@ -12,23 +12,36 @@ Goals
 </head>
 
 <body>
+<div class="forms">
     <h1>Set your goals!</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
+    <div class="title-container"><span><p>Title: </p>  {{ form.title }}</span></div>
+    
+    <div class="description">
+        <p>Description: (if any)</p>
+        {{ form.description }}
+    </div>
+
+    <div class="complete">    
+        <span>Complete: {{ form.completed }}</span>
+        <span><button type="submit">Save</button></span>
+    </div>
+    
     </form>
-
+</div>
     <h2>Your Goals</h2>
+    <div class="seperate">
         {% for goal in goals %}
-            <strong>{{ goal.title }}</strong>
-            {{ goal.description }}
-            {{goal.progress}}
-
-            <a href="{% url 'edit' goal.id %}">Edit</a>
-            <a href="{% url 'delete' goal.id %}">Delete</a>
+        <div class="box">
+            <span><strong>{{ goal.title }}</strong></span>
+            <span>{{ goal.description }}</span>
+           <span class="progress"> Progress: {{goal.progress}}</span>
+            <a href="{% url 'edit' goal.id %}" class="edit">Edit</a>
+            <a href="{% url 'delete' goal.id %}" class="delete">Delete</a>
+        </div>
         {% endfor %}
-
+    </div>
 </body>
 
 {% endblock %}

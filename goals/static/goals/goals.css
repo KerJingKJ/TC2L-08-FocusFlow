@@ -1,11 +1,97 @@
-h1 {
+*{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
     font-size: 30px;
     text-align: center;
 }
 
-body{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.forms{
+    background-color:rgb(237, 235, 235);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    margin: 10px;
+    line-height: 30px;
+}
+
+
+
+.seperate{
+    width: 100%;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr); 
+    margin:20px;
+}
+
+.box{
+    background-color:bisque;
+    width: 500px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    margin: 10px;
+    line-height: 30px;
+}
+
+span{
+    display: block;
+}
+
+.progress{
+    background-color: darksalmon;
+    width:250px;
+    text-align: center;
+    margin-left: 125px;
+    margin-right: 125px;
+    border-radius: 12px;
+}
+
+a{
+    margin-right: 20px;
+    margin-left: 20px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    line-height: 60px;
     font-size: 20px;
-    
+}
+
+.edit{
+    background-color: darkgray;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.delete{
+    background-color: rgba(255, 0, 0, 0.564);
+    color: black;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+
+.edit:hover{
+    color: whitesmoke;
+}
+
+.delete:hover{
+    color: whitesmoke;
+}
+
+
+button{
+    background-color:rgba(0, 100, 0, 0.58);
+    border: 0px;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 12px;
+
+}
+
+button:hover{
+    color: whitesmoke;
 }

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'goals.apps.GoalsConfig',
     'timer.apps.TimerConfig',
-    'account.apps.AccountConfig',
+    'accountss.apps.AccountssConfig',
     'mood.apps.MoodConfig',
 ]
 

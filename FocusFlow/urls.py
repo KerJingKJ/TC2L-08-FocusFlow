@@ -24,8 +24,5 @@ urlpatterns = [
     path('goals/', include("goals.urls")),
     path('timer/', include("timer.urls")),
     path('mood/', include("mood.urls")),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('account/', include('account.urls')),
+    path('accountss/', include('accountss.urls')),
 ]
-
-   

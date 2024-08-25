@@ -1,0 +1,17 @@
+body {
+    background-color: #F5F7FA; /* Light pastel background */
+    color: #333; /* Soft dark text */
+}
+
+.account-container {
+    background-color: #FFFFFF;
+    border: 1px solid #E3E6EB;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+input[type="submit"] {
+    background: linear-gradient(135deg, #57CC99, #38A1DB); /* Gradient effect similar to LifeAt.io */
+    border: none;
+    color: white;
+}

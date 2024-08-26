@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include("homepage.urls")),
     path('', include("goals.urls")),
     path('', include("timer.urls")),
+    path('', include("motivation.urls")),
 ]

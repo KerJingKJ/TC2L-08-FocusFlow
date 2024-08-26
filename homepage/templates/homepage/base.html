@@ -3,12 +3,12 @@
 <html>
 <head>
     <link href="{% static 'homepage/base.css' %}" type="text/css" rel="stylesheet" />
-    <title>Home</title>
+    <title>{% block title %}FocusFlow{% endblock %}</title>
 </head>
 <body>
     <div class="container">
         <a href = "{% url 'homepage' %}" class="title">FocusFlow</a>
-        <a href="{% url 'goals' %}" class="goals">Goals</a>
+        <a href="{% url 'set_goals' %}" class="goals">Goals</a>
         <a href="{% url 'timer' %}" class="timer">Timer</a>
     </div>
     {% block content %}

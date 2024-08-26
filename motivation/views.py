@@ -38,9 +38,9 @@ def motivation(request):
             "quote": random_quote,
             "actors": all_actors,
         }
-        return render(request, 'motivation.html', context)
+        return render(request, 'motivation/motivation.html', context)
 
     context = {
         "actors": all_actors,
     }
-    return render(request, 'motivation.html', context)
+    return render(request, 'motivation/motivation.html', context)

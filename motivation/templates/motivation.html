@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load static %} 
+    <link href="{% static 'static/motivation.css' %}" type="text/css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <form action=" " method="POST">
+                {% csrf_token %} 
+                <div class="parent">
+                    
+                        <!-- message error -->
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p style="color: #BC986A;"><b>{{message}}</b></p>
+                            {% endfor %}
+                        {% endif %}
+                        <!-- end message error -->
+                        
+                        <div class="select">
+                            <select id="format" name="actor_name">
+                                <option selected disabled>Choose an actor</option>
+                                <!-- list out actors here -->
+                                {% for i in actors %}
+                                    <option value="{{i.quoter}}">{{i.quoter}}</option>
+                                <!-- end of list of actors -->
+                                {% endfor %}
+                            </select>
+                        </div>
+                    <br><button type="submit">Generate Quote</button>
+                    <!-- display quoote here -->
+                    {% if quote %}
+                       <br> <div class="child-2">
+                            <p class="quote">{{quote.quote}}</p>
+                            <p class="quoter">{{quote.actor}}</p>
+                        </div>
+                    {% endif %}
+                    <!-- end display quote -->
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

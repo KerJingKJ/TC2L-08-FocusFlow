@@ -1,3 +1,7 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .container{
     background-color:cadetblue;
     overflow: hidden;
@@ -17,14 +21,16 @@
     color:brown;
 }
 
-.title, .goals, .timer{
+.title, .goals, .timer, .motivation, .signup{
     margin-right: 20px;
     margin-left: 20px;
     color: whitesmoke;
     text-decoration: none;
     text-align: center;
-    text-align: center;
     line-height: 60px;
     font-size: 30px;
 }
 
+.signup{
+    padding-left: 450px;
+}

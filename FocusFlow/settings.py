@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'goals.apps.GoalsConfig',
     'timer.apps.TimerConfig',
+    'accountss.apps.AccountssConfig',
+    'mood.apps.MoodConfig',
     'motivation.apps.MotivationConfig',
     'import_export',
 ]
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'FocusFlow.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Ensure this points to your templates directory
+        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'accountss/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +73,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 WSGI_APPLICATION = 'FocusFlow.wsgi.application'
 
@@ -128,3 +129,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK="bootstrap4"

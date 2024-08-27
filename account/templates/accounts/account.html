@@ -30,3 +30,24 @@
   </div>
 </body>
 </html>
+
+<!-- templates/accounts/account.html new version -->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link href="{% static 'accountss/accountss.css' %}" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div class="account-container">
+        <h1>Create Account</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+</body>
+</html>

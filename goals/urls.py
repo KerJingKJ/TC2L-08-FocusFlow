@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.set_goals, name="set_goals"),
     path('edit/<int:goal_id>', views.edit, name='edit'),
-    path('delete/<int:goal_id>', views.delete, name='delete')
+    path('delete/<int:goal_id>', views.delete, name='delete'),
+    path('complete/<int:goal_id>/<str:action>', views.complete, name='complete'),
 ]
 

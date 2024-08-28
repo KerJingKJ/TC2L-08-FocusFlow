@@ -109,6 +109,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'FocusFlow.wsgi.application'
 
 
+#AUTH_USER_MODEL = 'yourapp.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 

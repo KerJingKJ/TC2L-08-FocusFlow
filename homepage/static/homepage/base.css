@@ -9,17 +9,11 @@
     border-radius: 12px;
 }
 
-.title:hover{
+.title:hover, .goals:hover, .timer:hover, .motivation:hover, .signup:hover{
     color: brown;
 }
 
-.goals:hover{
-    color: brown;
-}
 
-.timer:hover{
-    color:brown;
-}
 
 .title, .goals, .timer, .motivation, .signup{
     margin-right: 20px;

@@ -32,3 +32,13 @@ def delete(request, goal_id):
     goals.delete()
     return redirect('set_goals')
 
+def complete(request, goal_id, action):
+    goals = get_object_or_404(ToDoList, id=goal_id)
+    if action == "complete":
+        goals.completed = True
+        goals.save()
+    else:
+        goals.completed = False
+        goals.save()
+    return redirect('set_goals')
+

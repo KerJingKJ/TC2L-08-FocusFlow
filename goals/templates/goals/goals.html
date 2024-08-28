@@ -35,9 +35,9 @@ Goals
             <span class="display_description">{{ goal.description }}</span>
            <span>
             {% if not goal.completed %}    
-                <div class="notdone"><strong>Progress: {{goal.progress}}</strong></div>
+                <div class="notdone">Progress: {{goal.progress}}</div>
                 {% else %}
-                <div class="done"><strong>Progress: {{goal.progress}}</strong></div>
+                <div class="done">Progress: {{goal.progress}}</div>
             </span>
             {% endif %}
             <div class="grouping">

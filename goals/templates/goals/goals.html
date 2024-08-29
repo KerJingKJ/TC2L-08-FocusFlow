@@ -28,19 +28,37 @@ Goals
     </form>
 </div>
     <h2 class="yourgoals">Your Goals</h2>
-    <div class="gdone">Goals completed </div><div class="colon">: {{ done }}</div>
-    <span>Goals not complete : {{ notdone }}</span>
+    
+    
 
     <div class="statusbarcontainer">
             {% if bar == 0 %}
-            <span>0% of progress.</span>
+            <span>0% of progress</span>
             {% else %}
             <div class="bar" style="width: {{ bar }}%;">
-            <span>{{ bar|floatformat:1 }}% of progress.</span>
+            <span>{{ bar|floatformat:1 }}% of progress</span>
             {% endif %}
         </div>
     </div>
-    
+
+    <div class="calculate">
+
+        <div class="total">
+        <span><strong>Total goals</strong></span>
+        <span>{{total}}</span>
+        </div>
+
+        <div class="g-done">
+        <span><strong>Goals completed<strong></span>
+        <span>{{ done }}</span>
+        </div>
+
+        <div class="g-not">
+        <span><strong>Goals not complete<strong></span>
+        <span>{{ notdone }}<span>
+        </div>
+    </div>
+
     <div class="seperate">
         {% for goal in goals %}
         

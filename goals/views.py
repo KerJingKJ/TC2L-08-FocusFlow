@@ -36,6 +36,7 @@ def set_goals(request):
             'done':done, 
             'notdone':notdone, 
             'bar':bar,
+            'total':total,
         })
 
 def edit(request, goal_id):

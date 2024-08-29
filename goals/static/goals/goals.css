@@ -181,6 +181,7 @@ a{
 }
 
 .statusbarcontainer {
+    width:97%;
     height:30px;
     background-color: darkgrey;
     border-radius: 12px;

@@ -149,20 +149,43 @@ a{
     text-align: center;
 }
 
-.gdone, .colon{
-    display:inline-flex;
+.calculate{
+    text-align: center;
+    line-height: 30px;
+    display:grid;
+    grid-template-columns: repeat(6, 1fr); 
+    margin: auto;
+    margin-top: 15px;
+    margin-left: 50px;
 }
 
-.colon{
-    margin-left: 25px;
+.total{
+    width:350px;
+    background-color:rgb(237, 235, 235);
+    border-radius: 12px;
+    margin-right: 20px;
+}
+
+.g-done{
+    width:350px;
+    background-color: darkseagreen;
+    border-radius: 12px;
+    margin-right: 20px;
+}
+
+.g-not{
+    width: 350px;
+    background-color:rgba(100, 148, 237, 0.692);
+    border-radius: 12px;
+    margin-right: 20px;
 }
 
 .statusbarcontainer {
-    width: 100%;
     height:30px;
     background-color: darkgrey;
     border-radius: 12px;
     margin-top: 10px;
+    margin: auto;
 }
 
 .statusbarcontainer span {
@@ -172,13 +195,13 @@ a{
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: white; 
+    color: whitesmoke; 
     font-weight: bold;
 }
 
 .bar {
     height: 30px;
-    position: relative;
+    position: relative; /*this is to be used to relate it with the ::before later below*/
     overflow: hidden;
 }
 
@@ -188,11 +211,13 @@ a{
     width: 100%;
     background-color: #4caf50; 
     border-radius: 12px;
-    position: absolute;
+    position: absolute; 
+    /*this is to be use to relate it with the .bar. 
+    Together with top:0 and left:0 means the green bar appear at the top left of the grey progress bar  */
     top: 0;
     left: 0;
     z-index: 1;
-    transition: width 0.3s ease;
+    transition: width 0.5s ease;
 }
 
 .bar span {
@@ -202,8 +227,7 @@ a{
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: white; 
+    color: whitesmoke; 
     font-weight: bold;
 }
-
 

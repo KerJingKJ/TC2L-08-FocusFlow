@@ -19,6 +19,7 @@ class ToDoList(models.Model):
             return "Not complete."
 
 
+
 # Notes:
 # CharField is to use to store a string, and here i set the length of string to be 300 at most.
 # TextField can store more string than CharField, use for user to type in the description.

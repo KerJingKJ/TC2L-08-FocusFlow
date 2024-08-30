@@ -14,7 +14,30 @@ def set_goals(request):
             return redirect('set_goals')
     else:
         form = GoalForm()
-    return render(request, 'goals/goals.html', {'goals': goals, 'form': form})
+   #added status bar to sum up the total goals has completed / not completed
+    done = 0
+    notdone = 0
+    total = 0
+    for goal in goals:
+        if goal.completed == True:
+            done += 1
+        else:
+            notdone += 1
+    total = done + notdone
+        
+    if done > 0:
+        bar = (done/total)*100
+    else:
+        bar = 0
+    return render(request, 'goals/goals.html', 
+        {
+            'goals': goals, 
+            'form': form, 
+            'done':done, 
+            'notdone':notdone, 
+            'bar':bar,
+            'total':total,
+        })
 
 def edit(request, goal_id):
     goals = get_object_or_404(ToDoList, id=goal_id)
@@ -30,5 +53,15 @@ def edit(request, goal_id):
 def delete(request, goal_id):
     goals = get_object_or_404(ToDoList, id=goal_id)
     goals.delete()
+    return redirect('set_goals')
+
+def complete(request, goal_id, action):
+    goals = get_object_or_404(ToDoList, id=goal_id)
+    if action == "complete":
+        goals.completed = True
+        goals.save()
+    else:
+        goals.completed = False
+        goals.save()
     return redirect('set_goals')
 

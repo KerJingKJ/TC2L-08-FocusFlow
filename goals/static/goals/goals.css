@@ -3,7 +3,7 @@
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 
@@ -40,13 +40,14 @@ h1 {
 }
 
 .display_title{
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .display_description{
     word-wrap: break-word;
     overflow: hidden;
     display: block;
+    font-weight: normal;
 }
 
 .seperate{

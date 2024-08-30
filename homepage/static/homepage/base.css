@@ -2,7 +2,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.container{
+.container-home{
     background-color:cadetblue;
     overflow: hidden;
     display: flex;

@@ -16,7 +16,7 @@ def login_view(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return redirect('homepage/homepage.html')
+                return redirect('homepage')
             else:
                 messages.error(request, 'Your account is not active.')
                 return render(request, 'accountss/login.html')
@@ -33,13 +33,18 @@ def signup(request):
             if user.is_active:
                 login(request, user)
                 messages.success(request, 'Registration successful!')
-                return redirect('dashboard')
+                return redirect('login')
             else:
                 messages.error(request, 'Your account is not active.')
                 return render(request, 'accountss/signup.html', {'form': form})
         else:
-            messages.error(request, 'Please correct the errors below.')
+            if not form.cleaned_data:
+                messages.error(request, 'Please fill in all fields.')
+            else:
+                messages.error(request, 'Please correct the errors below.')
             return render(request, 'accountss/signup.html', {'form': form})
     else:
         form = SignUpForm()
         return render(request, 'accountss/signup.html', {'form': form})
+    
+    

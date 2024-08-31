@@ -1,19 +1,28 @@
 <!-- accountss/signup.html -->
 {% load static %}
 
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Register</title>
     <link rel="stylesheet" href="style.css">
     <link href="{% static 'accountss/accountss.css' %}" type="text/css" rel="stylesheet" />
+
 </head>
 <body>
-    <div class="auth-container">
-        <div class="auth-header">
+     <div class="auth-container">
+          {% if messages %}
+                <ul>
+                        {% for message in messages %}
+                                <li>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+          {% endif %}
+          <div class="auth-header">
             <h1>Join Us Today</h1>
             <p>Create an account to get started</p>
-        </div>
+          </div>
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -34,6 +43,8 @@
             </div>
             <button type="submit" class="btn-primary">Register</button>
         </form>
+        
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
     </div>
 </body>
 </html>

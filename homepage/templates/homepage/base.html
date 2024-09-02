@@ -2,10 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'homepage/base.css' %}" type="text/css" rel="stylesheet" />
     <title>{% block title %}FocusFlow{% endblock %}</title>
 </head>
-<body>
+<header>
     <div class="container-home">
         <a href = "{% url 'homepage' %}" class="title">FocusFlow</a>
         <a href = "{% url 'set_goals' %}" class="goals">Goals</a>
@@ -17,6 +19,6 @@
     {% block content %}
     {% endblock %}
     
-</body>
+</header>
 </html>
 

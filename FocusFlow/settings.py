@@ -165,3 +165,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
+
+#for music playlist
+SPOTIFY_CLIENT_ID = 'eb4f122ce052446faab9d64f2217817c'
+SPOTIFY_CLIENT_SECRET = 'f39aba1578e049c5a23a073c96525b11'
+SPOTIFY_REDIRECT_URI = 'http://localhost:8000/playlist/' #change this to the actual website after deploy the project later

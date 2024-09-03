@@ -2,24 +2,18 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.container{
+.container-home{
     background-color:cadetblue;
     overflow: hidden;
     display: flex;
     border-radius: 12px;
 }
 
-.title:hover{
+.title:hover, .goals:hover, .timer:hover, .motivation:hover, .signup:hover{
     color: brown;
 }
 
-.goals:hover{
-    color: brown;
-}
 
-.timer:hover{
-    color:brown;
-}
 
 .title, .goals, .timer, .motivation, .signup{
     margin-right: 20px;

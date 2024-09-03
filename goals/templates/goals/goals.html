@@ -22,23 +22,75 @@ Goals
         <p><strong>Description (if any): </strong></p>
         {{ form.description }}
     </div>
+        <span><button type="submit" class="save">Save</button></span>
 
-    <div class="complete">    
-        <span><strong>Complete:</strong> {{ form.completed }}</span>
-        <span><button type="submit">Save</button></span>
-    </div>
     
     </form>
 </div>
-    <h2>Your Goals</h2>
+    <h2 class="yourgoals">Your Goals</h2>
+    
+    
+
+    <div class="statusbarcontainer">
+            {% if bar == 0 %}
+            <span>0% of progress</span>
+            {% else %}
+            <div class="bar" style="width: {{ bar }}%;">
+            <span>{{ bar|floatformat:1 }}% of progress</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="calculate">
+
+        <div class="total">
+        <span><strong>Total goals</strong></span>
+        <span>{{total}}</span>
+        </div>
+
+        <div class="g-done">
+        <span><strong>Goals completed<strong></span>
+        <span>{{ done }}</span>
+        </div>
+
+        <div class="g-not">
+        <span><strong>Goals not complete<strong></span>
+        <span>{{ notdone }}<span>
+        </div>
+    </div>
+
     <div class="seperate">
         {% for goal in goals %}
+        
         <div class="box">
-            <span><strong>{{ goal.title }}</strong></span>
-            <span>{{ goal.description }}</span>
-           <span class="progress"> Progress: {{goal.progress}}</span>
+            <span class="display_title"><strong>{{ goal.title }}</strong></span>
+            <span class="display_description">{{ goal.description }}</span>
+           
+            <span>
+            {% if not goal.completed %}    
+                <div class="notdone">Progress: {{goal.progress}}</div>
+                {% else %}
+                <div class="done">Progress: {{goal.progress}}</div>
+            </span>
+            {% endif %}
+
+            <div class="grouping">
             <a href="{% url 'edit' goal.id %}" class="edit">Edit</a>
             <a href="{% url 'delete' goal.id %}" class="delete">Delete</a>
+
+            {% if not goal.completed %}
+            <form action="{% url 'complete' goal.id 'complete'%}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="complete">Mark as Completed</button>
+            </form>
+            {% else %}
+            <form action="{% url 'complete' goal.id 'notcomplete'%}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="complete">Incomplete</button>
+            </form>
+            {% endif %}
+            
+            </div>
         </div>
         {% endfor %}
     </div>

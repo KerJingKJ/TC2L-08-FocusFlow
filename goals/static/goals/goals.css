@@ -3,7 +3,7 @@
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 
@@ -39,13 +39,24 @@ h1 {
     padding: 10px;
 }
 
+.display_title{
+    font-size: 20px;
+}
+
+.display_description{
+    word-wrap: break-word;
+    overflow: hidden;
+    display: block;
+    font-weight: normal;
+}
+
 .seperate{
     display:grid;
     grid-template-columns: repeat(2, 1fr); 
     margin:20px;
 }
 
-button{
+.save{
     background-color:rgba(0, 100, 0, 0.58);
     border: 0px;
     text-align: center;
@@ -53,9 +64,11 @@ button{
     font-size: 20px;
     border-radius: 12px;
     margin-left: 48%;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-button:hover{
+.save:hover{
     color: whitesmoke;
 }
 
@@ -66,7 +79,7 @@ button:hover{
     text-align: center;
     margin-bottom: 10px;
     border-radius: 12px;
-    margin: 10px;
+    margin: 15px;
     line-height: 30px;
 }
 
@@ -74,44 +87,149 @@ span{
     display: block;
 }
 
-.progress{
-    background-color: darksalmon;
-    width:250px;
-    text-align: center;
-    margin-left: 125px;
-    margin-right: 125px;
-    border-radius: 12px;
-}
-
 a{
-    margin-right: 20px;
-    margin-left: 20px;
     color: black;
     text-decoration: none;
     text-align: center;
-    line-height: 60px;
     font-size: 20px;
+}
+
+.complete, .edit, .delete{
+    text-align: center;
+    padding:5px;
+    font-size: 20px;
+    border-radius: 12px;
+    border:0px;
+    margin:10px;
+    font-weight:bold;
+}
+
+
+.edit:hover, .delete:hover, .complete:hover{
+    color: whitesmoke;
+}
+
+
+.delete{
+    background-color: lightcoral;
 }
 
 .edit{
     background-color: darkgray;
+}
+
+.complete{
+    background-color:darkkhaki;
+    padding: 10px 10px;
+}
+
+.notdone{
+    background-color:rgba(100, 148, 237, 0.692);
     border-radius: 12px;
-    padding: 5px;
 }
 
-.delete{
-    background-color: rgba(255, 0, 0, 0.564);
-    color: black;
+.done{
+    background-color: darkseagreen;
     border-radius: 12px;
-    padding: 5px;
 }
 
-.edit:hover{
-    color: whitesmoke;
+.notdone, .done{
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 50px;
+    width: 400px;
 }
 
-.delete:hover{
-    color: whitesmoke;
+.grouping{
+    display: flex;
+    margin: 10px;
+    justify-content: center;
 }
 
+.yourgoals{
+    text-align: center;
+}
+
+.calculate{
+    text-align: center;
+    line-height: 30px;
+    display:grid;
+    grid-template-columns: repeat(6, 1fr); 
+    margin: auto;
+    margin-top: 15px;
+    margin-left: 50px;
+}
+
+.total{
+    width:350px;
+    background-color:rgb(237, 235, 235);
+    border-radius: 12px;
+    margin-right: 25px;
+}
+
+.g-done{
+    width:350px;
+    background-color: darkseagreen;
+    border-radius: 12px;
+    margin-right: 25px;
+}
+
+.g-not{
+    width: 350px;
+    background-color:rgba(100, 148, 237, 0.692);
+    border-radius: 12px;
+    margin-right: 25px;
+}
+
+.statusbarcontainer {
+    width:97%;
+    height:30px;
+    background-color: darkgrey;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin: auto;
+}
+
+.statusbarcontainer span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: whitesmoke; 
+    font-weight: bold;
+}
+
+.bar {
+    height: 30px;
+    position: relative; /*this is to be used to relate it with the ::before later below*/
+    overflow: hidden;
+}
+
+.bar::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: #4caf50; 
+    border-radius: 12px;
+    position: absolute; 
+    /*this is to be use to relate it with the .bar. 
+    Together with top:0 and left:0 means the green bar appear at the top left of the grey progress bar  */
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: width 0.5s ease;
+}
+
+.bar span {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: whitesmoke; 
+    font-weight: bold;
+}
 

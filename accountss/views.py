@@ -4,79 +4,28 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, SignUpForm
-
-from django.urls import reverse
 from django.http import HttpResponseRedirect
-
-#def login_view(request):
-    #if request.method == 'POST':
-        #form = LoginForm(request.POST)
-        #if form.is_valid():
-            #username = form.cleaned_data['username']
-            #password = form.cleaned_data['password']
-            #user = authenticate(request, username=username, password=password)
-            #if user is not None:
-                #if user.is_active:
-                    #login(request, user)
-                    #request.session.modified = True  # Add this line######################
-                    #print("User logged in successfully!")
-                    #return redirect('homepage')
-                #else:
-                    #messages.error(request, 'Your account is not active.')
-            #else:
-                #messages.error(request, 'Invalid username or password.')
-        #return render(request, 'accountss/login.html', {'form': form})
-    #else:
-        #form = LoginForm()
-        #return render(request, 'accountss/login.html', {'form': form})
-    
-
-#def login_view(request):
-    #if request.method == 'POST':
-        #form = LoginForm(request.POST)
-        #if form.is_valid():
-            #username = form.cleaned_data['username']
-            #password = form.cleaned_data['password']
-            #user = authenticate(request, username=username, password=password)
-            
-            #if user is not None:  # Check if user exists
-                #login(request, user)  # Log in the user without checking activation status
-                #request.session.modified = True  # To ensure session is updated
-                #print("User logged in successfully!")
-                #return redirect('homepage')  # Redirect to homepage
-            #else:
-                #messages.error(request, 'Invalid username or password.')  # Invalid login
-        #else:
-            #messages.error(request, 'Please correct the errors below.')
-        #return render(request, 'accountss/login.html', {'form': form})
-    #else:
-        #form = LoginForm()
-        #return render(request, 'accountss/login.html', {'form': form})
-
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 def login_view(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            
-            if user is not None:  # Check if user exists
-                login(request, user)  # Log in the user without checking activation status
-                request.session.modified = True  # Ensure session is updated
-                print("User logged in successfully!")
-                return redirect('homepage')  # Redirect to homepage URL
-            else:
-                messages.error(request, 'Invalid username or password.')  # Handle invalid login
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect(reverse('homepage'))
         else:
-            messages.error(request, 'Please correct the errors below.')  # Handle form validation errors
-        return render(request, 'accountss/login.html', {'form': form})
-    
-    # If the request is GET, show the empty login form
-    else:
-        form = LoginForm()
-        return render(request, 'accountss/login.html', {'form': form})
+            return render(request, 'accountss/login.html', {'error': 'Invalid username or password'})
+    return render(request, 'accountss/login.html')
+
+@login_required
+def home_view(request):
+    return render(request, 'home.html')
+
+def signup_view(request):
+    return render(request, 'accountss/signup.html')
 
 def homepage(request):
     return render(request, 'homepage/homepage.html')
@@ -119,7 +68,6 @@ def logout_view(request):
 
 # views.py
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
 from .forms import ProfileForm
 from django.views import View
 import logging

@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'mood.apps.MoodConfig',
     'motivation.apps.MotivationConfig',
     'import_export',
+    'background.apps.BackgroundConfig',
     #'allauth',
     #'allauth.account',
     #'allauth.socialaccount',
+    'playlist.apps.PlaylistConfig',
 ]
 
 
@@ -165,4 +167,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
 
-LOGIN_REDIRECT_URL = '/'
+

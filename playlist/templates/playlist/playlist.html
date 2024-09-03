@@ -1,0 +1,17 @@
+{% extends 'homepage/base.html' %}
+
+{% block title %}
+Music Playlist
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<head>
+    <link href="{% static 'playlist/playlist.css' %}" type="text/css" rel="stylesheet" />
+</head>
+
+<div>
+    <p>Choose your music.</p>
+</div>
+{% endblock %}

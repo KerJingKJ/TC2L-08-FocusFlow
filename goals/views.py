@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import ToDoList
 from .forms import GoalForm
 # Create your views here.
 
+@login_required
 def set_goals(request):
-    goals = ToDoList.objects.all()
+ #   goals = ToDoList.objects.all()
+    goals = ToDoList.objects.filter(user=request.user)
+    
     if request.method == 'POST':
         form = GoalForm(request.POST)
         if form.is_valid():

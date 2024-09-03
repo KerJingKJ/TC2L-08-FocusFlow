@@ -9,13 +9,11 @@
     border-radius: 12px;
 }
 
-.title:hover, .goals:hover, .timer:hover, .motivation:hover, .signup:hover{
+.title:hover, .goals:hover, .timer:hover, .motivation:hover, .signup:hover, .playlist:hover{
     color: brown;
 }
 
-
-
-.title, .goals, .timer, .motivation, .signup{
+.title, .goals, .timer, .motivation, .signup, .playlist{
     margin-right: 20px;
     margin-left: 20px;
     color: whitesmoke;
@@ -23,8 +21,4 @@
     text-align: center;
     line-height: 60px;
     font-size: 30px;
-}
-
-.signup{
-    padding-left: 450px;
 }

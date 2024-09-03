@@ -12,20 +12,26 @@ Goals
 </head>
 
 <body>
-<div class="forms">
-    <h1>Set your goals!</h1>
-    <form method="POST">
-        {% csrf_token %}
-    <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
-    
-    <div class="description">
-        <p><strong>Description (if any): </strong></p>
-        {{ form.description }}
-    </div>
-        <span><button type="submit" class="save">Save</button></span>
+<div class='container-2'>
+    <div class="forms">
+        <h1>Set your goals!</h1>
+        <form method="POST">
+            {% csrf_token %}
+        <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
+        
+        <div class="description">
+            <p><strong>Description (if any): </strong></p>
+            {{ form.description }}
+        </div>
+            <span><button type="submit" class="save">Save</button></span>
 
-    
-    </form>
+        
+        </form>
+    </div>
+
+    <div class='container-time'>
+    {% include 'timer/countdown.html' %}
+    </div>
 </div>
     <h2 class="yourgoals">Your Goals</h2>
     

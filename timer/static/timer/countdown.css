@@ -6,7 +6,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height:100%;
+    width:100%;
 }
 
 .containers {
@@ -42,7 +43,7 @@ input[type="number"] {
     border-radius: 4px;
 }
 
-button {
+.timerbutton {
     background-color: #5cb85c;
     color: white;
     padding: 10px 15px;
@@ -52,7 +53,7 @@ button {
     font-size: 16px;
 }
 
-button:hover {
+.timerbutton:hover {
     background-color: #4cae4c;
 }
 

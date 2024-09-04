@@ -1,19 +1,15 @@
-# moods/views.py  
+# moods/views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Mood
-from django.http import HttpResponse
-
-
-def mood_view(response):  
-    return render(response, 'mood/mood.html')
-
+from .forms import MoodTrackingForm
 
 @login_required
 def mood_tracking(request):
     if request.method == 'POST':
-        # Create a new mood instance
-        mood = Mood(user=request.user, mood=request.POST['mood'])
-        mood.save()
-        return redirect('mood_tracking')
-    return render(request, 'mood_tracking.html')
+        form = MoodTrackingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('mood_tracking')
+    else:
+        form = MoodTrackingForm()
+    return render(request, 'mood_tracking.html', {'form': form})

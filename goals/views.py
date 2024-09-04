@@ -2,15 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import ToDoList
 from .forms import GoalForm
+from motivation.models import Actor, Quote
 # Create your views here.
 
 @login_required
 def set_goals(request):
- #   goals = ToDoList.objects.all()
- # I changed line 9 to line 10 to only display specific goals to the user who set it 
     goals = ToDoList.objects.filter(user=request.user) 
-
-    
+    actors = Actor.objects.all()
+    quotes = Quote.objects.all()
     if request.method == 'POST':
         form = GoalForm(request.POST)
         if form.is_valid():
@@ -43,6 +42,8 @@ def set_goals(request):
             'notdone':notdone, 
             'bar':bar,
             'total':total,
+            'actors':actors,
+            'quotes':quotes,
         })
 
 def edit(request, goal_id):

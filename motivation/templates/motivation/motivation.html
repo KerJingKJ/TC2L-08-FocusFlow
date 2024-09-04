@@ -13,7 +13,7 @@
 <body>
     <main>
         <div class="container">
-            <form action=" " method="POST">
+            <form action="{% url 'motivation' %}" method="POST">
                 {% csrf_token %} 
                 <div class="parent">
                     
@@ -35,7 +35,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                    <br><button type="submit">Generate Quote</button>
+                    <br><button type="submit" class="generate-quote">Generate Quote</button>
                     <!-- display quoote here -->
                     {% if quote %}
                        <br> <div class="child-2">

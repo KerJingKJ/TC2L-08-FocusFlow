@@ -99,7 +99,7 @@ select::-ms-expand {
     color: #BC986A; /* Color change on hover */
 }
 
-button {
+.generate-quote{
     background-color: #BC986A; /* Color */
     border: none;
     color: white;
@@ -113,7 +113,7 @@ button {
     transition: background-color 0.3s ease; /* Optional: Add transition for hover effect */
 }
 
-button:hover {
+.generate-quote:hover {
     background-color: #A57D54; /* Darker shade on hover (optional) */
 }
 

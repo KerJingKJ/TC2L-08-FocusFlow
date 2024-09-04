@@ -7,7 +7,9 @@ from .forms import GoalForm
 @login_required
 def set_goals(request):
  #   goals = ToDoList.objects.all()
-    goals = ToDoList.objects.filter(user=request.user)
+ # I changed line 9 to line 10 to only display specific goals to the user who set it 
+    goals = ToDoList.objects.filter(user=request.user) 
+
     
     if request.method == 'POST':
         form = GoalForm(request.POST)

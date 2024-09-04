@@ -20,10 +20,9 @@ from accountss import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('homepage/', include("homepage.urls")),
-    path('', include("homepage.urls")),
+    path('home/', include("homepage.urls")),
+    path('', include("accountss.urls")),
     path('mood/', include("mood.urls")),
-    path('accountss/', include('accountss.urls')),
     path('goals/', include("goals.urls")),
     path('timer/', include("timer.urls")),
     path('motivation/', include("motivation.urls")),

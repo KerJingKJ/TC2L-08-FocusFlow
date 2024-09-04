@@ -2,12 +2,21 @@
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from .forms import LoginForm, SignUpForm
-from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import View
+import logging
 from django.urls import reverse
 
+from .forms import LoginForm, SignUpForm, ProfileForm
+from .models import Profile
+
+logger = logging.getLogger(__name__)
+
+# Login and Logout Views
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -21,15 +30,12 @@ def login_view(request):
     return render(request, 'accountss/login.html')
 
 @login_required
-def home_view(request):
-    return render(request, 'home.html')
+def logout_view(request):
+    return redirect('login')
 
+# Signup Views
 def signup_view(request):
     return render(request, 'accountss/signup.html')
-
-def homepage(request):
-    return render(request, 'homepage/homepage.html')
-
 
 def signup(request):
     if request.method == 'POST':
@@ -45,35 +51,9 @@ def signup(request):
             messages.error(request, ('Please correct the errors below.'))
     else:
         form = SignUpForm()
-
     return render(request, 'accountss/signup.html', {'form': form})
 
-
-from django.contrib.auth.views import LogoutView
-from django.urls import reverse_lazy
-
-class CustomLogoutView(LogoutView):
-    template_name = 'accountss/logout.html'  # Optional: Template after logout
-    next_page = reverse_lazy('login')  # Redirect to login page after logout
-
-
-
-# views.py
-from django.contrib.auth import logout
-from django.shortcuts import redirect
-
-def logout_view(request):
-    logout(request)
-    return redirect('login')
-
-# views.py
-from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import ProfileForm
-from django.views import View
-import logging
-
-logger = logging.getLogger(__name__)
-
+# Profile Views
 class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         form = ProfileForm(instance=request.user)
@@ -90,4 +70,47 @@ class ProfileView(LoginRequiredMixin, View):
                 return render(request, 'profile.html', {'form': form, 'error': 'Error saving profile'})
         else:
             return render(request, 'profile.html', {'form': form})
+
+@login_required
+def profile(request):
+    profile = request.user.profile
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
+    return render(request, 'profile.html', {'form': form})
+
+# Password Change Views
+@login_required
+def password_change(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('password_change_done')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'password_change.html', {'form': form})
+
+# Homepage Views
+@login_required
+def home_view(request):
+    return render(request, 'home.html')
+
+def homepage(request):
+    return render(request, 'homepage/homepage.html')
+
+
+
+
+
+
+
+
+
+
 

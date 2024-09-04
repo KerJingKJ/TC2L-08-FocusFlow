@@ -2,14 +2,14 @@
 
 {% block content %}
   <h1>Mood Tracking</h1>
-  <form method="post">
+  <form method="post" action="{% url 'mood_tracking' %}">
     {% csrf_token %}
-    <label for="mood">How are you feeling today?</label>
-    <select id="mood" name="mood">
+    <label for="mood" class="form-label">How are you feeling today?</label>
+    <select id="mood" name="mood" class="form-select" required>
       <option value="happy">Happy</option>
       <option value="sad">Sad</option>
       <option value="neutral">Neutral</option>
     </select>
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 {% endblock %}

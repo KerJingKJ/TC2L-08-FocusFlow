@@ -13,17 +13,11 @@ Start Focus
 
 <body>
 <div class='container-2'>
-   
-
     <div class='container-time'>
     {% include 'timer/countdown.html' %}
     </div>
-
-    <div class="container-motivation">
-        {% include 'motivation/motivation.html' %} 
-    </div>
+    <p> Tired? Get some motivation <a href="{% url 'motivation' %}" class="button-motivation">here</a>
 </div>
-
 
 
 <div class="container-aboutgoals">

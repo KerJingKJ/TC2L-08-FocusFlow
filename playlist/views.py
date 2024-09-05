@@ -10,7 +10,8 @@ def select_playlist(request):
     playlists = Playlist.objects.all()
     selected_playlist = None
 
-    if 'playlist_id' in request.GET:
+    playlist_id = request.GET.get('playlist_id')
+    if 'playlist_id' in request.GET and playlist_id.isdigit():
         selected_playlist = get_object_or_404(Playlist, id=request.GET['playlist_id'])
 
     return render(request, 'playlist/playlist.html', 

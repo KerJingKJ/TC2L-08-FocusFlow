@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-#Music Playlist model
+# Music Playlist model
 class Playlist(models.Model):
     name = models.CharField(max_length=100)
 
@@ -15,3 +15,11 @@ class Track(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# Playlist
+# lofi
+# relaxing
+# english songs
+# korean pop 
+# raining sounds (meditation music)

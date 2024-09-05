@@ -8,6 +8,7 @@ Start Focus
 {% load static %}
 <head>
     <link href="{% static 'goals/goals.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'playlist/playlist.css' %}" type="text/css" rel="stylesheet" />
     <title>Goals</title>
 </head>
 
@@ -16,7 +17,12 @@ Start Focus
     <div class='container-time'>
     {% include 'timer/countdown.html' %}
     </div>
-    <p> Tired? Get some motivation <a href="{% url 'motivation' %}" class="button-motivation">here</a>
+   <div>
+    <p> Tired? Get some motivation <a href="{% url 'motivation' %}" class="button-motivation">here</a> </p>
+   </div>
+    <div class='container-playlist'>
+    {% include 'playlist/playlist.html' %}
+    </div>
 </div>
 
 

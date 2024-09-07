@@ -29,7 +29,7 @@ urlpatterns = [
     path('timer/', include("timer.urls")),
     path('motivation/', include("motivation.urls")),
     path('background/', include("background.urls")),
-    path('playlist/', include("playlist.urls"))
+    path('playlist/', include("playlist.urls")),
 ]
 
 if settings.DEBUG:

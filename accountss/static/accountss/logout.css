@@ -1,38 +1,42 @@
 /* logout.css */
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-    background-color: #f9f9f9;
-  }
-  
-  .container {
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  a {
-    color: #337ab7;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: #23527c;
-  }
+  font-family: Open Sans, sans-serif;
+  background-color: #f7f7f7;
+}
+
+.container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+a:hover {
+  color: #23527c;
+}
+
+.container p a {
+  margin-right: 20px;
+}

@@ -1,5 +1,5 @@
 body {
-    background-color: aliceblue;
+    background-color: #c5c5f7;
 
 }
 
@@ -16,6 +16,11 @@ p {
     text-align: center;
 }
 
-#slogan {
-    color: coral;
+#slogan{
+    font-size: 4rem;
+    font-family:  serif bold;
+    text-align: center;
+    color: aquamarine;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }

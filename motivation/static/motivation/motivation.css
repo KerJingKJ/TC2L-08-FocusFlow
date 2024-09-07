@@ -11,12 +11,12 @@ main {
 }
 
 .container {
-    background-color: #161536;
+    background-color: #230757;
     height: 50%;
 }
 
 .parent {
-    background-color: #230757;
+    background-color: #bdb8c5;
     width: 70%;
     min-height: 50%;
     position: absolute;
@@ -30,7 +30,7 @@ main {
 }
 
 .child-2 {
-    background-color: #403374;
+    background-color: #403374;  /* kotak quotes */
     min-height: 100px; /* Adjust as needed */
     width: 85%;
     padding: 10px;
@@ -47,7 +47,7 @@ main {
 }
 
 .child-2 p {
-    color: #3d3677;
+    color: #ffffff;
 }
 
 select {
@@ -58,7 +58,7 @@ select {
     outline: 0;
     box-shadow: none;
     border: 0 !important;
-    background: #659DBD;
+    background: #4836c0;
     background-image: none;
     flex: 1;
     padding: 0 .5em;
@@ -78,7 +78,7 @@ select::-ms-expand {
     width: 75%;
     height: 3em;
     line-height: 3em; /* Ensure height and line-height match */
-    background: #659DBD; /* Ensure a background color is set */
+    background: #4836c0; /* Ensure a background color is set */
     overflow: hidden;
     border-radius: .25em;
 }
@@ -89,7 +89,7 @@ select::-ms-expand {
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: #659DBD; /* Ensure a background color is set */
+    background: #4836c0; /* Ensure a background color is set */
     cursor: pointer;
     pointer-events: none;
     transition: .25s all ease;
@@ -100,9 +100,9 @@ select::-ms-expand {
 }
 
 button {
-    background-color: #2f234f; /* Color */
+    background-color: #4836c0; /* Color */
     border: none;
-    color: rgb(113, 45, 230);
+    color: rgb(248, 247, 250);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;

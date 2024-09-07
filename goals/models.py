@@ -23,3 +23,5 @@ class ToDoList(models.Model):
 # Notes:
 # CharField is to use to store a string, and here i set the length of string to be 300 at most.
 # TextField can store more string than CharField, use for user to type in the description.
+# default for description is True because it allows user to also save their goals even they didn't type in description
+# default for completed is False = the first time user create goals, it is incomplete for default

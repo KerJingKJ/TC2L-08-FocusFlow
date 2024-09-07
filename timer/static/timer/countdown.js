@@ -1,46 +1,69 @@
-let countdown; // to control pause or stop
-let paused = false; // means the timer isn't pause
-let secondsLeft; // track how many secs left or remainder
+// variables
 
-function startTimer() { // minta input
-    const subject = document.getElementById('subject').value; // get study subject
-    let seconds = parseInt(document.getElementById('time').value); // gets num of secs
+let workTittle = document.getElementById('work');
+let breakTittle = document.getElementById('break');
 
-    if (isNaN(seconds) || seconds <= 0) { // only accepts +ve num from user
-        alert('Please enter a valid number of seconds.');
-        return;
+let workTime = 25;
+let breakTime = 5;
+
+let seconds = "00"
+
+// display
+window.onload = () => {
+    document.getElementById('minutes').innerHTML = workTime;
+    document.getElementById('seconds').innerHTML = seconds;
+
+    workTittle.classList.add('active');
+}
+
+// start timer
+function start() {
+    // change button
+    document.getElementById('start').style.display = "none";
+    document.getElementById('reset').style.display = "block";
+
+    // change the time
+    seconds = 59;
+
+    let workMinutes = workTime - 1;
+    let breakMinutes = breakTime - 1;
+
+    breakCount = 0;
+
+    // countdown
+    let timerFunction = () => {
+        //change the display
+        document.getElementById('minutes').innerHTML = workMinutes;
+        document.getElementById('seconds').innerHTML = seconds;
+
+        // start
+        seconds = seconds - 1;
+
+        if(seconds === 0) {
+            workMinutes = workMinutes - 1;
+            if(workMinutes === -1 ){
+                if(breakCount % 2 === 0) {
+                    // start break
+                    workMinutes = breakMinutes;
+                    breakCount++
+
+                    // change the painel
+                    workTittle.classList.remove('active');
+                    breakTittle.classList.add('active');
+                }else {
+                    // continue work
+                    workMinutes = workTime;
+                    breakCount++
+
+                    // change the painel
+                    breakTittle.classList.remove('active');
+                    workTittle.classList.add('active');
+                }
+            }
+            seconds = 59;
+        }
     }
 
-    document.getElementById('timer').textContent = formatTime(seconds); //formatting
-    secondsLeft = seconds;
-
-    countdown = setInterval(() => { // nak start countdownn
-        if (!paused && secondsLeft > 0) { // cek kalau bukan pause kena decrease 1
-            secondsLeft--;
-            document.getElementById('timer').textContent = formatTime(secondsLeft); // cek display
-        } else if (secondsLeft <= 0) { // bila dh 0 timer stop 
-            clearInterval(countdown); 
-            document.getElementById('timer').textContent = "Blast off!";
-        }
-    }, 1000); // buat loop every 1000 miliseccond = 1 sec 
-}
-
-function formatTime(seconds) { // convert
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`; // format
-
-}
-
-function pauseTimer() { // pause countfown
-    paused = true;
-}
-
-function resumeTimer() { // resume countdown
-    paused = false;
-}
-
-function stopTimer() { // stop countdown
-    clearInterval(countdown);
-    document.getElementById('timer').textContent = "Stopped";
+    // start countdown
+    setInterval(timerFunction, 1000); // 1000 = 1s
 }

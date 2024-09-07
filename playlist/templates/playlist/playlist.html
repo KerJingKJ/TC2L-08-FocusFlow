@@ -1,7 +1,5 @@
-{% extends 'homepage/base.html' %}
-
 {% block title %}
-Music Playlist
+<title>Music Playlist</title>
 {% endblock %}
 
 {% block content %}
@@ -10,8 +8,94 @@ Music Playlist
 <head>
     <link href="{% static 'playlist/playlist.css' %}" type="text/css" rel="stylesheet" />
 </head>
-
+<body>
 <div>
-    <p>Choose your music.</p>
+    <h1>Choose your music.</h1>
+    <h2>Suggested Playlist:</h2>
+    {% for playlist in playlists %}
+    <ul>
+        <li>{{playlist.name}}</li>
+    </ul>
+    {% endfor %}
+
+    <form method="get">
+        <label for="playlist">Select Playlist:</label>
+        <select name="playlist_id" id="playlist" onchange="this.form.submit()">
+            <option value="">-- Choose a Playlist --</option>
+            {% for playlist in playlists %}
+                <option value="{{ playlist.id }}" {% if selected_playlist and selected_playlist.id == playlist.id %}selected{% endif %}>{{ playlist.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    {% if selected_playlist %}
+    <p>Playing from "{{ selected_playlist.name }}"</p>
+        {% for track in selected_playlist.tracks.all %}
+            <audio src="{{ track.audio_file.url }}" id="track-{{ forloop.counter }}"></audio>
+        {% endfor %}
+    </ul>
+    
+    <!-- Controls for Play, Stop, and Resume -->
+    <div class="controls">
+        <button onclick="playPlaylist()">Play</button>
+        <button onclick="stopPlaylist()">Stop</button>
+    </div>
+    {% endif %}
 </div>
+
+<script>
+    let currentTrack = 0;
+    let trackElements = [];
+    let isPlaying = false;
+
+    // Load track elements when the page loads
+    window.onload = function() {
+        trackElements = document.querySelectorAll('audio');
+        console.log('Track Elements:', trackElements);
+    };
+
+    // Function to play the playlist
+    function playPlaylist() {
+        if (trackElements.length > 0) {
+            stopPlaylist();  // Stop any previous playback
+            currentTrack = 0;
+            playTrack();
+        } else {
+            console.log('No tracks to play.');
+        }
+    }
+
+    // Function to play an individual track
+    function playTrack() {
+        if (currentTrack < trackElements.length) {
+            console.log('Playing track:', currentTrack);
+            trackElements[currentTrack].play();
+            trackElements[currentTrack].addEventListener('ended', function() {
+                console.log('Track ended:', currentTrack);
+                currentTrack++;
+                if (currentTrack < trackElements.length) {
+                    playTrack();
+                } else {
+                    // Optionally handle when reaching the end of the playlist
+                    stopPlaylist();  // Stop playback if you reach the end of the playlist
+                }
+            }, { once: true }); // Make sure the listener is only set up once
+            isPlaying = true;
+        } else {
+            console.log('Current track index out of bounds.');
+        }
+    }
+
+    // Function to stop the playlist
+    function stopPlaylist() {
+        if (isPlaying) {
+            trackElements.forEach(function(track) {
+                track.pause();
+                track.currentTime = 0;
+            });
+            isPlaying = false;
+        }
+    }
+</script>
+</body>
 {% endblock %}

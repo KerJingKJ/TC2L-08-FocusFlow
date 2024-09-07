@@ -28,9 +28,4 @@ urlpatterns = [
     path('motivation/', include("motivation.urls")),
     path('background/', include("background.urls")),
     path('playlist/', include("playlist.urls"))
-<<<<<<< HEAD
-=======
-
-
->>>>>>> main
-]
+    ]

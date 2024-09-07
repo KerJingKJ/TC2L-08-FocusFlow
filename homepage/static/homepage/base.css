@@ -3,20 +3,20 @@
 }
 
 .container-home{
-    background-color:cadetblue;
+    background-color:#230757;
     overflow: hidden;
     display: flex;
     border-radius: 12px;
 }
 
 .title:hover, .goals:hover, .timer:hover, .motivation:hover, .signup:hover, .playlist:hover{
-    color: brown;
+    color: aquamarine;
 }
 
 .title, .goals, .timer, .motivation, .signup, .playlist{
     margin-right: 20px;
     margin-left: 20px;
-    color: whitesmoke;
+    color: #C3B1E1;
     text-decoration: none;
     text-align: center;
     line-height: 60px;

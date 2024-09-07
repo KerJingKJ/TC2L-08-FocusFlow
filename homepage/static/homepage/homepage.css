@@ -16,6 +16,19 @@ p {
     text-align: center;
 }
 
+.button-start{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color:darkblue;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    margin-left: 45%;
+}
+
 #slogan{
     font-size: 4rem;
     font-family:  serif bold;
@@ -23,4 +36,5 @@ p {
     color: aquamarine;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
+
 }

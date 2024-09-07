@@ -5,18 +5,18 @@ body {
 }
 
 main {
-    background-color: #161536;
+    background-color: #659DBD;
     position: relative;
     height: 100vh;
 }
 
 .container {
-    background-color: #230757;
+    background-color: #DAAD86;
     height: 50%;
 }
 
 .parent {
-    background-color: #bdb8c5;
+    background-color: #FBEEC1;
     width: 70%;
     min-height: 50%;
     position: absolute;
@@ -30,7 +30,7 @@ main {
 }
 
 .child-2 {
-    background-color: #403374;  /* kotak quotes */
+    background-color: #8D8741;
     min-height: 100px; /* Adjust as needed */
     width: 85%;
     padding: 10px;
@@ -47,7 +47,7 @@ main {
 }
 
 .child-2 p {
-    color: #ffffff;
+    color: #fff;
 }
 
 select {
@@ -58,7 +58,7 @@ select {
     outline: 0;
     box-shadow: none;
     border: 0 !important;
-    background: #4836c0;
+    background: #659DBD;
     background-image: none;
     flex: 1;
     padding: 0 .5em;
@@ -78,7 +78,7 @@ select::-ms-expand {
     width: 75%;
     height: 3em;
     line-height: 3em; /* Ensure height and line-height match */
-    background: #4836c0; /* Ensure a background color is set */
+    background: #659DBD; /* Ensure a background color is set */
     overflow: hidden;
     border-radius: .25em;
 }
@@ -89,20 +89,20 @@ select::-ms-expand {
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: #4836c0; /* Ensure a background color is set */
+    background: #659DBD; /* Ensure a background color is set */
     cursor: pointer;
     pointer-events: none;
     transition: .25s all ease;
 }
 
 .select:hover::after {
-    color: #7a7595; /* Color change on hover */
+    color: #BC986A; /* Color change on hover */
 }
 
-button {
-    background-color: #4836c0; /* Color */
+.generate-quote{
+    background-color: #BC986A; /* Color */
     border: none;
-    color: rgb(248, 247, 250);
+    color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -113,7 +113,7 @@ button {
     transition: background-color 0.3s ease; /* Optional: Add transition for hover effect */
 }
 
-button:hover {
+.generate-quote:hover {
     background-color: #A57D54; /* Darker shade on hover (optional) */
 }
 

@@ -97,3 +97,8 @@ body {
   .auth-footer a:hover {
     text-decoration: underline;
   }
+
+  .error-message{
+    color: red;
+    text-align:center;
+  }

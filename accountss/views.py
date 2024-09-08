@@ -1,5 +1,6 @@
 # accountss/views.py
 
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, update_session_auth_hash
@@ -10,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 import logging
 from django.urls import reverse
-
+from .forms import UserUpdateForm, ProfileUpdateForm
 from .forms import LoginForm, SignUpForm, ProfileForm
 from .models import Profile
 
@@ -73,15 +74,49 @@ class ProfileView(LoginRequiredMixin, View):
 
 @login_required
 def profile(request):
-    profile = request.user.profile
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile(user=request.user)
+        profile.save()
+
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, instance=profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
             return redirect('profile')
     else:
-        form = ProfileForm(instance=profile)
-    return render(request, 'profile.html', {'form': form})
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=profile)
+
+    return render(request, 'profile.html', {'u_form': u_form, 'p_form': p_form})
+
+@login_required
+def update_profile(request):
+    try:
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    except Profile.DoesNotExist:
+        Profile.objects.create(user=request.user)
+        return redirect('profile')  # Redirect to the profile page after creating the profile
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    return render(request, 'profile.html')
+
+
+# Homepage Views
+@login_required
+def home_view(request):
+    return render(request, 'homepage.html')
 
 # Password Change Views
 @login_required
@@ -96,21 +131,11 @@ def password_change(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'password_change.html', {'form': form})
 
-# Homepage Views
+# Profile creation view
 @login_required
-def home_view(request):
-    return render(request, 'home.html')
-
-def homepage(request):
-    return render(request, 'homepage/homepage.html')
-
-
-
-
-
-
-
-
-
-
-
+def profile(request):
+    try:
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    except Profile.DoesNotExist:
+        Profile.objects.create(user=request.user)
+        return redirect('profile')  # Redirect to the profile page after creating the profile

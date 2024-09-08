@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'goals.apps.GoalsConfig',
     'timer.apps.TimerConfig',
-    'accountss.apps.AccountssConfig',
+    #'accountss.apps.AccountssConfig',
     'mood.apps.MoodConfig',
     'motivation.apps.MotivationConfig',
     'import_export',
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     #'allauth.account',
     #'allauth.socialaccount',
     'playlist.apps.PlaylistConfig',
+    'accountss.apps.AccountsConfig',
 ]
 
 

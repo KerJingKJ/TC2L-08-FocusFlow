@@ -1,25 +1,29 @@
-{% extends 'base.html' %}
+<!-- profile.html -->
 
-{% block content %}
-  <div class="profile-container">
-    <h1 class="profile-title">Profile</h1>
-    <div class="profile-form">
-      <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="John Doe">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="john.doe@example.com">
-        </div>
-        <div class="form-group">
-          <label for="profile-picture">Profile Picture</label>
-          <input type="file" id="profile-picture" name="profile-picture">
-        </div>
-        <button type="submit" class="save-button">Save</button>
-      </form>
+<!-- Profile information -->
+<h2>Profile</h2>
+<p>Name: {{ user.name }}</p>
+<p>Email: {{ user.email }}</p>
+
+<!-- Update profile form -->
+{% if update_profile %}
+  <h2>Update Profile</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="John Doe">
     </div>
-  </div>
-{% endblock %}
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="john.doe@example.com">
+    </div>
+    <div class="form-group">
+      <label for="profile-picture">Profile Picture</label>
+      <input type="file" id="profile-picture" name="profile-picture">
+    </div>
+    {{ u_form.as_p }}
+    {{ p_form.as_p }}
+    <button type="submit">Update Profile</button>
+  </form>
+{% endif %}

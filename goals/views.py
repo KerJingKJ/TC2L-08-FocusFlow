@@ -20,6 +20,8 @@ def set_goals(request):
     playlist_id = request.GET.get('playlist_id')
     if 'playlist_id' in request.GET and playlist_id.isdigit():
         selected_playlist = get_object_or_404(Playlist, id=request.GET['playlist_id'])
+
+
     if request.method == 'POST':
         form = GoalForm(request.POST)
         if form.is_valid():

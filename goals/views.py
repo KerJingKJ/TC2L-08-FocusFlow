@@ -21,7 +21,7 @@ def set_goals(request):
     if 'playlist_id' in request.GET and playlist_id.isdigit():
         selected_playlist = get_object_or_404(Playlist, id=request.GET['playlist_id'])
 
-# this is to save the user goals
+
     if request.method == 'POST':
         form = GoalForm(request.POST)
         if form.is_valid():
@@ -62,7 +62,6 @@ def set_goals(request):
             'selected_playlist': selected_playlist,
         })
 
-# allow users to edit, delete and mark goals as completed
 def edit(request, goal_id):
     goals = get_object_or_404(ToDoList, id=goal_id)
     if request.method == 'POST':

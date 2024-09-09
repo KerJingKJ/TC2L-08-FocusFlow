@@ -17,9 +17,6 @@ Start Focus
     <div class='container-time'>
     {% include 'timer/countdown.html' %}
     </div>
-   <div>
-    <p> Tired? Get some motivation <a href="{% url 'motivation' %}" class="button-motivation">here</a> </p>
-   </div>
     <div class='container-playlist'>
     {% include 'playlist/playlist.html' %}
     </div>
@@ -46,7 +43,7 @@ Start Focus
     <div class="yourgoals">
     <h2>Your Goals</h2>
     
-    
+<div class='storedgoals'>    
     <div class="statusbarcontainer">
             {% if bar == 0 %}
             <span>0% of progress</span>
@@ -54,7 +51,7 @@ Start Focus
             <div class="bar" style="width: {{ bar }}%;">
             <span>{{ bar|floatformat:1 }}% of progress</span>
             {% endif %}
-        </div>
+            </div>
     </div>
 
     <div class="calculate">
@@ -111,7 +108,13 @@ Start Focus
         {% endfor %}
         </div>
     </div>
+    </div>
 </div>
+
+<div>
+    <p> Tired? Get some motivation <a href="{% url 'motivation' %}" target="_blank" class="button-motivation">here</a> </p>
+</div>
+
 </body>
 
 {% endblock %}

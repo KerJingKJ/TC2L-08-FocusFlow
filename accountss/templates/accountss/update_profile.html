@@ -1,9 +1,7 @@
-<!-- profile.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Profile</title>
+    <title>Update Profile</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         body {
@@ -23,8 +21,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>Profile</h1>
-        <p>Welcome, {{ user.username }}!</p>
+        <h1>Update Profile</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ u_form.as_p }}
+            {{ p_form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 </body>
 </html>

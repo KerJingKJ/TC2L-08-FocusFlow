@@ -1,12 +1,20 @@
-{% extends 'base.html' %}
 
-{% block content %}
+
+
+<div class="mood-list-container"></div>
   <h1>Mood List</h1>
   <ul>
-    {% for mood in moods %}
-      <li>{{ mood.name }} ({{ mood.description }})</li>
-    {% empty %}
-      <li>No moods found.</li>
-    {% endfor %}
+    <li>
+      <span class="mood">Happy</span>
+      <span class="count">5</span>
+    </li>
+    <li>
+      <span class="mood">Neutral</span>
+      <span class="count">3</span>
+    </li>
+    <li>
+      <span class="mood">Sad</span>
+      <span class="count">2</span>
+    </li>
   </ul>
-{% endblock %}
+</div>

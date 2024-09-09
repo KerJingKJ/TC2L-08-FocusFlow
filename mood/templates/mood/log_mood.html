@@ -1,6 +1,15 @@
-<h2>Log Your Mood</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log Mood</button>
-</form>
+
+<div class="log-mood-container">
+    <h1>Log Your Mood</h1>
+    <form>
+      <label for="mood">How are you feeling today?</label>
+      <select id="mood" name="mood">
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="neutral">Neutral</option>
+        <option value="angry">Angry</option>
+        <option value="surprised">Surprised</option>
+      </select>
+      <button type="submit">Log Mood</button>
+    </form>
+  </div>

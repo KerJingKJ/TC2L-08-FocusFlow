@@ -1,44 +1,64 @@
 <!-- moods/templates/mood.html -->
 
-<!-- mood.html -->
 
 <!-- Header Section -->
 <header>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Mood Tracker</a></li>
-      </ul>
-      <button id="mode-toggle">Toggle Mode</button>
-    </nav>
-  </header>
-  
-  <!-- Main Content Section -->
-  <main>
-    <section class="mood-tracker">
-      <h1>Mood Tracker</h1>
-      <form>
-        <label for="mood">How are you feeling today?</label>
-        <select id="mood" name="mood">
-          <option value="happy">Happy</option>
-          <option value="sad">Sad</option>
-          <option value="neutral">Neutral</option>
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
-        </select>
-        <button type="submit">Log Mood</button>
-      </form>
-    </section>
-  
-    <section class="mood-history">
-      <h1>Mood History</h1>
-      <ul>
-        <!-- List of past moods will be generated here -->
-      </ul>
-    </section>
-  </main>
-  
-  <!-- Footer Section -->
-  <footer>
-    <p>&copy; {{ now|date:"Y" }} Mood Tracker</p>
-  </footer>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Mood Tracker</a></li>
+    </ul>
+    <button id="toggle-mode">Toggle Light/Dark Mode</button>
+  </nav>
+</header>
+
+
+<!-- Main Content Section -->
+<main>
+  <section class="mood-tracker">
+    <h1>Mood Tracker</h1>
+    <form>
+      <label for="mood">How are you feeling today?</label>
+      <select id="mood" name="mood">
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="neutral">Neutral</option>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+      <button type="submit">Log Mood</button>
+    </form>
+  </section>
+
+  <section class="mood-history">
+    <h1>Mood History</h1>
+    <ul>
+      {% for mood in mood_history %}
+        <li>
+          <span>{{ mood.date }}</span>
+          <span>{{ mood.mood }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% include 'log_mood.html' %}
+  {% include 'mood_history.html' %}
+  {% include 'mood_tracking.html' %}
+
+  <!-- display mood list -->
+  <h1>Mood List</h1>
+  <ul>
+    {% for mood in moods %}
+      <li>{{ mood.date }}: {{ mood.mood }}</li>
+    {% endfor %}
+  </ul>
+</main>
+
+<a href="{% url 'set_goals' %}">Start now</a>
+<!-- Footer Section -->
+<footer>
+  <p>&copy; {{ now|date:"Y" }} Mood Tracker</p>
+</footer>
+
+

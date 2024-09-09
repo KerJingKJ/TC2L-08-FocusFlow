@@ -16,6 +16,7 @@ from .forms import LoginForm, SignUpForm, ProfileForm
 from .models import Profile
 
 
+
 logger = logging.getLogger(__name__)
 
 # Login and Logout Views
@@ -64,7 +65,7 @@ class ProfileView(LoginRequiredMixin, View):
         try:
             profile = request.user.profile
         except Profile.DoesNotExist:
-            return render(request, 'error.html', {'error': 'Profile not found'})
+            return render(request, 'create_profile.html', {'error': 'Profile not found'})
         form = ProfileForm(instance=profile)
         return render(request, 'create_profile.html', {'form': form, 'request': request})
 

@@ -83,6 +83,7 @@ TEMPLATES = [
     },
 ]
 
+ERROR_TEMPLATE = 'my_error_template.html'
 #TEMPLATES = [
     #{
         #'BACKEND': 'django.template.backends.django.DjangoTemplates',

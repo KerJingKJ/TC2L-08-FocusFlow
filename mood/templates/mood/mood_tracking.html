@@ -1,15 +1,11 @@
-{% extends 'base.html' %}
 
-{% block content %}
+<div class="mood-tracking-container"></div>
   <h1>Mood Tracking</h1>
-  <form method="post" action="{% url 'mood_tracking' %}">
-    {% csrf_token %}
-    <label for="mood" class="form-label">How are you feeling today?</label>
-    <select id="mood" name="mood" class="form-select" required>
-      <option value="happy">Happy</option>
-      <option value="sad">Sad</option>
-      <option value="neutral">Neutral</option>
-    </select>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-{% endblock %}
+  <div class="chart-container">
+    <canvas id="mood-chart"></canvas>
+  </div>
+  <div class="stats-container">
+    <p>Average Mood: <span class="average-mood">Neutral</span></p>
+    <p>Most Common Mood: <span class="most-common-mood">Happy</span></p>
+  </div>
+</div>

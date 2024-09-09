@@ -32,7 +32,6 @@ urlpatterns = [
     path('motivation/', include("motivation.urls")),
     path('background/', include("background.urls")),
     path('playlist/', include("playlist.urls")),
-    path('admin/', admin.site.urls),
     path('', include('accountss.urls')),
     
 ]

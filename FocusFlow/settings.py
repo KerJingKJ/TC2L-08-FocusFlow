@@ -70,7 +70,7 @@ ROOT_URLCONF = 'FocusFlow.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'accountss/templates'],
+        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'accountss/templates/accountss', BASE_DIR / 'mood/templates/mood'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

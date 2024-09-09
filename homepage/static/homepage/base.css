@@ -9,11 +9,11 @@
     border-radius: 12px;
 }
 
-.title:hover, .goals:hover, .timer:hover, .motivation:hover, .signup:hover, .playlist:hover{
+.title:hover, .goals:hover, .timer:hover, .motivation:hover, .playlist:hover, .logout:hover, .profile:hover, .mood:hover{
     color: aquamarine;
 }
 
-.title, .goals, .timer, .motivation, .signup, .playlist{
+.title, .goals, .timer, .motivation, .playlist, .logout, .profile, .mood{
     margin-right: 20px;
     margin-left: 20px;
     color: #C3B1E1;
@@ -23,6 +23,6 @@
     font-size: 30px;
 }
 
-.signup{
+.logout{
     margin-left: auto;
 }

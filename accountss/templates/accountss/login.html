@@ -18,6 +18,8 @@
         {% if error %}
         <div class="error-message">
             {{ error }}
+            <br>
+            <a href="{% url 'password_reset' %}" target="_blank">Forgot Password?</a>
         </div>
         {% endif %}
 

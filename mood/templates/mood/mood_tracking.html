@@ -1,11 +1,23 @@
+<!-- mood_tracking.html -->
+ 
+<head>
+  <link rel="stylesheet" type="text/css" href="mood_tracking.css">
+</head>
 
-<div class="mood-tracking-container"></div>
-  <h1>Mood Tracking</h1>
-  <div class="chart-container">
-    <canvas id="mood-chart"></canvas>
+<div class="mood-tracking">
+  <h2>Mood Tracking</h2>
+  <div class="mood-graph">
+    <canvas id="mood-graph-canvas" width="400" height="200"></canvas>
   </div>
-  <div class="stats-container">
-    <p>Average Mood: <span class="average-mood">Neutral</span></p>
-    <p>Most Common Mood: <span class="most-common-mood">Happy</span></p>
+  <div class="mood-log">
+    <ul>
+      {% for mood in moods %}
+        <li>
+          <span class="mood-date">{{ mood.date }}</span>
+          <span class="mood-emotion">{{ mood.mood }}</span>
+          <span class="mood-notes">{{ mood.notes }}</span>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 </div>

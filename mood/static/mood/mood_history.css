@@ -1,0 +1,35 @@
+.mood-history {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mood-entry {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .mood-entry:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .mood-entry .date {
+    font-weight: bold;
+    margin-right: 20px;
+    color: #3498db;
+  }
+  
+  .mood-entry .mood {
+    font-size: 18px;
+    color: #2ecc71;
+  }
+  
+  .mood-entry .notes {
+    font-size: 14px;
+    color: #666;
+  }

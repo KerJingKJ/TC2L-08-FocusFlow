@@ -1,64 +1,120 @@
 <!-- moods/templates/mood.html -->
 
+{% extends 'base.html' %}
 
-<!-- Header Section -->
-<header>
-  <nav>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Mood Tracker</a></li>
-    </ul>
-    <button id="toggle-mode">Toggle Light/Dark Mode</button>
-  </nav>
-</header>
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="mood.css">
+  <style>
+    body {
+      background-color: #f2f2f2; /* Light mode background color */
+    }
 
+    body.dark-mode {
+      background-color: #333; /* Dark mode background color */
+    }
 
-<!-- Main Content Section -->
-<main>
-  <section class="mood-tracker">
-    <h1>Mood Tracker</h1>
-    <form>
-      <label for="mood">How are you feeling today?</label>
-      <select id="mood" name="mood">
-        <option value="happy">Happy</option>
-        <option value="sad">Sad</option>
-        <option value="neutral">Neutral</option>
-        <option value="dark">Dark</option>
-        <option value="light">Light</option>
-      </select>
-      <button type="submit">Log Mood</button>
-    </form>
-  </section>
+    body.dark-mode .mood-tracker {
+      background-color: #444; /* Dark mode mood tracker background color */
+    }
 
-  <section class="mood-history">
-    <h1>Mood History</h1>
-    <ul>
-      {% for mood in mood_history %}
-        <li>
-          <span>{{ mood.date }}</span>
-          <span>{{ mood.mood }}</span>
-        </li>
-      {% endfor %}
-    </ul>
-  </section>
+    body.dark-mode .mood-history {
+      background-color: #555; /* Dark mode mood history background color */
+    }
 
-  {% include 'log_mood.html' %}
-  {% include 'mood_history.html' %}
-  {% include 'mood_tracking.html' %}
+    .toggle-mode {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
 
-  <!-- display mood list -->
-  <h1>Mood List</h1>
-  <ul>
-    {% for mood in moods %}
-      <li>{{ mood.date }}: {{ mood.mood }}</li>
-    {% endfor %}
-  </ul>
-</main>
+    .toggle-mode input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
 
-<a href="{% url 'set_goals' %}">Start now</a>
-<!-- Footer Section -->
-<footer>
-  <p>&copy; {{ now|date:"Y" }} Mood Tracker</p>
-</footer>
+    .toggle-mode .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
 
+    .toggle-mode .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
 
+    .toggle-mode input:checked + .slider {
+      background-color: #333;
+    }
+
+    .toggle-mode input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    .toggle-mode input:checked ~ .dark-mode {
+      display: block;
+    }
+
+    .start-now {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .start-now:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h1>Mood</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        {% include 'mood/log_mood.html' %}
+      </div>
+      <div class="col-md-4">
+        {% include 'mood/mood_list.html' %}
+      </div>
+      <div class="col-md-4">
+        {% include 'mood/mood_tracking.html' %}
+      </div>
+    </div>
+  </div>
+
+  <label class="toggle-mode">
+    <input type="checkbox">
+    <span class="slider"></span>
+  </label>
+
+  <div class="dark-mode" style="display: none;">
+    <style>
+      body {
+        background-color: #333;
+      }
+    </style>
+  </div>
+
+  <a href="{% url 'set_goals' %}" class="start-now">Start now</a>
+{% endblock %}

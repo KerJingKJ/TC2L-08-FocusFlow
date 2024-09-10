@@ -1,8 +1,13 @@
+{% extends 'homepage/base.html' %}
 <!-- moods/templates/mood.html -->
-
-
+{% load static %}
+{% block title %}
+Mood
+{% endblock %}
+{% block content %}
 <!-- Header Section -->
-<header>
+<link href="{% static 'mood/mood.css' %}" type="text/css" rel="stylesheet" />
+{% comment %} <header>
   <nav>
     <ul>
       <li><a href="#">Home</a></li>
@@ -10,12 +15,15 @@
     </ul>
     <button id="toggle-mode">Toggle Light/Dark Mode</button>
   </nav>
-</header>
+</header> {% endcomment %}
+
+
 
 
 <!-- Main Content Section -->
 <main>
   <section class="mood-tracker">
+    <h1 class="before">Before you start ...</h1>
     <h1>Mood Tracker</h1>
     <form>
       <label for="mood">How are you feeling today?</label>
@@ -29,7 +37,7 @@
       <button type="submit">Log Mood</button>
     </form>
   </section>
-
+{% comment %} 
   <section class="mood-history">
     <h1>Mood History</h1>
     <ul>
@@ -53,12 +61,12 @@
       <li>{{ mood.date }}: {{ mood.mood }}</li>
     {% endfor %}
   </ul>
-</main>
+</main> {% endcomment %}
 
-<a href="{% url 'set_goals' %}">Start now</a>
+<a href="{% url 'set_goals' %}" class="focus">Start now</a>
 <!-- Footer Section -->
-<footer>
+{% comment %} <footer>
   <p>&copy; {{ now|date:"Y" }} Mood Tracker</p>
-</footer>
+</footer>  {% endcomment %}
 
-
+{% endblock %}

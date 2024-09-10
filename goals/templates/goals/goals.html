@@ -13,16 +13,17 @@ Start Focus
 </head>
 
 <body>
-<div class='container-2'>
-    <div class='container-time'>
+{% comment %} <div class='container-2'>
+ <div class='container-time'>
     {% include 'timer/countdown.html' %}
-    </div>
+    </div> 
     <div class='container-playlist'>
     {% include 'playlist/playlist.html' %}
     </div>
 </div>
 
-
+<p> Start timer <a href="{% url 'timer' %}" target="_blank">here</a> </p>
+</div> {% endcomment %}
 <div class="container-aboutgoals">
     <div class="forms">
         <h1>Set your goals!</h1>
@@ -110,10 +111,10 @@ Start Focus
     </div>
     </div>
 </div>
-
+{% comment %} 
 <div>
     <p> Tired? Get some motivation <a href="{% url 'motivation' %}" target="_blank" class="button-motivation">here</a> </p>
-</div>
+</div> {% endcomment %}
 
 </body>
 

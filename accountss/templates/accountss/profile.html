@@ -25,6 +25,19 @@
     <div class="container">
         <h1>Profile</h1>
         <p>Welcome, {{ user.username }}!</p>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Renders the form fields as paragraphs -->
+            <button type="submit">Save</button>
+        </form>
     </div>
+{% comment %} this works {% endcomment %}
+    
 </body>
 </html>
+
+{% if user.is_superuser %}
+    <p>Welcome, Admin {{ user.username }}</p>
+{% else %}
+    <p>Welcome, {{ user.username }}</p>
+{% endif %}

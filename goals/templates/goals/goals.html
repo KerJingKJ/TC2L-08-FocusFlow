@@ -21,13 +21,13 @@ Start Focus
     {% include 'playlist/playlist.html' %}
     </div>
 </div>
-
+{% comment %} <form method="POST"> add id link htmx route{% endcomment %} 
 
 </div>
 <div class="container-aboutgoals">
     <div class="forms">
         <h1>Set your goals!</h1>
-        {% comment %} <form method="POST"> add id link htmx route{% endcomment %} 
+        <form method="POST">
             {% csrf_token %}
         <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
         

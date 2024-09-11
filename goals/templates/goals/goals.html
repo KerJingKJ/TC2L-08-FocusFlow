@@ -27,7 +27,7 @@ Start Focus
 <div class="container-aboutgoals">
     <div class="forms">
         <h1>Set your goals!</h1>
-        <form method="POST">
+        {% comment %} <form method="POST"> add id link htmx route{% endcomment %} 
             {% csrf_token %}
         <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
         

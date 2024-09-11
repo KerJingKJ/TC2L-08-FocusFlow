@@ -23,8 +23,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect(reverse('home')) #trying to redirect it to profile page after user has log in, not working for superuser 
-            # changed back to home
+            return redirect(reverse('home')) 
         else:
             return render(request, 'accountss/login.html', {'error': 'Invalid username or password'})
     return render(request, 'accountss/login.html')

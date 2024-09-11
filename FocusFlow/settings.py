@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'mood.apps.MoodConfig',
     'motivation.apps.MotivationConfig',
     'import_export',
-    'background.apps.BackgroundConfig',
     #'allauth',
     #'allauth.account',
     #'allauth.socialaccount',

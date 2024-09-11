@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 
 {% block content %}
@@ -27,7 +27,7 @@
                         
                         <div class="select">
                             <select id="format" name="actor_name">
-                                <option selected disabled>Choose an actor</option>
+                                <option selected disabled>Choose one.</option>
                                 <!-- list out actors here -->
                                 {% for i in actors %}
                                     <option value="{{i.quoter}}">{{i.quoter}}</option>
@@ -50,4 +50,119 @@
     </main>
 </body>
 </html>
+<script>
+    document.querySelector('.generate-quote').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevents the default form submission
+
+        const form = document.querySelector('form');
+        const formData = new FormData(form);
+
+        fetch("{% url 'motivation' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                document.querySelector('#quote-display').innerHTML = `
+                    <p class="quote">${data.quote}</p>
+                    <p class="quoter">${data.actor}</p>
+                `;
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+{% endblock %} {% endcomment %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load static %} 
+    <link href="{% static 'motivation/motivation.css' %}" type="text/css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <form>
+                {% csrf_token %} 
+                <div class="parent">
+                    
+                    <!-- message error -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: #BC986A;"><b>{{message}}</b></p>
+                        {% endfor %}
+                    {% endif %}
+                    <!-- end message error -->
+                    
+                    <div class="select">
+                        <select id="format" name="actor_name">
+                            <option selected disabled>Choose one.</option>
+                            <!-- list out actors here -->
+                            {% for i in actors %}
+                                <option value="{{i.quoter}}">{{i.quoter}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <br><button type="submit" class="generate-quote">Generate Quote</button>
+                    
+                    <!-- display quote here -->
+                    <div id="quote-display"></div>
+                    <!-- end display quote -->
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.querySelector('.generate-quote').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+        
+            const form = document.querySelector('form');
+            const formData = new FormData(form);
+        
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        
+            fetch("{% url 'motivation' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest', // Set header to identify AJAX request
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text); }); // Parse text if JSON fails
+                }
+                return response.json(); // Parse JSON if response is okay
+            })
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    document.querySelector('#quote-display').innerHTML = `
+                        <p class="quote">${data.quote}</p>
+                        <p class="quoter">${data.actor}</p>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while generating the quote.');
+            });
+            
+            
+        });
+    </script>
 {% endblock %}
+</body>
+</html>

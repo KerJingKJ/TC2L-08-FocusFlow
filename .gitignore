@@ -2,4 +2,4 @@ __pycache__/
 *.pyc
 *.pyo
 db.sqlite3
-background/static/background/videos/*.mp4
+background/static/background/videos/*.mp4.DS_Store

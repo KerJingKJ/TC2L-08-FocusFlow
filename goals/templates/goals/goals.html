@@ -23,11 +23,11 @@ Start Focus
 </div>
 {% comment %} <form method="POST"> add id link htmx route{% endcomment %} 
 
-</div>
+
 <div class="container-aboutgoals">
     <div class="forms">
         <h1>Set your goals!</h1>
-        <form method="POST">
+        <form id="goals" hx-post={% url 'set_goals' %} hx-target="#set_goals">
             {% csrf_token %}
         <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
         
@@ -36,14 +36,12 @@ Start Focus
             {{ form.description }}
         </div>
             <span><button type="submit" class="save">Save</button></span>
-
-        
         </form>
     </div>
 
     <div class="yourgoals">
     <h2>Your Goals</h2>
-    
+<div id="set_goals">    
 <div class='storedgoals'>    
     <div class="statusbarcontainer">
             {% if bar == 0 %}
@@ -111,7 +109,7 @@ Start Focus
     </div>
     </div>
 </div>
-
+</div>
 
 </body>
 

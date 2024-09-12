@@ -1,8 +1,3 @@
-{% extends 'homepage/base.html' %}
-{% block title %}
-Music Playlist
-{% endblock %}
-
 {% block content %}
 {% load static %}
 
@@ -10,34 +5,92 @@ Music Playlist
     <link href="{% static 'playlist/playlist.css' %}" type="text/css" rel="stylesheet" />
 </head>
 
-    <h1>Choose your music.</h1>
-    <h2>Suggested Playlist:</h2>
-    {% for playlist in playlists %}
-    <ul>
-        <li>{{playlist.name}}</li>
-    </ul>
-    {% endfor %}
+<h1>Choose your music.</h1>
+<h2 class="suggestplaylist">Suggested Playlist:</h2>
+<div class="display-playlist">
+{% for playlist in playlists %}
 
-    <form>
-        <label for="playlist">Select Playlist:</label>
-        <select name="playlist_id" id="playlist" hx-get={% url 'select_playlist' %} hx-target="#selected">
-            <option value="">-- Choose a Playlist --</option>
-            {% for playlist in playlists %}
-                <option value="{{ playlist.id }}" {% if selected_playlist and selected_playlist.id == playlist.id %}selected{% endif %}>{{ playlist.name }}</option>
-            {% endfor %}
-        </select>
-    </form>
+<span>{{playlist.name}}</span>
 
-    <div id="selected">
-        {% if selected_playlist %}
-        <p>Playing from "{{ selected_playlist.name }}"</p>
-        {% for track in selected_playlist.tracks.all %}
-            <audio controls>
-                <source src="{{ track.audio_file.url }}" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+{% endfor %}
+</div>
+
+
+<form>
+    <label for="playlist"><strong>Select Playlist:</strong></label>
+    <select name="playlist_id" id="playlist" hx-get={% url 'select_playlist' %} hx-target="#selected">
+        <option value="" id="choose">-- Choose a Playlist --</option>
+        {% for playlist in playlists %}
+            <option value="{{ playlist.id }}" {% if selected_playlist and selected_playlist.id == playlist.id %}selected{% endif %}>{{ playlist.name }}</option>
         {% endfor %}
-        {% endif %}
-    </div>
+    </select>
+</form>
 
+<div id="selected">
+    {% if selected_playlist %}
+    <p>Playing from "{{ selected_playlist.name }}"</p>
+        {% for track in selected_playlist.tracks.all %}
+            <audio src="{{ track.audio_file.url }}" id="track-{{ forloop.counter }}"></audio>
+        {% endfor %}
+    
+    <button id="start-btn">Start</button>
+    <button id="stop-btn">Stop</button>
+    
+    {% endif %}
+    
+</div>
+
+
+
+<!-- Here starts the javascript to handle the play and stop button -->
+<script>
+    let tracks = [];
+    let currentTrackIndex = 0;
+
+    // Initialize playlist controls
+    function initializePlaylistControls() {
+        // Re-collect all audio elements
+        tracks = document.querySelectorAll("audio");
+
+        // Set event listeners for start and stop buttons
+        document.getElementById("start-btn").onclick = function() {
+            startPlayback();
+        };
+        document.getElementById("stop-btn").onclick = function() {
+            stopPlayback();
+        };
+    }
+
+    function startPlayback() {
+        if (tracks.length > 0) {
+            playTrack(currentTrackIndex); // Start with the first track
+        }
+    }
+
+    function playTrack(index) {
+        if (index < tracks.length) {
+            const track = tracks[index];
+            track.play();
+            track.onended = function() {
+                currentTrackIndex++;
+                playTrack(currentTrackIndex); // Play next track when the current ends
+            };
+        }
+    }
+
+    function stopPlayback() {
+        if (tracks.length > 0) {
+            tracks[currentTrackIndex].pause();
+            tracks[currentTrackIndex].currentTime = 0; // Reset track
+        }
+    }
+
+    // Reinitialize controls after HTMX swap
+    document.body.addEventListener("htmx:afterSwap", function() {
+        initializePlaylistControls();
+    });
+
+    // Initialize controls when the page loads
+    document.addEventListener("DOMContentLoaded", initializePlaylistControls);
+</script>
 {% endblock %}

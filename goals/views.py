@@ -20,6 +20,11 @@ def set_goals(request):
     playlist_id = request.GET.get('playlist_id')
     if 'playlist_id' in request.GET and playlist_id.isdigit():
         selected_playlist = get_object_or_404(Playlist, id=request.GET['playlist_id'])
+        
+    if request.headers.get('HX-Request'):
+        return render(request, 'playlist/playlist_selected.html', {
+            'selected_playlist': selected_playlist,
+        })
 
 #goals page form
     if request.method == 'POST':

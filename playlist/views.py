@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from .models import Playlist
 # Create your views here.
 
@@ -11,11 +10,15 @@ def select_playlist(request):
     selected_playlist = None
 
     playlist_id = request.GET.get('playlist_id')
-    if 'playlist_id' in request.GET and playlist_id.isdigit():
-        selected_playlist = get_object_or_404(Playlist, id=request.GET['playlist_id'])
+    if playlist_id and playlist_id.isdigit():
+        selected_playlist = get_object_or_404(Playlist, id=playlist_id)
+# make sure it will only render the partial selected html only, not the whole page again.
+    if request.headers.get('HX-Request'):
+        return render(request, 'playlist/playlist_selected.html', {
+            'selected_playlist': selected_playlist,
+        })
 
-    return render(request, 'playlist/playlist.html', 
-    {
-        'playlists':playlists,
-        'selected_playlist':selected_playlist,
+    return render(request, 'playlist/playlist.html', {
+        'playlists': playlists,
+        'selected_playlist': selected_playlist,
     })

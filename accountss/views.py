@@ -1,6 +1,4 @@
 # accountss/views.py
-
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, update_session_auth_hash
@@ -11,10 +9,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 import logging
 from django.urls import reverse
-from .forms import UserUpdateForm, ProfileUpdateForm
+
 from .forms import LoginForm, SignUpForm, ProfileForm
 from .models import Profile
-
 
 logger = logging.getLogger(__name__)
 
@@ -26,11 +23,8 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect(reverse('homepage'))
+            return redirect(reverse('home')) 
         else:
-            #error_message = 'Invalid username or password'
-            #forgot_password_link = '<a href="{% url \'password_reset\' %}">Forgot Password?</a>'
-            #return render(request, 'accountss/login.html', {'error': error_message, 'forgot_password_link': forgot_password_link})
             return render(request, 'accountss/login.html', {'error': 'Invalid username or password'})
     return render(request, 'accountss/login.html')
 
@@ -61,57 +55,32 @@ def signup(request):
 # Profile Views
 class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
-        try:
-            profile = request.user.profile
-        except Profile.DoesNotExist:
-            return render(request, 'error.html', {'error': 'Profile not found'})
-        form = ProfileForm(instance=profile)
-        return render(request, 'create_profile.html', {'form': form, 'request': request})
+        form = ProfileForm(instance=request.user)
+        return render(request, 'profile.html', {'form': form})
 
     def post(self, request):
-        try:
-            profile = request.user.profile
-        except Profile.DoesNotExist:
-            return render(request, 'error.html', {'error': 'Profile not found'})
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        form = ProfileForm(request.POST, instance=request.user)
         if form.is_valid():
-            form.save()
-            return redirect('profile')
+            try:
+                form.save()
+                return redirect('homepage')
+            except Exception as e:
+                logger.error(f"Error saving profile: {e}")
+                return render(request, 'profile.html', {'form': form, 'error': 'Error saving profile'})
         else:
-            return render(request, 'create_profile.html', {'form': form, 'request': request})
-
-@login_required
-def update_profile(request):
-    try:
-        profile = request.user.profile
-    except Profile.DoesNotExist:
-        return render(request, 'error.html', {'error': 'Profile not found'})
-
-    if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
-        if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
-            return redirect('profile')
-        else:
-            return render(request, 'update_profile.html', {'u_form': u_form, 'p_form': p_form, 'error': 'Invalid form data', 'request': request})
-    else:
-        u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=profile)
-        return render(request, 'update_profile.html', {'u_form': u_form, 'p_form': p_form, 'request': request})
-
-    return render(request, 'update_profile.html', {'u_form': u_form, 'p_form': p_form})
+            return render(request, 'profile.html', {'form': form})
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
-
-
-# Homepage Views
-@login_required
-def home_view(request):
-    return render(request, 'homepage.html')
+    profile = request.user.profile
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('home') #Kerjing: trying to redirect it to home, it works for user but not working for superuser
+    else:
+        form = ProfileForm(instance=profile)
+    return render(request, 'profile.html', {'form': form})
 
 # Password Change Views
 @login_required
@@ -126,8 +95,10 @@ def password_change(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'password_change.html', {'form': form})
 
+# Homepage Views
+@login_required
+def home_view(request):
+    return render(request, 'home.html')
 
-
-
-
-#
+def homepage(request):
+    return render(request, 'homepage/homepage.html')

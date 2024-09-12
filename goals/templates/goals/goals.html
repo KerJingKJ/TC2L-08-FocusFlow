@@ -14,15 +14,16 @@ Start Focus
 
 <body>
 <div class='container-2'>
-    <div class='container-time'>
+ <div class='container-time'>
     {% include 'timer/countdown.html' %}
-    </div>
+    </div> 
     <div class='container-playlist'>
     {% include 'playlist/playlist.html' %}
     </div>
 </div>
+{% comment %} <form method="POST"> add id link htmx route{% endcomment %} 
 
-
+</div>
 <div class="container-aboutgoals">
     <div class="forms">
         <h1>Set your goals!</h1>
@@ -111,9 +112,6 @@ Start Focus
     </div>
 </div>
 
-<div>
-    <p> Tired? Get some motivation <a href="{% url 'motivation' %}" target="_blank" class="button-motivation">here</a> </p>
-</div>
 
 </body>
 

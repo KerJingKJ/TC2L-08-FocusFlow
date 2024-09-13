@@ -5,7 +5,7 @@ from .forms import GoalForm
 from motivation.models import Actor, Quote
 from playlist.models import Playlist, Track
 # Create your views here.
-# to display all the features in one page, I import the class from the other app
+
 #for to do list settings
 @login_required
 def set_goals(request):

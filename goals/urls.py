@@ -6,5 +6,7 @@ urlpatterns = [
     path('edit/<int:goal_id>', views.edit, name='edit'),
     path('delete/<int:goal_id>', views.delete, name='delete'),
     path('complete/<int:goal_id>/<str:action>', views.complete, name='complete'),
+    # path('goals/', views.goals, name='goals')
 ]
+
 

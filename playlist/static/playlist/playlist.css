@@ -3,6 +3,7 @@
 }
 
 #start-btn, #stop-btn{
+    margin-left:20px;
     background-color: lightgray;
     text-decoration: none;
     border: 0px black;
@@ -20,12 +21,12 @@
 }
 
 option{
-    background-color:lightblue;
+    background-color:plum;
     text-align: center;
 }
 
 select{
-    background-color:lightblue;
+    background-color:rgb(237, 218, 237);
     border-radius: 12px;
     text-decoration: none;
     border: 0px;

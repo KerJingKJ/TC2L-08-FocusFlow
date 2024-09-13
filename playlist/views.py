@@ -10,7 +10,6 @@ def select_playlist(request):
     selected_playlist = None
 
     playlist_id = request.GET.get('playlist_id')
-
     if playlist_id and playlist_id.isdigit():
         selected_playlist = get_object_or_404(Playlist, id=playlist_id)
 # make sure it will only render the partial selected html only, not the whole page again.
@@ -22,5 +21,4 @@ def select_playlist(request):
     return render(request, 'playlist/playlist.html', {
         'playlists': playlists,
         'selected_playlist': selected_playlist,
-
     })

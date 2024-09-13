@@ -250,11 +250,14 @@ a{
 }
 
 .container-playlist{
-    background-color:rgba(100, 148, 237, 0.692);
+    background-color:rgba(175, 175, 227, 0.845);
     border-radius: 12px;
     height: fit-content;
-    margin: 10px;
     padding: 20px;
     width:30%;
     margin-left: auto;
 }
+
+/* .to-another-page{
+    background-color: white;
+} */

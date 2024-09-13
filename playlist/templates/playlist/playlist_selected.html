@@ -1,0 +1,10 @@
+{% if selected_playlist %}
+<p>Playing from "{{ selected_playlist.name }}"</p>
+    {% for track in selected_playlist.tracks.all %}
+        <audio src="{{ track.audio_file.url }}" id="track-{{ forloop.counter }}"></audio>
+    {% endfor %}
+
+<button id="start-btn">Start</button>
+<button id="stop-btn">Stop</button>
+
+{% endif %}

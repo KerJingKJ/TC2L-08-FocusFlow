@@ -250,7 +250,7 @@ a{
 }
 
 .container-playlist{
-    background-color:rgb(237, 235, 235);
+    background-color:rgba(100, 148, 237, 0.692);
     border-radius: 12px;
     height: fit-content;
     margin: 10px;

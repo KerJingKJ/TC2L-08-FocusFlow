@@ -23,7 +23,6 @@ Start Focus
 </div>
 {% comment %} <form method="POST"> add id link htmx route{% endcomment %} 
 
-</div>
 <div class="container-aboutgoals">
     <div class="forms">
         <h1>Set your goals!</h1>
@@ -37,13 +36,14 @@ Start Focus
         </div>
             <span><button type="submit" class="save">Save</button></span>
 
-        
         </form>
     </div>
 
     <div class="yourgoals">
     <h2>Your Goals</h2>
-    
+
+<div id="set_goals">    
+
 <div class='storedgoals'>    
     <div class="statusbarcontainer">
             {% if bar == 0 %}
@@ -110,6 +110,7 @@ Start Focus
         </div>
     </div>
     </div>
+</div>
 </div>
 
 

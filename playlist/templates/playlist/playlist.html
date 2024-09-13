@@ -8,94 +8,97 @@
 <head>
     <link href="{% static 'playlist/playlist.css' %}" type="text/css" rel="stylesheet" />
 </head>
-<body>
-<div>
-    <h1>Choose your music.</h1>
-    <h2>Suggested Playlist:</h2>
-    {% for playlist in playlists %}
-    <ul>
-        <li>{{playlist.name}}</li>
-    </ul>
-    {% endfor %}
 
-    <form method="get">
-        <label for="playlist">Select Playlist:</label>
-        <select name="playlist_id" id="playlist" onchange="this.form.submit()">
-            <option value="">-- Choose a Playlist --</option>
-            {% for playlist in playlists %}
-                <option value="{{ playlist.id }}" {% if selected_playlist and selected_playlist.id == playlist.id %}selected{% endif %}>{{ playlist.name }}</option>
-            {% endfor %}
-        </select>
-    </form>
+
+<h1>Choose your music.</h1>
+<h2 class="suggestplaylist">Suggested Playlist:</h2>
+<div class="display-playlist">
+{% for playlist in playlists %}
+
+<span>{{playlist.name}}</span>
+
+{% endfor %}
+</div>
+
+
+<form>
+    <label for="playlist"><strong>Select Playlist:</strong></label>
+    <select name="playlist_id" id="playlist" hx-get={% url 'select_playlist' %} hx-target="#selected">
+        <option value="" id="choose">-- Choose a Playlist --</option>
+        {% for playlist in playlists %}
+            <option value="{{ playlist.id }}" {% if selected_playlist and selected_playlist.id == playlist.id %}selected{% endif %}>{{ playlist.name }}</option>
+        {% endfor %}
+    </select>
+</form>
+
+<div id="selected">
 
     {% if selected_playlist %}
     <p>Playing from "{{ selected_playlist.name }}"</p>
         {% for track in selected_playlist.tracks.all %}
             <audio src="{{ track.audio_file.url }}" id="track-{{ forloop.counter }}"></audio>
         {% endfor %}
-    </ul>
+
     
-    <!-- Controls for Play, Stop, and Resume -->
-    <div class="controls">
-        <button onclick="playPlaylist()">Play</button>
-        <button onclick="stopPlaylist()">Stop</button>
-    </div>
+    <button id="start-btn">Start</button>
+    <button id="stop-btn">Stop</button>
+    
     {% endif %}
+    
 </div>
 
+
+
+<!-- Here starts the javascript to handle the play and stop button -->
 <script>
-    let currentTrack = 0;
-    let trackElements = [];
-    let isPlaying = false;
+    let tracks = [];
+    let currentTrackIndex = 0;
 
-    // Load track elements when the page loads
-    window.onload = function() {
-        trackElements = document.querySelectorAll('audio');
-        console.log('Track Elements:', trackElements);
-    };
+    // Initialize playlist controls
+    function initializePlaylistControls() {
+        // Re-collect all audio elements
+        tracks = document.querySelectorAll("audio");
 
-    // Function to play the playlist
-    function playPlaylist() {
-        if (trackElements.length > 0) {
-            stopPlaylist();  // Stop any previous playback
-            currentTrack = 0;
-            playTrack();
-        } else {
-            console.log('No tracks to play.');
+        // Set event listeners for start and stop buttons
+        document.getElementById("start-btn").onclick = function() {
+            startPlayback();
+        };
+        document.getElementById("stop-btn").onclick = function() {
+            stopPlayback();
+        };
+    }
+
+    function startPlayback() {
+        if (tracks.length > 0) {
+            playTrack(currentTrackIndex); // Start with the first track
         }
     }
 
-    // Function to play an individual track
-    function playTrack() {
-        if (currentTrack < trackElements.length) {
-            console.log('Playing track:', currentTrack);
-            trackElements[currentTrack].play();
-            trackElements[currentTrack].addEventListener('ended', function() {
-                console.log('Track ended:', currentTrack);
-                currentTrack++;
-                if (currentTrack < trackElements.length) {
-                    playTrack();
-                } else {
-                    // Optionally handle when reaching the end of the playlist
-                    stopPlaylist();  // Stop playback if you reach the end of the playlist
-                }
-            }, { once: true }); // Make sure the listener is only set up once
-            isPlaying = true;
-        } else {
-            console.log('Current track index out of bounds.');
+    function playTrack(index) {
+        if (index < tracks.length) {
+            const track = tracks[index];
+            track.play();
+            track.onended = function() {
+                currentTrackIndex++;
+                playTrack(currentTrackIndex); // Play next track when the current ends
+            };
         }
     }
 
-    // Function to stop the playlist
-    function stopPlaylist() {
-        if (isPlaying) {
-            trackElements.forEach(function(track) {
-                track.pause();
-                track.currentTime = 0;
-            });
-            isPlaying = false;
+    function stopPlayback() {
+        if (tracks.length > 0) {
+            tracks[currentTrackIndex].pause();
+            tracks[currentTrackIndex].currentTime = 0; // Reset track
         }
     }
+
+    // Reinitialize controls after HTMX swap
+    document.body.addEventListener("htmx:afterSwap", function() {
+        initializePlaylistControls();
+    });
+
+    // Initialize controls when the page loads
+    document.addEventListener("DOMContentLoaded", initializePlaylistControls);
 </script>
-</body>
+
 {% endblock %}

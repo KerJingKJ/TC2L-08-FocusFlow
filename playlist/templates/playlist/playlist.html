@@ -1,9 +1,14 @@
+{% block title %}
+<title>Music Playlist</title>
+{% endblock %}
+
 {% block content %}
 {% load static %}
 
 <head>
     <link href="{% static 'playlist/playlist.css' %}" type="text/css" rel="stylesheet" />
 </head>
+
 
 <h1>Choose your music.</h1>
 <h2 class="suggestplaylist">Suggested Playlist:</h2>
@@ -27,11 +32,13 @@
 </form>
 
 <div id="selected">
+
     {% if selected_playlist %}
     <p>Playing from "{{ selected_playlist.name }}"</p>
         {% for track in selected_playlist.tracks.all %}
             <audio src="{{ track.audio_file.url }}" id="track-{{ forloop.counter }}"></audio>
         {% endfor %}
+
     
     <button id="start-btn">Start</button>
     <button id="stop-btn">Stop</button>
@@ -93,4 +100,5 @@
     // Initialize controls when the page loads
     document.addEventListener("DOMContentLoaded", initializePlaylistControls);
 </script>
+
 {% endblock %}

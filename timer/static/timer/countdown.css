@@ -23,7 +23,7 @@
   
   p,
   i,
-  h1 {
+  .pomodoro {
     color: var(--color-font);
   }
   

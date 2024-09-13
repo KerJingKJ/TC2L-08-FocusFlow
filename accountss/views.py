@@ -1,5 +1,4 @@
 # accountss/views.py
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, update_session_auth_hash
@@ -24,7 +23,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect(reverse('homepage'))
+            return redirect(reverse('home')) 
         else:
             return render(request, 'accountss/login.html', {'error': 'Invalid username or password'})
     return render(request, 'accountss/login.html')
@@ -64,7 +63,7 @@ class ProfileView(LoginRequiredMixin, View):
         if form.is_valid():
             try:
                 form.save()
-                return redirect('profile')
+                return redirect('homepage')
             except Exception as e:
                 logger.error(f"Error saving profile: {e}")
                 return render(request, 'profile.html', {'form': form, 'error': 'Error saving profile'})
@@ -78,7 +77,7 @@ def profile(request):
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('home') #Kerjing: trying to redirect it to home, it works for user but not working for superuser
     else:
         form = ProfileForm(instance=profile)
     return render(request, 'profile.html', {'form': form})
@@ -103,14 +102,3 @@ def home_view(request):
 
 def homepage(request):
     return render(request, 'homepage/homepage.html')
-
-
-
-
-
-
-
-
-
-
-

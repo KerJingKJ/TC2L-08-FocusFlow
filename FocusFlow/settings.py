@@ -41,14 +41,16 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'goals.apps.GoalsConfig',
     'timer.apps.TimerConfig',
-    'accountss.apps.AccountssConfig',
+    #'accountss.apps.AccountssConfig',
     'mood.apps.MoodConfig',
     'motivation.apps.MotivationConfig',
     'import_export',
+    'background.apps.BackgroundConfig',
     #'allauth',
     #'allauth.account',
     #'allauth.socialaccount',
     'playlist.apps.PlaylistConfig',
+    'accountss.apps.AccountsConfig',
 ]
 
 
@@ -68,7 +70,7 @@ ROOT_URLCONF = 'FocusFlow.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'accountss/templates'],
+        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'accountss/templates/accountss', BASE_DIR / 'mood/templates/mood'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

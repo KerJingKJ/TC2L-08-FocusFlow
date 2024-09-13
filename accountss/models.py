@@ -1,4 +1,6 @@
 # Create your models here.
+  
+# models.py
     
 from django.db import models
 from django.contrib.auth.models import User
@@ -9,6 +11,5 @@ class Profile(models.Model):
     location = models.CharField(max_length=255, blank=True)
     avatar = models.ImageField(upload_to='avatars', blank=True)
 
-    def __str__(self):
+    def str(self):
         return self.user.username
-

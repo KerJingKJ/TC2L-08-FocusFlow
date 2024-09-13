@@ -1,83 +1,53 @@
 /* css/mood.css */
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
-}
 
-.top-bar {
-    background-color: #333;
+:root {
+    --primary-color: #333;
+    --background-color: #f9f9f9;
+    --text-color: #333;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .dark-mode {
+    --primary-color: #fff;
+    --background-color: #333;
+    --text-color: #fff;
+  }
+  
+  #mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #mode-toggle:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+  }
+
+  .focus{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
     color: #fff;
-    padding: 20px;
+    background-color:darkblue;
     text-align: center;
-    border-bottom: 1px solid #444;
-}
-
-.top-bar nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.top-bar nav ul li {
-    margin-right: 20px;
-}
-
-.top-bar nav a {
-    color: #fff;
     text-decoration: none;
-    transition: color 0.2s ease;
+    border-radius: 5px;
+    border: none;
+    margin-left: 45%;
 }
 
-.top-bar nav a:hover {
-    color: #ccc;
-}
-
-.feature-settings {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.feature-settings .setting {
-    margin-right: 20px;
-}
-
-.feature-settings .setting label {
-    color: #fff;
-}
-
-.feature-settings .setting input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-.feature-settings .setting input[type="checkbox"]:checked + label {
-    color: #ccc;
-}
-
-/* Lifeat.io color scheme */
-
-.primary-color {
-    color: #4CAF50;
-}
-
-.secondary-color {
-    color: #8BC34A;
-}
-
-/* Add some Lifeat.io-style design elements */
-
-.top-bar {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.05);
-}
-
-.feature-settings {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.mood-tracker {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.before{
+  text-align: center;
 }

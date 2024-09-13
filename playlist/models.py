@@ -16,10 +16,3 @@ class Track(models.Model):
     def __str__(self):
         return self.title
 
-
-# Playlist
-# lofi
-# relaxing
-# english songs
-# korean pop 
-# raining sounds (meditation music)

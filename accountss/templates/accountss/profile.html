@@ -1,5 +1,6 @@
-{% extends 'base.html' %}
+<!-- profile.html -->
 
+<<<<<<< HEAD
 {% block content %}
   <div class="profile-container">
     <h1 class="profile-title">Profile</h1>
@@ -20,6 +21,46 @@
         </div>
         <button type="submit" class="save-button">Save</button>
       </form>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profile</h1>
+        <p>Welcome, {{ user.username }}!</p>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Renders the form fields as paragraphs -->
+            <button type="submit">Save</button>
+        </form>
+>>>>>>> main
     </div>
-  </div>
-{% endblock %}
+{% comment %} this works {% endcomment %}
+    
+</body>
+</html>
+
+{% if user.is_superuser %}
+    <p>Welcome, Admin {{ user.username }}</p>
+{% else %}
+    <p>Welcome, {{ user.username }}</p>
+{% endif %}

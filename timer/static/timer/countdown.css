@@ -1,7 +1,7 @@
 :root {
     font-size: 62.5%; /* 1rem = 10px */
   
-    /* --color-primary: hsl(235, 35%, 19%); */
+    --color-primary: hsl(235, 35%, 19%);
     --color-secondary: hsl(358, 78%, 69%);
     --color-font: hsla(0, 0%, 100%, 0.902);
   
@@ -16,14 +16,14 @@
   
   html, body {
     height: 100%;
-    /* background-color: var(--color-primary); */
+    background-color: var(--color-primary);
     font-size: 1.6rem;
     font-family: 'Open sans', sans-serif;
   }
   
   p,
   i,
-  .pomodoro {
+  h1 {
     color: var(--color-font);
   }
   

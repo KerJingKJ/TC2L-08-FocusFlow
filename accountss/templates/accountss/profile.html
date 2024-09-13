@@ -1,27 +1,5 @@
 <!-- profile.html -->
 
-<<<<<<< HEAD
-{% block content %}
-  <div class="profile-container">
-    <h1 class="profile-title">Profile</h1>
-    <div class="profile-form">
-      <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="John Doe">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="john.doe@example.com">
-        </div>
-        <div class="form-group">
-          <label for="profile-picture">Profile Picture</label>
-          <input type="file" id="profile-picture" name="profile-picture">
-        </div>
-        <button type="submit" class="save-button">Save</button>
-      </form>
-=======
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +30,6 @@
             {{ form.as_p }}  <!-- Renders the form fields as paragraphs -->
             <button type="submit">Save</button>
         </form>
->>>>>>> main
     </div>
 {% comment %} this works {% endcomment %}
     

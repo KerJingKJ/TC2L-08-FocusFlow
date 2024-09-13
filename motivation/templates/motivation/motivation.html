@@ -93,6 +93,7 @@
     <title>Quotes</title>
 </head>
 <body>
+ {% endblock %}
     <main>
         <div class="container">
             <form>
@@ -167,7 +168,7 @@
             
         });
     </script>
-{% endblock %}
+
 </body>
 </html>
 <script>
@@ -198,8 +199,8 @@
         .catch(error => console.error('Error:', error));
     });
 </script>
-{% endblock %} {% endcomment %}
-{% block content %}
+
+{% comment %} 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -283,6 +284,6 @@
             
         });
     </script>
-{% endblock %}
+
 </body>
-</html>
+</html> {% endcomment %}

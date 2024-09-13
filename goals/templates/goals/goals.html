@@ -27,7 +27,7 @@ Start Focus
 <div class="container-aboutgoals">
     <div class="forms">
         <h1>Set your goals!</h1>
-        <form id="goals" hx-post={% url 'set_goals' %} hx-target="#set_goals">
+        <form method="POST">
             {% csrf_token %}
         <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
         

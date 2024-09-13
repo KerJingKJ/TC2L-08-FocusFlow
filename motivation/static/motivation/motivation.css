@@ -100,7 +100,7 @@ select::-ms-expand {
 }
 
 .generate-quote{
-    background-color: #BC986A; /* Color */
+    background-color: blue; /* Color */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -114,5 +114,5 @@ select::-ms-expand {
 }
 
 .generate-quote:hover {
-    background-color: #A57D54; /* Darker shade on hover (optional) */
+    background-color: black; /* Darker shade on hover (optional) */
 }

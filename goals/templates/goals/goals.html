@@ -7,21 +7,39 @@ Start Focus
 {% block content %}
 {% load static %}
 <head>
-    <link href="{% static 'goals/goals.css' %}" type="text/css" rel="stylesheet" />
+    {% comment %} <wallpaper href="{% static 'background/background.css' %}}"></wallpaper> {% endcomment %}
+    <section  id="goalss">
+        <link href="{% static 'goals/goals.css' %}" type="text/css" rel="stylesheet" />
+    </section>
     <link href="{% static 'playlist/playlist.css' %}" type="text/css" rel="stylesheet" />
     <title>Goals</title>
 </head>
 <body>
     <background>
 <div class='container-2'>
- <div class='container-time'>
+    {% comment %} <div class='container-time'>
     {% include 'timer/countdown.html' %}
-    </div> 
+    </div>
     <div class='container-playlist'>
     {% include 'playlist/playlist.html' %}
-    </div>
+    </div> {% endcomment %}
+     </div>
+     <div class="container-wrapper">
+        <div class="container-motivation">
+            {% include 'motivation/motivation.html' %} 
+            </div>
+        <div class='container-playlist'>
+            {% include 'playlist/playlist.html' %}
+            </div>
+            <div class='container-time'>
+                {% include 'timer/countdown.html' %}
+                </div>
 </div>
-{% comment %} <form method="POST"> add id link htmx route{% endcomment %} 
+<nav> 
+    <a href="javascript:void(0);" class="scroll-to-goals-button" onclick="toggleScroll()">Scroll</a>
+</nav>
+
+
 
 <div class="container-aboutgoals">
     <div class="forms">
@@ -41,9 +59,7 @@ Start Focus
 
     <div class="yourgoals">
     <h2>Your Goals</h2>
-
-<div id="set_goals">    
-
+    
 <div class='storedgoals'>    
     <div class="statusbarcontainer">
             {% if bar == 0 %}
@@ -110,8 +126,10 @@ Start Focus
     </div>
     </div>
 </div>
-</div>
 
+<div>
+    <p> Tired? Get some motivation <a href="{% url 'motivation' %}" target="_blank" class="button-motivation">here</a> </p>
+</div>
 
 </body>
  <script>

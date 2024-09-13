@@ -3,7 +3,7 @@
 }
 
 .container-home{
-    background-color:#230757;
+    background-image: linear-gradient(to right, #230757ed , rgb(37, 131, 208));
     overflow: hidden;
     display: flex;
     border-radius: 12px;

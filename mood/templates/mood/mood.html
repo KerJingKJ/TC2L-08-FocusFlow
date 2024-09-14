@@ -1,120 +1,21 @@
-<!-- moods/templates/mood.html -->
+<!-- mood.html -->
 
-{% extends 'base.html' %}
 
-{% block head %}
-  <link rel="stylesheet" type="text/css" href="mood.css">
-  <style>
-    body {
-      background-color: #f2f2f2; /* Light mode background color */
-    }
-
-    body.dark-mode {
-      background-color: #333; /* Dark mode background color */
-    }
-
-    body.dark-mode .mood-tracker {
-      background-color: #444; /* Dark mode mood tracker background color */
-    }
-
-    body.dark-mode .mood-history {
-      background-color: #555; /* Dark mode mood history background color */
-    }
-
-    .toggle-mode {
-      position: relative;
-      display: inline-block;
-      width: 60px;
-      height: 34px;
-    }
-
-    .toggle-mode input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .toggle-mode .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
-
-    .toggle-mode .slider:before {
-      position: absolute;
-      content: "";
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
-
-    .toggle-mode input:checked + .slider {
-      background-color: #333;
-    }
-
-    .toggle-mode input:checked + .slider:before {
-      -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
-      transform: translateX(26px);
-    }
-
-    .toggle-mode input:checked ~ .dark-mode {
-      display: block;
-    }
-
-    .start-now {
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .start-now:hover {
-      background-color: #3e8e41;
-    }
-  </style>
-{% endblock %}
-
-{% block content %}
-  <h1>Mood</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood</title>
+  <link rel="stylesheet" href="mood.css">
+</head>
+<body>
   <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        {% include 'mood/log_mood.html' %}
-      </div>
-      <div class="col-md-4">
-        {% include 'mood/mood_list.html' %}
-      </div>
-      <div class="col-md-4">
-        {% include 'mood/mood_tracking.html' %}
-      </div>
+    <h1>Mood</h1>
+    <div class="log-mood-container">
+      {% include 'log_mood.html' %}
     </div>
+    <a href="{% url 'set_goals' %}" class="focus">Start now</a>
   </div>
-
-  <label class="toggle-mode">
-    <input type="checkbox">
-    <span class="slider"></span>
-  </label>
-
-  <div class="dark-mode" style="display: none;">
-    <style>
-      body {
-        background-color: #333;
-      }
-    </style>
-  </div>
-
-  <a href="{% url 'set_goals' %}" class="start-now">Start now</a>
-{% endblock %}
+</body>
+</html>

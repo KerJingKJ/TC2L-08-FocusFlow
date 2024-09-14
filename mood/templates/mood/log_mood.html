@@ -1,16 +1,37 @@
+<!-- mood/templates/log_mood.html -->
 
-<div class="log-mood">
-    <h2>Log Your Mood</h2>
-    <form>
+
+{% extends 'homepage/base.html' %}
+
+
+{% load static %}
+
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'mood/mood.css' %}">
+{% endblock %}
+
+
+{% block content %}
+  <div class="container">
+
+    <div class="log-mood-container">
+      <h2>Log Your Mood</h2>
       <label for="mood">How are you feeling today?</label>
-      <select id="mood" name="mood">
-        <option value="happy">Happy</option>
-        <option value="sad">Sad</option>
-        <option value="angry">Angry</option>
-        <option value="neutral">Neutral</option>
-      </select>
-      <label for="notes">Any notes about your mood?</label>
-      <textarea id="notes" name="notes"></textarea>
-      <button type="submit">Log Mood</button>
-    </form>
-  </div>
+      <div class="emoji-picker">
+        <span class="emoji" data-mood="😊" onclick="logMood('😊')">😊</span>
+        <span class="emoji" data-mood="😐" onclick="logMood('😐')">😐</span>
+        <span class="emoji" data-mood="😢" onclick="logMood('😢')">😢</span>
+        <span class="emoji" data-mood="😠" onclick="logMood('😠')">😠</span>
+        <span class="emoji" data-mood="😡" onclick="logMood('😡')">😡</span>
+      </div>
+      <p>Please select an emoji to log your mood.</p>
+      <script>
+        function logMood(mood) {
+          console.log(`Mood logged: ${mood}`);
+          // Add code here to send the mood to your server or database
+        }
+      </script>
+{% endblock %}
+
+

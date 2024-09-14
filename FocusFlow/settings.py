@@ -83,8 +83,23 @@ TEMPLATES = [
     },
 ]
 
-ERROR_TEMPLATE = 'my_error_template.html'
-
+#TEMPLATES = [
+    #{
+        #'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        #'APP_DIRS': True,
+        #'OPTIONS': {
+            #'context_processors': [
+                #'django.template.context_processors.debug',
+                #'django.template.context_processors.request',
+                #'django.contrib.auth.context_processors.auth',
+                #'django.contrib.messages.context_processors.messages',
+                #'allauth.account.context_processors.account',
+                #'allauth.socialaccount.context_processors.socialaccount',
+            #],
+        #},
+    #},
+#]
 
 #AUTHENTICATION_BACKENDS = [
     #'allauth.account.auth_backends.AuthenticationBackend',
@@ -162,5 +177,3 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-AUTH_USER_MODEL = 'accountss.CustomUser'

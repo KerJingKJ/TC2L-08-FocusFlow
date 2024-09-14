@@ -13,9 +13,12 @@
       <!--  <a href = "{% url 'set_goals' %}" class="goals">Start</a>
         <a href = "{% url 'timer' %}" class="timer">Timer</a>
         <a href = "{% url 'motivation' %}" class="motivation">Motivation</a>
-        <a href = "{% url 'select_playlist' %}" class="select_playlist">Music</a> -->
-        <a href = "{% url 'profile' %}"class="profile">Profile</a>
-        <a href="{% url 'mood_list' %}" class="mood">Mood History</a>
+        <a href = "{% url 'select_playlist' %}" class="select_playlist">Music</a> 
+        <a href = "{% url 'profile' %}"class="profile">Profile</a>-->
+        
+        <a href="{% url 'profile_display' %}">View Profile</a>
+        <a href="{% url 'mood_history' %}" class="mood">Mood History</a>
+        <a href="{% url 'mood' %}" class="mood">Mood</a>
         <a href = "{% url 'logout' %}" class="logout">Logout</a>
 
     </div>

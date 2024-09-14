@@ -1,28 +1,25 @@
 <!-- mood_history.html -->
-<head>
-    <link rel="stylesheet" type="text/css" href="mood_history.css">
-  </head>
-  
-  <div class="mood-history">
-    <h2>Mood History</h2>
-    <table>
-      <thead>
+
+{% extends 'homepage/base.html' %}
+
+<h1>Mood History</h1>
+
+<table>
+    <thead>
         <tr>
-          <th>Date</th>
-          <th>Mood</th>
-          <th>Notes</th>
+            <th>Date</th>
+            <th>Mood</th>
+            <th>Notes</th>
         </tr>
-      </thead>
-      <tbody>
-        {% for mood in moods %}
-          <tr>
+    </thead>
+    <tbody>
+        {% for mood in mood_history %}
+        <tr>
             <td>{{ mood.date }}</td>
             <td>{{ mood.mood }}</td>
             <td>{{ mood.notes }}</td>
-          </tr>
+        </tr>
         {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  
-  {% include 'mood_tracking.html' %}
+    </tbody>
+</table>
+

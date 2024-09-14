@@ -10,6 +10,8 @@ class AccountsConfig(AppConfig):
     name = 'accountss'
 
     def ready(self):
-        import profiles.signals  # noqa
+        import accountss.signals  # noqa
+
+
 
 

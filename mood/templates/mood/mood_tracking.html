@@ -1,23 +1,68 @@
 <!-- mood_tracking.html -->
- 
-<head>
-  <link rel="stylesheet" type="text/css" href="mood_tracking.css">
-</head>
+<h1>Mood Tracking</h1>
 
-<div class="mood-tracking">
-  <h2>Mood Tracking</h2>
-  <div class="mood-graph">
-    <canvas id="mood-graph-canvas" width="400" height="200"></canvas>
-  </div>
-  <div class="mood-log">
-    <ul>
-      {% for mood in moods %}
-        <li>
-          <span class="mood-date">{{ mood.date }}</span>
-          <span class="mood-emotion">{{ mood.mood }}</span>
-          <span class="mood-notes">{{ mood.notes }}</span>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<form id="mood-form">
+  <label for="mood">Current Mood:</label>
+  <select id="mood" name="mood">
+    {% for mood in mood_choices %}
+    <option value="{{ mood }}">{{ mood }}</option>
+    {% endfor %}
+  </select>
+  <br>
+  <label for="notes">Notes:</label>
+  <textarea id="notes" name="notes"></textarea>
+  <br>
+  <button type="submit">Log Mood</button>
+</form>
+
+<div id="mood-graph">
+  <!-- This could be a chart or graph showing the user's mood over time -->
 </div>
+
+<script>
+  const form = document.getElementById('mood-form');
+  const moodGraph = document.getElementById('mood-graph');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const mood = document.getElementById('mood').value;
+    const notes = document.getElementById('notes').value;
+    // Send the data to the server to log the mood
+    fetch('{% url "log_mood" %}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mood, notes }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the mood graph with the new data
+        updateMoodGraph(data);
+      })
+      .catch((error) => console.error(error));
+  });
+
+  function updateMoodGraph(data) {
+    // This function would update the mood graph with the new data
+    // For example, you could use a library like Chart.js to create a chart
+    const chart = new Chart(moodGraph, {
+      type: 'line',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: 'Mood',
+          data: data.values,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
+        }],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  }
+</script>

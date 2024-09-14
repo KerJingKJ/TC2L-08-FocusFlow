@@ -1,7 +1,23 @@
 *{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
-
+/* Ensure the parent container takes up the full viewport width */
+body, html {
+    margin: 0;
+    min-height: 100%;
+    width: 100%;
+    scroll-behavior: smooth;
+    background-image: url('image/bggg.jpg');
+}
+section{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 h1 {
     font-size: 25px;
     text-align: center;
@@ -213,7 +229,6 @@ a{
     position: relative; /*this is to be used to relate it with the ::before later below*/
     overflow: hidden;
 }
-
 .bar::before {
     content: '';
     height: 100%;
@@ -228,7 +243,6 @@ a{
     z-index: 1;
     transition: width 0.5s ease;
 }
-
 .bar span {
     position: relative;
     z-index: 2;
@@ -243,20 +257,86 @@ a{
 .container-aboutgoals{
     display: flex;
 }
-
-.container-motivation{
-    width: 40%;
-    border-radius: 12px;
+/* Container for side-by-side items */
+.container-wrapper {
+    display: flex;
+    justify-content: center; /* Center items horizontally within the container */
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px; /* Gap between the containers */
+    padding: 20px; /* Padding around the container */
+    flex-wrap: wrap; /* Allow items to wrap if they don’t fit */
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
+    height: 100%;
+    overflow: auto;
 }
 
-.container-playlist{
-    background-color:rgba(175, 175, 227, 0.845);
-    border-radius: 12px;
-    height: fit-content;
+/* Style for the motivation container */
+.container-motivation {
+    width: 30%; /* Adjust width as needed */
+    border-radius: 10px;
+    background-color: #f4f4f4;
     padding: 20px;
-    width:30%;
-    margin: 10px;
-    margin-left: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the playlist container */
+.container-playlist {
+    width: 30%; /* Adjust width as needed */
+    background-color: rgb(237, 235, 235);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the timer container */
+.container-time {
+    width: 30%; /* Adjust width as needed */
+    border-radius: 12px;
+    background-color: #e0e0e0; /* Adjust background color as needed */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Style for the scroll-to-goals button */
+.scroll-to-goals-button {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    background-color: #007bff; /* Adjust color as needed */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    z-index: 999;
+}
+
+/* Add hover effect for better UX */
+.scroll-to-goals-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+#background-frame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 0; /* Keep it in the background but still interactive */
+    pointer-events: auto; /* Allow interaction with the iframe's content */
+}
+
+.main-content {
+    position: relative;
+    z-index: 1; /* Overlay the content on top of the iframe */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Make the content slightly transparent */
+}
+
+/* Optional: Style to ensure buttons or interactive content in the iframe are clickable */
+iframe {
+    pointer-events: auto; /* Ensures iframe elements like buttons are clickable */
 }
 
 /* .to-another-page{

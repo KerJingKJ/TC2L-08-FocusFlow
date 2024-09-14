@@ -5,18 +5,18 @@ body {
 }
 
 main {
-    background-color: #659DBD;
+    background-color: purple;
     position: relative;
     height: 100vh;
 }
 
 .container {
-    background-color: #DAAD86;
+    background-color: purple;
     height: 50%;
 }
 
 .parent {
-    background-color: #FBEEC1;
+    background-color: rgb(133, 133, 217);
     width: 70%;
     min-height: 50%;
     position: absolute;
@@ -30,7 +30,7 @@ main {
 }
 
 .child-2 {
-    background-color: #8D8741;
+    background-color: purple;
     min-height: 100px; /* Adjust as needed */
     width: 85%;
     padding: 10px;
@@ -58,7 +58,7 @@ select {
     outline: 0;
     box-shadow: none;
     border: 0 !important;
-    background: #659DBD;
+    background: purple;
     background-image: none;
     flex: 1;
     padding: 0 .5em;
@@ -78,7 +78,7 @@ select::-ms-expand {
     width: 75%;
     height: 3em;
     line-height: 3em; /* Ensure height and line-height match */
-    background: #659DBD; /* Ensure a background color is set */
+    background: purple; /* Ensure a background color is set */
     overflow: hidden;
     border-radius: .25em;
 }
@@ -89,18 +89,18 @@ select::-ms-expand {
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: #659DBD; /* Ensure a background color is set */
+    background: whitesmoke; /* Ensure a background color is set */
     cursor: pointer;
     pointer-events: none;
     transition: .25s all ease;
 }
 
 .select:hover::after {
-    color: #BC986A; /* Color change on hover */
+    color: #fff; /* Color change on hover */
 }
 
 .generate-quote{
-    background-color: #BC986A; /* Color */
+    background-color: blue; /* Color */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -114,6 +114,5 @@ select::-ms-expand {
 }
 
 .generate-quote:hover {
-    background-color: #A57D54; /* Darker shade on hover (optional) */
+    background-color: black; /* Darker shade on hover (optional) */
 }
-

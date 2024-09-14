@@ -43,14 +43,14 @@ Start Focus
 
 
 <div class="container-aboutgoals">
-    <div class="forms">1
+    <div class="forms">
         <h1>Set your goals!</h1>
         <form method="POST">
             {% csrf_token %}
         <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
         
         <div class="description">
-            <p><strong>Description (if any): </strong></p>
+            <p id="describe-text"><strong>Description (if any): </strong></p>
             {{ form.description }}
         </div>
             <span><button type="submit" class="save">Save</button></span>
@@ -125,10 +125,6 @@ Start Focus
         </div>
     </div>
     </div>
-</div>
-
-<div>
-    <p> Tired? Get some motivation <a href="{% url 'motivation' %}" target="_blank" class="button-motivation">here</a> </p>
 </div>
 
 </body>

@@ -21,12 +21,12 @@
 }
 
 option{
-    background-color:plum;
+    background-color:navy;
     text-align: center;
 }
 
-select{
-    background-color:rgb(237, 218, 237);
+#playlist{
+    background-color:rgb(23, 23, 173);
     border-radius: 12px;
     text-decoration: none;
     border: 0px;
@@ -37,4 +37,8 @@ select{
 .display-playlist{
     text-align: center;
     line-height: 20px;
+}
+
+#play{
+    color: black;
 }

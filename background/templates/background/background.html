@@ -1,30 +1,45 @@
-{% load static %} 
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link href="{% static 'background/background.css' %}" type="text/css" rel="stylesheet" />
-    <title>Background</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpaper Switcher</title>
+    <!-- Linking CSS via Django's static -->
+    <link href="{% static 'background/background.css' %}" type="text/css" rel="stylesheet"/>
 </head>
-<body>
-    <div class="hero">
-
-        <video autoplay loop muted plays-inline class="back-video">
-            <source src="{% static 'background/images/natureflower.mp4' %}" type="video/mp4">
-        </video>
-        <nav>
-            <!-- <img src="" class="logo"> --> 
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">MOOD</a></li>
-                <li><a href="#">GOALS</a></li>
-                <li><a href="#">ACCOUNT</a></li>
-            </ul>
-        </nav>
-        <!-- <div class="content">
-            <h1>California</h1>
-            <a href="#">Explore</a>
-        </div> -->
+<body class="default-bg">
+    <!-- Sidebar for wallpaper buttons -->
+    <div class="sidebar">
+        <button onclick="changeWallpaper('winter')">Winter</button>
+        <button onclick="changeWallpaper('summer')">Sea</button>
+        <button onclick="changeWallpaper('city')">Flowers</button>
+        <button onclick="changeWallpaper('nature')">Nature</button>
     </div>
 
+    <!-- Video backgrounds -->
+    <video id="winter-video" class="background-video" autoplay muted loop>
+        <source src="{% static 'background/videos/winter.mp4' %}" type="video/mp4">
+    </video>
+    <video id="summer-video" class="background-video" autoplay muted loop>
+        <source src="{% static 'background/videos/mountains.mp4' %}" type="video/mp4">
+    </video>
+    <video id="city-video" class="background-video" autoplay muted loop>
+        <source src="{% static 'background/videos/natureflower.mp4' %}" type="video/mp4">
+    </video>
+    <video id="nature-video" class="background-video" autoplay muted loop>
+        <source src="{% static 'background/videos/nature.mp4' %}" type="video/mp4">
+    </video>
 
+    <!-- Default background video -->
+    <video class="default-video" autoplay muted loop>
+        <source src="{% static 'background/videos/default.mp4' %}" type="video/mp4">
+    </video>
 
+    <!-- Linking JS via Django's static -->
+    <script src="{% static 'background/background.js' %}"></script>
 </body>
+</html>
+
+

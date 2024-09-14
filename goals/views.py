@@ -97,9 +97,10 @@ def edit(request, goal_id):
     
     if request.method == 'POST':
         form = GoalForm(request.POST, instance=goals)
-        if form.is_valid():
-            form.save()
-            if request.headers.get('HX-Request'):
+        if request.headers.get('HX-Request'):
+            form = GoalForm(request.POST, instance=goals)
+            if form.is_valid():
+                form.save()
                 goals = ToDoList.objects.filter(user=request.user) 
                 done = 0
                 notdone = 0
@@ -110,7 +111,7 @@ def edit(request, goal_id):
                     else:
                         notdone += 1
                 total = done + notdone
-                
+                    
                 if done > 0:
                     bar = (done/total)*100
                 else:
@@ -124,8 +125,11 @@ def edit(request, goal_id):
                     'total':total,
                     'form':form,
                 })
+            else:
+            # If form is invalid, return the same editing form
+                return render(request, 'goals/goals_content.html', {'form': form, 'editing': True})
     else:
-        form = GoalForm(instance=goals)
+          form = GoalForm(instance=goals)
     return render(request, 'goals/goals_content.html', {'form': form, 'editing': True})
 
 def delete(request, goal_id):

@@ -111,12 +111,12 @@ Start Focus
                 <a href="{% url 'edit' goal.id %}" class="edit">Edit</a>
                 <a href="{% url 'delete' goal.id %}" class="delete">Delete</a>
                 {% if not goal.completed %}
-                <form action="{% url 'complete' goal.id 'complete'%}" method="POST">
+                <form action="{% url 'complete' goal.id 'complete'%}" hx-post="{% url  'complete' goal.id 'complete' %}" hx-target="#displaying" hx-trigger="submit">
                     {% csrf_token %}
                     <button type="submit" class="complete">Complete</button>
                 </form>
                 {% else %}
-                <form action="{% url 'complete' goal.id 'notcomplete'%}" method="POST">
+                <form action="{% url 'complete' goal.id 'notcomplete'%}" hx-post="{% url  'complete' goal.id 'notcomplete' %}" hx-target="#displaying" hx-trigger="submit">
                     {% csrf_token %}
                     <button type="submit" class="complete">Incomplete</button>
                 </form>

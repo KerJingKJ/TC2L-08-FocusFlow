@@ -107,11 +107,64 @@ def delete(request, goal_id):
 
 def complete(request, goal_id, action):
     goals = get_object_or_404(ToDoList, id=goal_id)
-    if action == "complete":
-        goals.completed = True
-        goals.save()
-    else:
-        goals.completed = False
-        goals.save()
-    return redirect('set_goals')
+    if request.headers.get('HX-Request'):
+        if action == "complete":
+            goals.completed = True
+            goals.save()
+            goals = ToDoList.objects.filter(user=request.user) 
+            done = 0
+            notdone = 0
+            total = 0
+            for goal in goals:
+                if goal.completed == True:
+                    done += 1
+                else:
+                    notdone += 1
+            total = done + notdone
+                    
+            if done > 0:
+                bar = (done/total)*100
+            else:
+                bar = 0
+            return render(request, 'goals/goals_content.html', {
+                'goals': goals,
+                'done': done,
+                'notdone': notdone,
+                'bar': bar,
+                'total': total,
+            })   
+        else:
+            goals.completed = False
+            goals.save()
+            goals = ToDoList.objects.filter(user=request.user) 
+            done = 0
+            notdone = 0
+            total = 0
+            for goal in goals:
+                if goal.completed == True:
+                    done += 1
+                else:
+                    notdone += 1
+            total = done + notdone
+                    
+            if done > 0:
+                bar = (done/total)*100
+            else:
+                bar = 0
+            return render(request, 'goals/goals_content.html', {
+                'goals': goals,
+                'done': done,
+                'notdone': notdone,
+                'bar': bar,
+                'total': total,
+            })   
+
+    return render(request, 'goals/goals_content.html', 
+        {
+            'goals': goals, 
+            'done':done, 
+            'notdone':notdone, 
+            'bar':bar,
+            'total':total,
+        })
 

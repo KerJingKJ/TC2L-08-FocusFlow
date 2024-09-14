@@ -102,8 +102,32 @@ def edit(request, goal_id):
 
 def delete(request, goal_id):
     goals = get_object_or_404(ToDoList, id=goal_id)
-    goals.delete()
-    return redirect('set_goals')
+    if request.headers.get('HX-Request'):
+        goals.delete()
+        goals = ToDoList.objects.filter(user=request.user) 
+        done = 0
+        notdone = 0
+        total = 0
+        for goal in goals:
+            if goal.completed == True:
+                done += 1
+            else:
+                notdone += 1
+        total = done + notdone
+                
+        if done > 0:
+            bar = (done/total)*100
+        else:
+            bar = 0
+        return render(request, 'goals/goals_content.html', 
+        {
+            'goals': goals, 
+            'done':done, 
+            'notdone':notdone, 
+            'bar':bar,
+            'total':total,
+        })
+    
 
 def complete(request, goal_id, action):
     goals = get_object_or_404(ToDoList, id=goal_id)

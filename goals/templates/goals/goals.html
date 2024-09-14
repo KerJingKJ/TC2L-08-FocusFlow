@@ -109,7 +109,7 @@ Start Focus
 
                 <div class="grouping">
                 <a href="{% url 'edit' goal.id %}" class="edit">Edit</a>
-                <a href="{% url 'delete' goal.id %}" class="delete">Delete</a>
+                <a href="{% url 'delete' goal.id %}" class="delete" hx-get="{% url  'delete' goal.id %}" hx-target="#displaying">Delete</a>
                 {% if not goal.completed %}
                 <form action="{% url 'complete' goal.id 'complete'%}" hx-post="{% url  'complete' goal.id 'complete' %}" hx-target="#displaying" hx-trigger="submit">
                     {% csrf_token %}

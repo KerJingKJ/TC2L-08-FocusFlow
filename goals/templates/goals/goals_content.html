@@ -1,4 +1,19 @@
-<div class="yourgoals">
+<div class="container-aboutgoals">
+    <div class="forms">
+        <h1>Set your goals!</h1>
+        <form hx-post="{% url 'set_goals' %}" hx-target="#displaying" hx-trigger="submit">
+            {% csrf_token %}
+        <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
+        
+        <div class="description">
+            <p id="describe-text"><strong>Description (if any): </strong></p>
+            {{ form.description }}
+        </div>
+            <span><button type="submit" class="save">Save</button></span>    
+        </form>
+    </div>
+
+    <div class="yourgoals">
     <h2>Your Goals</h2>
         
     <div class='storedgoals'>    
@@ -46,10 +61,10 @@
                 {% endif %}
 
                 <div class="grouping">
-                <a href="{% url 'edit' goal.id %}" class="edit">Edit</a>
+                <a href="{% url 'edit' goal.id %}" class="edit" hx-get="{% url 'edit' goal.id %}" hx-target="#displaying">Edit</a>
                 <a href="{% url 'delete' goal.id %}" class="delete" hx-get="{% url  'delete' goal.id %}" hx-target="#displaying">Delete</a>
                 {% if not goal.completed %}
-                <form action="{% url 'complete' goal.id 'complete'%}" hx-post="{% url  'complete' goal.id 'complete'  %}" hx-target="#displaying" hx-trigger="submit">
+                <form action="{% url 'complete' goal.id 'complete'%}" hx-post="{% url  'complete' goal.id 'complete' %}" hx-target="#displaying" hx-trigger="submit">
                     {% csrf_token %}
                     <button type="submit" class="complete">Complete</button>
                 </form>
@@ -65,5 +80,4 @@
             {% endfor %}
         </div>
     </div>
-</div>
-
+    </div>

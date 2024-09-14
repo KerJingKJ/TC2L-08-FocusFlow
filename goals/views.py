@@ -22,10 +22,10 @@ def set_goals(request):
         selected_playlist = get_object_or_404(Playlist, id=request.GET['playlist_id'])
 
     if request.headers.get('HX-Request'):
-        return render(request, 'playlist/playlist_selected.html', {
-            'selected_playlist': selected_playlist,
-        })
-
+        if playlist_id:
+            return render(request, 'playlist/playlist_selected.html', {
+                'selected_playlist': selected_playlist,
+            })
 
 #goals page form
     if request.method == 'POST':
@@ -34,10 +34,31 @@ def set_goals(request):
             goals = form.save(commit=False)
             goals.user = request.user 
             goals.save()
-            return redirect('set_goals')
+            form = GoalForm()
+            goals = ToDoList.objects.filter(user=request.user) 
+            done = 0
+            notdone = 0
+            total = 0
+            for goal in goals:
+                if goal.completed == True:
+                    done += 1
+                else:
+                    notdone += 1
+            total = done + notdone
+                
+            if done > 0:
+                bar = (done/total)*100
+            else:
+                bar = 0
+            return render(request, 'goals/goals_content.html', {
+                'goals': goals,
+                'done': done,
+                'notdone': notdone,
+                'bar': bar,
+                'total': total,
+            })   
     else:
         form = GoalForm()
-
 # added status bar to sum up the total goals has completed / not completed
     done = 0
     notdone = 0

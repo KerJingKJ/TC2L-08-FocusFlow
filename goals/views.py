@@ -93,44 +93,40 @@ def set_goals(request):
         })
 
 def edit(request, goal_id):
-    goals = get_object_or_404(ToDoList, id=goal_id)
+    goal = get_object_or_404(ToDoList, id=goal_id)
     
-    if request.method == 'POST':
-        form = GoalForm(request.POST, instance=goals)
-        if request.headers.get('HX-Request'):
-            form = GoalForm(request.POST, instance=goals)
-            if form.is_valid():
-                form.save()
-                goals = ToDoList.objects.filter(user=request.user) 
-                done = 0
-                notdone = 0
-                total = 0
-                for goal in goals:
-                    if goal.completed == True:
-                        done += 1
-                    else:
-                        notdone += 1
-                total = done + notdone
-                    
-                if done > 0:
-                    bar = (done/total)*100
+    if request.method == 'POST' and request.headers.get('HX-Request'):
+        form = GoalForm(request.POST, instance=goal)
+        if form.is_valid():
+            form.save()
+            form = GoalForm()
+            goals = ToDoList.objects.filter(user=request.user) 
+            done = 0
+            notdone = 0
+            total = 0
+            for goal in goals:
+                if goal.completed == True:
+                    done += 1
                 else:
-                    bar = 0
-                return render(request, 'goals/goals_content.html', 
-                {
-                    'goals': goals, 
-                    'done':done, 
-                    'notdone':notdone, 
-                    'bar':bar,
-                    'total':total,
-                    'form':form,
-                })
+                    notdone += 1
+            total = done + notdone
+                    
+            if done > 0:
+                bar = (done/total)*100
             else:
-            # If form is invalid, return the same editing form
-                return render(request, 'goals/goals_content.html', {'form': form, 'editing': True})
+                bar = 0
+            return render(request, 'goals/goals_content.html', 
+            {
+                'goals': goals, 
+                'done':done, 
+                'notdone':notdone, 
+                'bar':bar,
+                'total':total,
+                'form':form,
+            })
     else:
-          form = GoalForm(instance=goals)
-    return render(request, 'goals/goals_content.html', {'form': form, 'editing': True})
+        form = GoalForm(instance=goal)  # Ensure the form is bound to the existing goal
+        return render(request, 'goals/goals_edit.html', {'form': form, 'goal': goal, 'editing':True})
 
 def delete(request, goal_id):
     goals = get_object_or_404(ToDoList, id=goal_id)

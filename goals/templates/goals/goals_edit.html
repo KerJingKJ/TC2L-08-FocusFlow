@@ -1,0 +1,16 @@
+<div class="container-aboutgoals">
+    <div class="forms">
+        <h1>Edit</h1>
+        <form hx-post="{% if editing %}{% url 'edit' goal.id %}{% else %}{% url 'set_goals' %}{% endif %}"
+        hx-target="#displaying" hx-trigger="submit">
+            {% csrf_token %}
+        <div class="title-container"><span><strong>Title:</strong>  {{ form.title }}</span></div>
+        
+        <div class="description">
+            <p id="describe-text"><strong>Description (if any): </strong></p>
+            {{ form.description }}
+        </div>
+            <span><button type="submit" class="save">{% if editing %}Save Changes{% else %}Create Goal{% endif %}</button></span>
+        </form>
+    </div>
+

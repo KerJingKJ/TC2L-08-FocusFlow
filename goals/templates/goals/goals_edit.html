@@ -1,6 +1,6 @@
 <div class="container-aboutgoals">
     <div class="forms">
-        <h1>Edit</h1>
+        <h1>Edit Goals</h1>
         <form hx-post="{% if editing %}{% url 'edit' goal.id %}{% else %}{% url 'set_goals' %}{% endif %}"
         hx-target="#displaying" hx-trigger="submit">
             {% csrf_token %}

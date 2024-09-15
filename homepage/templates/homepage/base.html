@@ -15,7 +15,9 @@
         <a href = "{% url 'timer' %}" class="timer">Timer</a>
         <a href = "{% url 'motivation' %}" class="motivation">Motivation</a>
         <a href = "{% url 'select_playlist' %}" class="select_playlist">Music</a> -->
-        <a href = "{% url 'signup' %}" class="signup">Sign up</a>
+        <a href = "{% url 'profile' %}"class="profile" target="_blank">Profile</a>
+        <a href="{% url 'mood' %}" class="mood" target="_blank">Mood History</a>
+        <a href = "{% url 'logout' %}" class="logout">Logout</a>
     </div>
     {% block content %}
     {% endblock %}

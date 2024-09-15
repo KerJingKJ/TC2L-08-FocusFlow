@@ -24,7 +24,7 @@
 <form>
     <label for="playlist"><strong>Select Playlist:</strong></label>
     <select name="playlist_id" id="playlist" hx-get={% url 'select_playlist' %} hx-target="#selected">
-        <option value="" id="choose">-- Choose a Playlist --</option>
+        <option value="" id="choose">Click to choose Playlist</option>
         {% for playlist in playlists %}
             <option value="{{ playlist.id }}" {% if selected_playlist and selected_playlist.id == playlist.id %}selected{% endif %}>{{ playlist.name }}</option>
         {% endfor %}
@@ -34,7 +34,7 @@
 <div id="selected">
 
     {% if selected_playlist %}
-    <p>Playing from "{{ selected_playlist.name }}"</p>
+    <p id="play">Playing from "{{ selected_playlist.name }}"</p>
         {% for track in selected_playlist.tracks.all %}
             <audio src="{{ track.audio_file.url }}" id="track-{{ forloop.counter }}"></audio>
         {% endfor %}

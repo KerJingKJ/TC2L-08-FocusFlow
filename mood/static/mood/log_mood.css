@@ -1,73 +1,63 @@
 /* mood.css */
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-}
-
-.container {
+.log-mood-container {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
   background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+
+.log-mood-container h2 {
+  margin-top: 0;
   font-weight: bold;
-  font-size: 24px;
-  margin-bottom: 10px;
+  color: #333;
 }
 
-.log-mood-container {
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 10px;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-}
 
 .emoji-picker {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
-.emoji {
+
+.emoji-picker span {
   font-size: 24px;
   margin: 10px;
   cursor: pointer;
 }
 
-.emoji:hover {
-  transform: scale(1.2);
-}
 
-p {
-  font-size: 14px;
+.emoji-picker span:hover {
   color: #666;
-  margin-bottom: 20px;
 }
 
-button {
+
+.log-mood-container p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+
+.focus {
   background-color: #4CAF50;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
 }
 
-button:hover {
+
+.focus:hover {
   background-color: #3e8e41;
 }

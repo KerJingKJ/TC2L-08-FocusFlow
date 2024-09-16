@@ -19,7 +19,8 @@
         <div class="error-message">
             {{ error }}
             <br>
-            <a href="{% url 'password_reset' %}" target="_blank">Forgot Password?</a>
+            <a href="{% url 'password_change' %}" target="_blank">Forgot Password?</a> 
+            {% comment %} change the url from to password_change, but seems password_change is not working yet {% endcomment %}
         </div>
         {% endif %}
 

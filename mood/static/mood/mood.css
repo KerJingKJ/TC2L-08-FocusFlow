@@ -75,4 +75,54 @@ h1 {
 .focus:hover {
   transform: scale(1.01);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+  :root {
+    --primary-color: #333;
+    --background-color: #f9f9f9;
+    --text-color: #333;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .dark-mode {
+    --primary-color: #fff;
+    --background-color: #333;
+    --text-color: #fff;
+  }
+  
+  #mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #mode-toggle:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+  }
+
+  .focus{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color:darkblue;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    margin-left: 45%;
+}
+
+.before{
+  text-align: center;
 }

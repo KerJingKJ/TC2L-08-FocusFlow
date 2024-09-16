@@ -66,10 +66,11 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),  # <--- added this line
     path('home/', include("homepage.urls")),
     path('', include("accountss.urls")),
     path('mood/', include("mood.urls")),
-    path('goals/', include("goals.urls")),
+    path('workspace/', include("goals.urls")),
     path('timer/', include("timer.urls")),
     path('motivation/', include("motivation.urls")),
     path('background/', include("background.urls")),

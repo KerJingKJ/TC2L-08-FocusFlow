@@ -1,68 +1,74 @@
 <!-- mood_tracking.html -->
-<h1>Mood Tracking</h1>
 
-<form id="mood-form">
-  <label for="mood">Current Mood:</label>
-  <select id="mood" name="mood">
-    {% for mood in mood_choices %}
-    <option value="{{ mood }}">{{ mood }}</option>
+
+{% extends 'homepage/base.html' %}
+
+
+{% block content %}
+  <h1>Mood Tracking</h1>
+  <form id="mood-form" method="post">
+    {% csrf_token %}
+    <label for="mood">Current Mood:</label>
+    <select id="mood" name="mood">
+      {% for mood in mood_choices %}
+        <option value="{{ mood }}">{{ mood }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="notes">Notes:</label>
+    <textarea id="notes" name="notes"></textarea>
+    <br>
+    <button type="submit">Log Mood</button>
+  </form>
+  <h2>Recent Moods</h2>
+  <ul>
+    {% for mood in moods %}
+      <li>
+        <p>Logged on: {{ mood.date }}</p>
+        <p>Mood: {{ mood.mood }}</p>
+        <p>Notes: {{ mood.notes }}</p>
+      </li>
+    {% empty %}
+      <p>No moods logged yet.</p>
     {% endfor %}
-  </select>
-  <br>
-  <label for="notes">Notes:</label>
-  <textarea id="notes" name="notes"></textarea>
-  <br>
-  <button type="submit">Log Mood</button>
-</form>
+  </ul>
+  <div id="mood-graph">
+    <canvas id="mood-chart"></canvas>
+  </div>
 
-<div id="mood-graph">
-  <!-- This could be a chart or graph showing the user's mood over time -->
-</div>
 
-<script>
-  const form = document.getElementById('mood-form');
-  const moodGraph = document.getElementById('mood-graph');
+  <script>
+    // Get the mood data from the backend
+    var moodData = [];
+    {% for mood in moods %}
+      moodData.push({
+        date: "{{ mood.date }}",
+        mood: "{{ mood.mood }}"
+      });
+    {% endfor %}
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const mood = document.getElementById('mood').value;
-    const notes = document.getElementById('notes').value;
-    // Send the data to the server to log the mood
-    fetch('{% url "log_mood" %}', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mood, notes }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the mood graph with the new data
-        updateMoodGraph(data);
-      })
-      .catch((error) => console.error(error));
-  });
 
-  function updateMoodGraph(data) {
-    // This function would update the mood graph with the new data
-    // For example, you could use a library like Chart.js to create a chart
-    const chart = new Chart(moodGraph, {
+    // Create the chart
+    var ctx = document.getElementById('mood-chart').getContext('2d');
+    var chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: data.labels,
+        labels: moodData.map(function(item) { return item.date; }),
         datasets: [{
           label: 'Mood',
-          data: data.values,
+          data: moodData.map(function(item) { return item.mood; }),
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1,
-        }],
+          borderWidth: 1
+        }]
       },
       options: {
         scales: {
           y: {
-            beginAtZero: true,
-          },
-        },
-      },
+            beginAtZero: true
+          }
+        }
+      }
     });
-  }
-</script>
+  </script>
+{% endblock %}

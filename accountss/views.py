@@ -23,7 +23,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect(reverse('home')) 
+            return redirect(reverse('profile')) # Redirect to profile view
         else:
             return render(request, 'accountss/login.html', {'error': 'Invalid username or password'})
     return render(request, 'accountss/login.html')
@@ -69,11 +69,10 @@ class ProfileView(LoginRequiredMixin, View):
                 return render(request, 'profile.html', {'form': form, 'error': 'Error saving profile'})
         else:
             return render(request, 'profile.html', {'form': form})
-
-
 @login_required
 def profile(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
+    profile = request.user.profile
+
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
@@ -81,6 +80,7 @@ def profile(request):
             return redirect('home')
     else:
         form = ProfileForm(instance=profile)
+
     return render(request, 'profile.html', {'form': form})
 
 
@@ -89,6 +89,7 @@ def profile(request):
 def profile_display(request):
     profile = request.user.profile
     return render(request, 'profile_display.html', {'profile': profile})
+
 # Password Change Views
 @login_required
 def password_change(request):
@@ -102,6 +103,10 @@ def password_change(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'password_change.html', {'form': form})
 
+# @login_required
+# def password_change_done(request):
+#     return render(request, 'password_change_done.html')
+
 # Homepage Views
 @login_required
 def home_view(request):
@@ -109,6 +114,5 @@ def home_view(request):
 
 def homepage(request):
     return render(request, 'homepage/homepage.html')
-
 
 

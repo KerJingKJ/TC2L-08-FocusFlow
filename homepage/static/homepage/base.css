@@ -3,17 +3,17 @@
 }
 
 .container-home{
-    background-color:#230757;
+    background-image: linear-gradient(to right, #230757ed , rgb(37, 131, 208));
     overflow: hidden;
     display: flex;
     border-radius: 12px;
 }
 
-.title:hover, .goals:hover, .timer:hover, .motivation:hover, .playlist:hover, .logout:hover, .profile:hover, .mood:hover{
+.title:hover, .goals:hover, .timers:hover, .motivation:hover, .select_playlist:hover, .logout:hover, .profile:hover, .mood:hover{
     color: aquamarine;
 }
 
-.title, .goals, .timer, .motivation, .playlist, .logout, .profile, .mood{
+.title, .goals, .timers, .motivation, .select_playlist, .logout, .profile, .mood{
     margin-right: 20px;
     margin-left: 20px;
     color: #C3B1E1;

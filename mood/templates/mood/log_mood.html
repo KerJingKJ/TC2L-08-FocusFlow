@@ -1,37 +1,45 @@
 <!-- mood/templates/log_mood.html -->
-
-
 {% extends 'homepage/base.html' %}
-
 
 {% load static %}
 
-
 {% block head %}
-  <link rel="stylesheet" type="text/css" href="{% static 'mood/mood.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mood/mood.css' %}">
 {% endblock %}
-
 
 {% block content %}
-  <div class="container">
-
-    <div class="log-mood-container">
-      <h2>Log Your Mood</h2>
-      <label for="mood">How are you feeling today?</label>
-      <div class="emoji-picker">
-        <span class="emoji" data-mood="😊" onclick="logMood('😊')">😊</span>
-        <span class="emoji" data-mood="😐" onclick="logMood('😐')">😐</span>
-        <span class="emoji" data-mood="😢" onclick="logMood('😢')">😢</span>
-        <span class="emoji" data-mood="😠" onclick="logMood('😠')">😠</span>
-        <span class="emoji" data-mood="😡" onclick="logMood('😡')">😡</span>
-      </div>
-      <p>Please select an emoji to log your mood.</p>
-      <script>
-        function logMood(mood) {
-          console.log(`Mood logged: ${mood}`);
-          // Add code here to send the mood to your server or database
-        }
-      </script>
+<div class="container">
+  <div class="log-mood-container">
+    <h2>Log Your Mood</h2>
+    <label for="mood">How are you feeling today?</label>
+    <div class="emoji-picker">
+      <span class="emoji" data-mood="😊" onclick="logMood('😊')">😊</span>
+      <span class="emoji" data-mood="😐" onclick="logMood('😐')">😐</span>
+      <span class="emoji" data-mood="😢" onclick="logMood('😢')">😢</span>
+      <span class="emoji" data-mood="😠" onclick="logMood('😠')">😠</span>
+      <span class="emoji" data-mood="😡" onclick="logMood('😡')">😡</span>
+    </div>
+    <p>Please select an emoji to log your mood.</p>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script>
+      function logMood(mood) {
+        console.log(`Mood logged: ${mood}`);
+        $.ajax({
+          type: 'POST',
+          url: "{% url 'log_mood' %}",
+          data: {
+            mood: mood
+          },
+          success: function(data) {
+            console.log('Mood logged successfully!');
+          },
+          error: function(xhr, status, error) {
+            console.log('Error logging mood:', error);
+          }
+        });
+      }
+    </script>
+    <a href="{% url 'set_goals' %}" class="focus">Start now</a>
+  </div>
+</div>
 {% endblock %}
-
-

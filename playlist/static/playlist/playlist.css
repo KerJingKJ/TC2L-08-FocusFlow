@@ -1,0 +1,44 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#start-btn, #stop-btn{
+    margin-left:20px;
+    background-color: lightgray;
+    text-decoration: none;
+    border: 0px black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+
+.suggestplaylist{
+    text-align: center;
+    margin: 5px;
+    margin-bottom: 5px;
+}
+
+option{
+    background-color:navy;
+    text-align: center;
+}
+
+#playlist{
+    background-color:rgb(23, 23, 173);
+    border-radius: 12px;
+    text-decoration: none;
+    border: 0px;
+    margin: 5px;
+    padding:5px;
+}
+
+.display-playlist{
+    text-align: center;
+    line-height: 20px;
+}
+
+#play{
+    color: black;
+}

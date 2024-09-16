@@ -82,3 +82,4 @@ class MoodTracking(models.Model):
     def __str__(self):
         return f"{self.mood.user.username}'s mood tracking on {self.tracking_date}"
 
+

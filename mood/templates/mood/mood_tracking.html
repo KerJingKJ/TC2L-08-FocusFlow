@@ -1,6 +1,7 @@
 <!-- mood_tracking.html -->
 <h1>Mood Tracking</h1>
 
+
 <form id="mood-form">
   <label for="mood">Current Mood:</label>
   <select id="mood" name="mood">
@@ -66,3 +67,15 @@
     });
   }
 </script>
+
+<div class="mood-tracking-container"></div>
+  <h1>Mood Tracking</h1>
+  <div class="chart-container">
+    <canvas id="mood-chart"></canvas>
+  </div>
+  <div class="stats-container">
+    <p>Average Mood: <span class="average-mood">Neutral</span></p>
+    <p>Most Common Mood: <span class="most-common-mood">Happy</span></p>
+  </div>
+</div>
+

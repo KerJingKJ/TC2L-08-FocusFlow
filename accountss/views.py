@@ -74,14 +74,20 @@ class ProfileView(LoginRequiredMixin, View):
 @login_required
 def profile(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
+
+@login_required
+def profile(request):
+    profile = request.user.profile
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             return redirect('home')
+
     else:
         form = ProfileForm(instance=profile)
     return render(request, 'profile.html', {'form': form})
+
 
 
 # Profile Display View
@@ -89,6 +95,7 @@ def profile(request):
 def profile_display(request):
     profile = request.user.profile
     return render(request, 'profile_display.html', {'profile': profile})
+
 # Password Change Views
 @login_required
 def password_change(request):
@@ -109,6 +116,4 @@ def home_view(request):
 
 def homepage(request):
     return render(request, 'homepage/homepage.html')
-
-
 

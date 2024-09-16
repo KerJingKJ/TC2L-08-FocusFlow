@@ -7,5 +7,4 @@ from .models import Profile
 
 admin.site.register(Profile)
 
-# register profile at admin page so it saves to database
 

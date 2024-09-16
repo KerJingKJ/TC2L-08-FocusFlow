@@ -1,8 +1,9 @@
-{% extends 'homepage/base.html' %}
-<!-- mood.html -->
+
+<!--{% extends 'homepage/base.html' %}
+ mood.html -->
 
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -20,4 +21,102 @@
   </div>
 </body>
 </html>
+
+
+
+ mood.html -->
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood</title>
+  <link rel="stylesheet" href="mood.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Mood</h1>
+    <div class="log-mood-container">
+      {% include 'log_mood.html' %}
+    </div>
+    <a href="{% url 'set_goals' %}" class="focus">Start now</a>
+  </div>
+</body>
+</html>
+
+{% extends 'homepage/base.html' %}
+moods/templates/mood.html -->
+<!--{% load static %}
+{% block title %}
+Mood
+{% endblock %}
+{% block content %}
+ Header Section -->
+<!--<link href="{% static 'mood/mood.css' %}" type="text/css" rel="stylesheet" />
+{% comment %} <header>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Mood Tracker</a></li>
+    </ul>
+    <button id="toggle-mode">Toggle Light/Dark Mode</button>
+  </nav>
+</header> {% endcomment %}
+
+
+
+
+ Main Content Section -->
+<!--<main>
+  <section class="mood-tracker">
+    <h1 class="before">Before you start ...</h1>
+    <h1>Mood Tracker</h1>
+    <form>
+      <label for="mood">How are you feeling today?</label>
+      <select id="mood" name="mood">
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="neutral">Neutral</option>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+      <button type="submit">Log Mood</button>
+    </form>
+  </section>
+{% comment %} 
+  <section class="mood-history">
+    <h1>Mood History</h1>
+    <ul>
+      {% for mood in mood_history %}
+        <li>
+          <span>{{ mood.date }}</span>
+          <span>{{ mood.mood }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% include 'log_mood.html' %}
+  {% include 'mood_history.html' %}
+  {% include 'mood_tracking.html' %}
+
+ display mood list -->
+  <!--<h1>Mood List</h1>
+  <ul>
+    {% for mood in moods %}
+      <li>{{ mood.date }}: {{ mood.mood }}</li>
+    {% endfor %}
+  </ul>
+</main> {% endcomment %}
+
+<a href="{% url 'set_goals' %}" class="focus">Start now</a>
+ Footer Section -->
+<!--{% comment %} <footer>
+  <p>&copy; {{ now|date:"Y" }} Mood Tracker</p>
+</footer>  {% endcomment %}
+
+{% endblock %}
+
 

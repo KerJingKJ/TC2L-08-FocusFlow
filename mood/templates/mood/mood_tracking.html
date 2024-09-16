@@ -1,6 +1,7 @@
 <!-- mood_tracking.html -->
 
 
+
 {% extends 'homepage/base.html' %}
 
 
@@ -36,6 +37,21 @@
     <canvas id="mood-chart"></canvas>
   </div>
 
+<form id="mood-form">
+  <label for="mood">Current Mood:</label>
+  <select id="mood" name="mood">
+    {% for mood in mood_choices %}
+    <option value="{{ mood }}">{{ mood }}</option>
+    {% endfor %}
+  </select>
+  <br>
+  <label for="notes">Notes:</label>
+  <textarea id="notes" name="notes"></textarea>
+  <br>
+  <button type="submit">Log Mood</button>
+</form>
+
+
 
   <script>
     // Get the mood data from the backend
@@ -66,5 +82,21 @@
         }
       }
     });
+
   </script>
 {% endblock %}
+
+</script>
+
+<div class="mood-tracking-container"></div>
+  <h1>Mood Tracking</h1>
+  <div class="chart-container">
+    <canvas id="mood-chart"></canvas>
+  </div>
+  <div class="stats-container">
+    <p>Average Mood: <span class="average-mood">Neutral</span></p>
+    <p>Most Common Mood: <span class="most-common-mood">Happy</span></p>
+  </div>
+</div>
+
+

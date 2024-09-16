@@ -3,6 +3,7 @@
 }
 
 #start-btn, #stop-btn{
+    margin-left:20px;
     background-color: lightgray;
     text-decoration: none;
     border: 0px black;
@@ -20,12 +21,12 @@
 }
 
 option{
-    background-color:lightblue;
+    background-color:navy;
     text-align: center;
 }
 
-select{
-    background-color:lightblue;
+#playlist{
+    background-color:rgb(23, 23, 173);
     border-radius: 12px;
     text-decoration: none;
     border: 0px;
@@ -36,4 +37,8 @@ select{
 .display-playlist{
     text-align: center;
     line-height: 20px;
+}
+
+#play{
+    color: black;
 }

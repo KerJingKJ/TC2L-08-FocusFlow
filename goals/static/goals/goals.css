@@ -69,6 +69,9 @@ h1 {
     font-size: 20px;
 }
 
+#describe-text{
+    color: black;
+}
 .display_description{
     word-wrap: break-word;
     overflow: hidden;
@@ -88,7 +91,7 @@ h1 {
     padding: 10px;
     font-size: 20px;
     border-radius: 12px;
-    margin-left: 40%;
+    margin-left: 25%;
     margin-bottom: 5px;
     font-weight: bold;
 }
@@ -338,3 +341,7 @@ a{
 iframe {
     pointer-events: auto; /* Ensures iframe elements like buttons are clickable */
 }
+
+/* .to-another-page{
+    background-color: white;
+} */

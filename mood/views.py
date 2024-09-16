@@ -109,4 +109,3 @@ def log_mood(request):
     else:
         form = MoodForm()
     return render(request, 'mood/log_mood.html', {'form': form})
-

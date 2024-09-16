@@ -69,20 +69,22 @@ class ProfileView(LoginRequiredMixin, View):
                 return render(request, 'profile.html', {'form': form, 'error': 'Error saving profile'})
         else:
             return render(request, 'profile.html', {'form': form})
+
 @login_required
 def profile(request):
     profile = request.user.profile
 
+@login_required
+def profile(request):
+    profile = request.user.profile
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             return redirect('home')
-    else:
         form = ProfileForm(instance=profile)
 
     return render(request, 'profile.html', {'form': form})
-
 
 # Profile Display View
 @login_required
@@ -114,5 +116,3 @@ def home_view(request):
 
 def homepage(request):
     return render(request, 'homepage/homepage.html')
-
-

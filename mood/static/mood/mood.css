@@ -1,6 +1,7 @@
+
 /* mood.css */
 
-body {
+/*body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
 }
@@ -45,7 +46,7 @@ h1 {
 
 /* Add some Lifeat.io-inspired styles */
 
-.container {
+/*.container {
   background-image: linear-gradient(to bottom, #fff, #f7f7f7);
 }
 
@@ -59,7 +60,7 @@ h1 {
 
 /* Add some subtle animations */
 
-.log-mood-container {
+/*.log-mood-container {
   transition: all 0.3s ease-in-out;
 }
 
@@ -76,10 +77,12 @@ h1 {
   transform: scale(1.01);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 
+
   :root {
     --primary-color: #333;
     --background-color: #f9f9f9;
     --text-color: #333;
+
   }
   
   body {

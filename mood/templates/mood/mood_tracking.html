@@ -39,14 +39,10 @@
 
   <script>
     // Get the mood data from the backend
-    var moodData = [];
-    {% for mood in moods %}
-      moodData.push({
-        date: "{{ mood.date }}",
-        mood: "{{ mood.mood }}"
-      });
-    {% endfor %}
-
+    var moodData = {{ moods|json }};
+    // Now you can use the moodData variable
+    console.log(moodData);
+  
 
     // Create the chart
     var ctx = document.getElementById('mood-chart').getContext('2d');

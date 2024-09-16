@@ -103,9 +103,9 @@ def password_change(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'password_change.html', {'form': form})
 
-# @login_required
-# def password_change_done(request):
-#     return render(request, 'password_change_done.html')
+@login_required
+def password_change_done(request):
+     return render(request, 'password_change_done.html')
 
 # Homepage Views
 @login_required

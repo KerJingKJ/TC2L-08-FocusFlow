@@ -8,7 +8,6 @@ Start Focus
 {% load static %}
 <head>
     <script src="https://unpkg.com/htmx.org@1.8.4"></script>
-    {% comment %} <wallpaper href="{% static 'background/background.css' %}}"></wallpaper> {% endcomment %}
     <section  id="goalss">
         <link href="{% static 'goals/goals.css' %}" type="text/css" rel="stylesheet" />
     </section>
@@ -32,7 +31,7 @@ Start Focus
         <div class='container-playlist'>
             {% include 'playlist/playlist.html' %}
             </div>
-            <div class='container-time'>
+            <div class='container-time' id="timer-container" hx-get="{% url 'timer' %}" hx-trigger="load" hx-swap="outerHTML>
                 {% include 'timer/countdown.html' %}
                 </div>
 </div>

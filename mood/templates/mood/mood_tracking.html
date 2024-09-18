@@ -27,10 +27,22 @@
       }
     },
     yAxis: {
-      title: {
-        text: 'Mood'
-      }
+    title: {
+      text: 'Mood'
     },
+    labels: {
+      formatter: function() {
+        const labels = {
+          1: '😔',
+          2: '😐',
+          3: '😊',
+          4: '😃',
+          5: '😆'
+        };
+        return labels[this.value] || this.value;
+      }
+    }
+  },
     series: [{
       name: 'Mood',
       data: moodData

@@ -1,14 +1,12 @@
 <!-- mood/templates/log_mood.html -->
 
 {% extends 'homepage/base.html' %}
-
+{% block content %}
 {% load static %}
 
-{% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'mood/log_mood.css' %}">
-{% endblock %}
+<link href="{% static 'mood/log_mood.css' %}" type="text/css" rel="stylesheet" />
 
-{% block content %}
+
 <div class="container">
   <div class="log-mood-container">
     <h2>Log Your Mood</h2>

@@ -97,10 +97,18 @@ def profile(request):
     return render(request, 'profile.html', {'form': form})
 
 # Profile Display View
+# @login_required
+# def profile_display(request):
+#     profile = request.user.profile
+#     return render(request, 'accountss/profile_display.html', {'profile': profile})
+
 @login_required
 def profile_display(request):
-    profile = request.user.profile
-    return render(request, 'profile_display.html', {'profile': profile})
+    if hasattr(request.user, 'profile'):
+        profile = request.user.profile
+        return render(request, 'accountss/profile_display.html', {'profile': profile})
+    else:
+        return redirect('profile')
 
 # Password Change Views
 @login_required

@@ -1,9 +1,9 @@
 <!-- mood_history.html -->
-
-
 {% extends 'homepage/base.html' %}
 
 {% block content %}
+{% load static %}
+<link href="{% static 'mood/mood_history.css' %}" type="text/css" rel="stylesheet" />
 <h1>Mood History</h1>
 <ul>
   {% for mood in moods %}

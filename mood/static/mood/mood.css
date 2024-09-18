@@ -1,10 +1,88 @@
-/* css/mood.css */
+
+/* mood.css */
+
+/*body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.log-mood-container {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.focus {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.focus:hover {
+  background-color: #3e8e41;
+}
+
+/* Add some Lifeat.io-inspired styles */
+
+/*.container {
+  background-image: linear-gradient(to bottom, #fff, #f7f7f7);
+}
+
+.log-mood-container {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add some subtle animations */
+
+/*.log-mood-container {
+  transition: all 0.3s ease-in-out;
+}
+
+.focus {
+  transition: all 0.3s ease-in-out;
+}
+
+.log-mood-container:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.focus:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 
 
-:root {
+  :root {
     --primary-color: #333;
     --background-color: #f9f9f9;
     --text-color: #333;
+
   }
   
   body {

@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User #to be use later to deal with user log in and log out 
+from django.conf import settings
 
 # Create your models here.
 
 class ToDoList(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=300)
     description = models.TextField(blank=True)
     completed = models.BooleanField(default=False)

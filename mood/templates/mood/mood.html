@@ -1,12 +1,60 @@
-{% extends 'homepage/base.html' %}
-<!-- moods/templates/mood.html -->
-{% load static %}
+
+<!--{% extends 'homepage/base.html' %}
+ mood.html -->
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood</title>
+  <link rel="stylesheet" href="mood.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Mood</h1>
+    <div class="log-mood-container">
+      {% include 'log_mood.html' %}
+    </div>
+    <a href="{% url 'set_goals' %}" class="focus">Start now</a>
+  </div>
+</body>
+</html>
+
+
+
+ mood.html -->
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood</title>
+  <link rel="stylesheet" href="mood.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Mood</h1>
+    <div class="log-mood-container">
+      {% include 'log_mood.html' %}
+    </div>
+    <a href="{% url 'set_goals' %}" class="focus">Start now</a>
+  </div>
+</body>
+</html>
+
+
+moods/templates/mood.html -->
+<!--{% load static %}
 {% block title %}
 Mood
 {% endblock %}
 {% block content %}
-<!-- Header Section -->
-<link href="{% static 'mood/mood.css' %}" type="text/css" rel="stylesheet" />
+ Header Section -->
+<!--<link href="{% static 'mood/mood.css' %}" type="text/css" rel="stylesheet" />
 {% comment %} <header>
   <nav>
     <ul>
@@ -20,8 +68,8 @@ Mood
 
 
 
-<!-- Main Content Section -->
-<main>
+ Main Content Section -->
+<!--<main>
   <section class="mood-tracker">
     <h1 class="before">Before you start ...</h1>
     <h1>Mood Tracker</h1>
@@ -54,8 +102,8 @@ Mood
   {% include 'mood_history.html' %}
   {% include 'mood_tracking.html' %}
 
-  <!-- display mood list -->
-  <h1>Mood List</h1>
+ display mood list -->
+  <!--<h1>Mood List</h1>
   <ul>
     {% for mood in moods %}
       <li>{{ mood.date }}: {{ mood.mood }}</li>
@@ -64,9 +112,11 @@ Mood
 </main> {% endcomment %}
 
 <a href="{% url 'set_goals' %}" class="focus">Start now</a>
-<!-- Footer Section -->
-{% comment %} <footer>
+ Footer Section -->
+<!--{% comment %} <footer>
   <p>&copy; {{ now|date:"Y" }} Mood Tracker</p>
 </footer>  {% endcomment %}
 
 {% endblock %}
+
+

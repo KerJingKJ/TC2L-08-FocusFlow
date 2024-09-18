@@ -1,75 +1,57 @@
-/* Global Styles */
+/* mood_tracking.css */
+.mood-tracking {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-  
-  /* Form Styles */
-  
-  .form-container {
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #666;
-  }
-  
-  .form-select {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .form-select:focus {
-    border-color: #aaa;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-button {
-    width: 100%;
-    height: 40px;
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .form-button:hover {
-    background-color: #3e8e41;
-  }
-  
-  /* Responsive Design */
-  
-  @media (max-width: 768px) {
-    .form-container {
-      margin: 20px auto;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .form-container {
-      margin: 10px auto;
-    }
-  }
+.mood-graph {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+#mood-graph-canvas {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ddd;
+}
+
+.mood-log {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mood-log ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mood-log li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.mood-log li:last-child {
+  border-bottom: none;
+}
+
+.mood-date {
+  font-weight: bold;
+}
+
+.mood-emotion {
+  font-size: 18px;
+  color: #666;
+}
+
+.mood-notes {
+  font-size: 14px;
+  color: #999;
+}

@@ -36,8 +36,11 @@
 </body>
 </html>
 
+<!--{% comment %} this works {% endcomment %}
+=
 {% if user.is_superuser %}
     <p>Welcome, Admin {{ user.username }}</p>
 {% else %}
     <p>Welcome, {{ user.username }}</p>
 {% endif %}
+

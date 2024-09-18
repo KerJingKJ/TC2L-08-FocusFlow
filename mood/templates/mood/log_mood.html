@@ -1,10 +1,11 @@
 <!-- mood/templates/log_mood.html -->
+
 {% extends 'homepage/base.html' %}
 
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'mood/mood.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mood/log_mood.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -13,30 +14,50 @@
     <h2>Log Your Mood</h2>
     <label for="mood">How are you feeling today?</label>
     <div class="emoji-picker">
-      <span class="emoji" data-mood="😊" onclick="logMood('😊')">😊</span>
-      <span class="emoji" data-mood="😐" onclick="logMood('😐')">😐</span>
-      <span class="emoji" data-mood="😢" onclick="logMood('😢')">😢</span>
-      <span class="emoji" data-mood="😠" onclick="logMood('😠')">😠</span>
-      <span class="emoji" data-mood="😡" onclick="logMood('😡')">😡</span>
+      <button class="emoji" data-mood="😊" onclick="logMood('😊')">😊</button>
+      <button class="emoji" data-mood="😐" onclick="logMood('😐')">😐</button>
+      <button class="emoji" data-mood="😢" onclick="logMood('😢')">😢</button>
+      <button class="emoji" data-mood="😠" onclick="logMood('😠')">😠</button>
+      <button class="emoji" data-mood="😡" onclick="logMood('😡')">😡</button>
     </div>
     <p>Please select an emoji to log your mood.</p>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
       function logMood(mood) {
         console.log(`Mood logged: ${mood}`);
+        var csrftoken = getCookie('csrftoken');
         $.ajax({
           type: 'POST',
           url: "{% url 'log_mood' %}",
           data: {
             mood: mood
           },
+          headers: {
+            'X-CSRFToken': csrftoken
+          },
           success: function(data) {
             console.log('Mood logged successfully!');
+            window.location.href = "{% url 'homepage' %}";
           },
           error: function(xhr, status, error) {
             console.log('Error logging mood:', error);
           }
         });
+      }
+
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
       }
     </script>
     <a href="{% url 'set_goals' %}" class="focus">Start now</a>

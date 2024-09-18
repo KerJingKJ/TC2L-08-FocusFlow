@@ -1,102 +1,39 @@
 <!-- mood_tracking.html -->
 
+<h1>Mood Tracking</h1>
+<div id="mood-chart"></div>
 
+<script>
+  // Define the moodData variable
+  var moods = JSON.parse('{{ moods|safe }}');
+  var moodData = [];
 
-{% extends 'homepage/base.html' %}
+  moods.forEach(function(mood) {
+    moodData.push([mood.date, mood.mood]);
+  });
 
-
-{% block content %}
-  <h1>Mood Tracking</h1>
-  <form id="mood-form" method="post">
-    {% csrf_token %}
-    <label for="mood">Current Mood:</label>
-    <select id="mood" name="mood">
-      {% for mood in mood_choices %}
-        <option value="{{ mood }}">{{ mood }}</option>
-      {% endfor %}
-    </select>
-    <br>
-    <label for="notes">Notes:</label>
-    <textarea id="notes" name="notes"></textarea>
-    <br>
-    <button type="submit">Log Mood</button>
-  </form>
-  <h2>Recent Moods</h2>
-  <ul>
-    {% for mood in moods %}
-      <li>
-        <p>Logged on: {{ mood.date }}</p>
-        <p>Mood: {{ mood.mood }}</p>
-        <p>Notes: {{ mood.notes }}</p>
-      </li>
-    {% empty %}
-      <p>No moods logged yet.</p>
-    {% endfor %}
-  </ul>
-  <div id="mood-graph">
-    <canvas id="mood-chart"></canvas>
-  </div>
-
-<form id="mood-form">
-  <label for="mood">Current Mood:</label>
-  <select id="mood" name="mood">
-    {% for mood in mood_choices %}
-    <option value="{{ mood }}">{{ mood }}</option>
-    {% endfor %}
-  </select>
-  <br>
-  <label for="notes">Notes:</label>
-  <textarea id="notes" name="notes"></textarea>
-  <br>
-  <button type="submit">Log Mood</button>
-</form>
-
-
-
-  <script>
-    // Get the mood data from the backend
-    var moodData = {{ moods|json }};
-    // Now you can use the moodData variable
-    console.log(moodData);
-  
-
-    // Create the chart
-    var ctx = document.getElementById('mood-chart').getContext('2d');
-    var chart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: moodData.map(function(item) { return item.date; }),
-        datasets: [{
-          label: 'Mood',
-          data: moodData.map(function(item) { return item.mood; }),
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+  // Create the chart
+  var chart = new Highcharts.Chart({
+    chart: {
+      renderTo: 'mood-chart',
+      type: 'line'
+    },
+    title: {
+      text: 'Mood Tracking'
+    },
+    xAxis: {
+      title: {
+        text: 'Date'
       }
-    });
-
-  </script>
-{% endblock %}
-
+    },
+    yAxis: {
+      title: {
+        text: 'Mood'
+      }
+    },
+    series: [{
+      name: 'Mood',
+      data: moodData
+    }]
+  });
 </script>
-
-<div class="mood-tracking-container"></div>
-  <h1>Mood Tracking</h1>
-  <div class="chart-container">
-    <canvas id="mood-chart"></canvas>
-  </div>
-  <div class="stats-container">
-    <p>Average Mood: <span class="average-mood">Neutral</span></p>
-    <p>Most Common Mood: <span class="most-common-mood">Happy</span></p>
-  </div>
-</div>
-
-

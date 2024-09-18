@@ -55,11 +55,11 @@ def signup(request):
 # Profile Views
 class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
-        form = ProfileForm(instance=request.user)
+        form = ProfileForm(instance=request.user.profile)
         return render(request, 'profile.html', {'form': form})
 
     def post(self, request):
-        form = ProfileForm(request.POST, instance=request.user)
+        form = ProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             try:
                 form.save()
@@ -70,20 +70,30 @@ class ProfileView(LoginRequiredMixin, View):
         else:
             return render(request, 'profile.html', {'form': form})
 
-@login_required
-def profile(request):
-    profile = request.user.profile
+# @login_required
+# def profile(request):
+#     profile = request.user.profile
+
+# @login_required
+# def profile(request):
+#     profile = request.user.profile
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, instance=profile)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home')
+#         form = ProfileForm(instance=profile)
+
+#     return render(request, 'profile.html', {'form': form})
 
 @login_required
 def profile(request):
-    profile = request.user.profile
+    form = ProfileForm(instance=request.user.profile)  # <--- Change here
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=profile)
+        form = ProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             form.save()
             return redirect('home')
-        form = ProfileForm(instance=profile)
-
     return render(request, 'profile.html', {'form': form})
 
 # Profile Display View
@@ -116,3 +126,9 @@ def home_view(request):
 
 def homepage(request):
     return render(request, 'homepage/homepage.html')
+
+# views.py
+from django.shortcuts import render
+
+def homepage(request):
+    return render(request, 'homepage.html')

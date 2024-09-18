@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     #'allauth.socialaccount',
     'playlist.apps.PlaylistConfig',
     'accountss.apps.AccountsConfig',
+    'django_js_utils',
+    'django.contrib.humanize',
 ]
 
 
@@ -79,6 +81,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # 'libraries': {
+            #     'django_js_utils': 'django_js_utils.templatetags.django_js_utils',
         },
     },
 ]

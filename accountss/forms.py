@@ -46,6 +46,18 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ('bio', 'location', 'avatar')
 
+    def clean_bio(self):
+        bio = self.cleaned_data['bio']
+        if len(bio) > 500:
+            raise forms.ValidationError('Bio cannot exceed 500 characters')
+        return bio
+
+    def clean_location(self):
+        location = self.cleaned_data['location']
+        if len(location) > 100:
+            raise forms.ValidationError('Location cannot exceed 100 characters')
+        return location    
+
 
 # class UserUpdateForm(UserChangeForm):
 #     email = forms.EmailField(max_length=200, help_text='Required', widget=forms.EmailInput())

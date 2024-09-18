@@ -1,19 +1,23 @@
 <!-- mood_history.html -->
 
+
 {% extends 'homepage/base.html' %}
 
 {% block content %}
-  <h1>Mood History</h1>
-  <ul>
-    {% for mood in moods %}
-      <li>
-        <p>Logged on: {{ mood.date }}</p>
-        <p>Mood: {{ mood.mood }}</p>
-        <p>Notes: {{ mood.notes }}</p>
-      </li>
-    {% empty %}
-      <p>No moods logged yet.</p>
-    {% endfor %}
-  </ul>
-{% endblock %}
+<h1>Mood History</h1>
+<ul>
+  {% for mood in moods %}
+    <li>
+      <p class="logged-on">Logged on: {{ mood.date }}</p>
+      <p class="mood">Mood: {{ mood.mood }}</p>
+      <p class="notes">Notes: {{ mood.notes }}</p>
+    </li>
+  {% empty %}
+    <p class="no-moods">No moods logged yet.</p>
+  {% endfor %}
+</ul>
 
+<!-- Include mood_tracking.html here -->
+{% include 'mood_tracking.html' %}
+
+{% endblock %}

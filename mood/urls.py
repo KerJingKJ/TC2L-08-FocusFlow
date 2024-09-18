@@ -1,6 +1,6 @@
 
 
-from django.urls import path
+from django.urls import include,path
 from . import views
 
 urlpatterns = [
@@ -9,7 +9,8 @@ urlpatterns = [
     path('mood/', views.mood, name='mood'),
     path('mood_tracking/', views.mood_tracking, name='mood_tracking_view'),
     path('mood_history/', views.mood_history, name='mood_history'),
-
+    path('', views.homepage, name='homepage'),
+    path('workspace/', include('goals.urls')),
 
     
 ]

@@ -9,11 +9,11 @@
     border-radius: 12px;
 }
 
-.title:hover, .goals:hover, .timers:hover, .motivation:hover, .select_playlist:hover, .logout:hover, .profile:hover, .mood:hover, .mood-history:hover, .log-a-mood:hover{
+.title:hover, .logout:hover, .display-profile:hover, .mood-history:hover{
     color: aquamarine;
 }
 
-.title, .goals, .timers, .motivation, .select_playlist, .logout, .profile, .mood, .mood-history, .log-a-mood{
+.title, .logout, .display-profile, .mood-history{
     margin-right: 20px;
     margin-left: 20px;
     color: #C3B1E1;
@@ -26,3 +26,4 @@
 .logout{
     margin-left: auto;
 }
+

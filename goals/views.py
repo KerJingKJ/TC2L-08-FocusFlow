@@ -226,3 +226,9 @@ def complete(request, goal_id, action):
             'form':form,
         })
 
+# Timer partial update view (only renders the timer)
+def timer_view(request):
+    return render(request, 'timer/countdown.html')
+def timer_pause(request):
+    # Add logic to pause the timer if needed
+    return render(request, 'timer/countdown.html')

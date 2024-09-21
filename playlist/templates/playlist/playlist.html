@@ -9,15 +9,17 @@
     <link href="{% static 'playlist/playlist.css' %}" type="text/css" rel="stylesheet" />
 </head>
 
-
+<div class="music">
 <h1>Choose your music.</h1>
 <h2 class="suggestplaylist">Suggested Playlist:</h2>
 <div class="display-playlist">
+<ol>
 {% for playlist in playlists %}
 
-<span>{{playlist.name}}</span>
+<span><li>{{playlist.name}}</li></span>
 
 {% endfor %}
+</ol>
 </div>
 
 
@@ -46,7 +48,7 @@
     {% endif %}
     
 </div>
-
+</div>
 
 
 <!-- Here starts the javascript to handle the play and stop button -->

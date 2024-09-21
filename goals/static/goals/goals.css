@@ -283,29 +283,29 @@ a{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for the playlist container */
+
 .container-playlist {
-    width: 30%; /* Adjust width as needed */
+    width: 30%; 
     background-color: rgb(237, 235, 235);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for the timer container */
+
 .container-time {
-    width: 30%; /* Adjust width as needed */
+    width: 30%; 
     border-radius: 12px;
-    background-color: #e0e0e0; /* Adjust background color as needed */
+    background-color: #e0e0e0; 
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-/* Style for the scroll-to-goals button */
+
 .scroll-to-goals-button {
     position: fixed;
-    bottom: 20px; /* Adjust as needed */
-    right: 20px; /* Adjust as needed */
-    background-color: #007bff; /* Adjust color as needed */
+    bottom: 20px; 
+    right: 20px; 
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -315,10 +315,11 @@ a{
     z-index: 999;
 }
 
-/* Add hover effect for better UX */
+
 .scroll-to-goals-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: #0056b3; 
 }
+
 #background-frame {
     position: fixed;
     top: 0;
@@ -342,6 +343,3 @@ iframe {
     pointer-events: auto; /* Ensures iframe elements like buttons are clickable */
 }
 
-/* .to-another-page{
-    background-color: white;
-} */

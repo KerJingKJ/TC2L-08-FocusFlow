@@ -2,9 +2,14 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.music{
+    margin-left: 20px;
+}
+
 #start-btn, #stop-btn{
     margin-left:20px;
     text-decoration: none;
+    background-color: lightsteelblue;
     border: 0px black;
     margin: 10px;
     padding: 10px;
@@ -12,12 +17,6 @@
     font-weight: bold;
 }
 
-#start-btn{
-    background-color:lightsteelblue;
-}
-#stop-btn{
-    background-color: lightsteelblue;
-}
 .suggestplaylist{
     text-align: center;
     margin: 5px;
@@ -30,7 +29,7 @@ option{
 }
 
 #playlist{
-    background-color:lightslategrey;
+    background-color:rgb(194, 100, 194);
     border-radius: 12px;
     text-decoration: none;
     border: 0px;

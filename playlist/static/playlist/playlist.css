@@ -4,7 +4,6 @@
 
 #start-btn, #stop-btn{
     margin-left:20px;
-    background-color: lightgray;
     text-decoration: none;
     border: 0px black;
     margin: 10px;
@@ -13,7 +12,12 @@
     font-weight: bold;
 }
 
-
+#start-btn{
+    background-color:lightsteelblue;
+}
+#stop-btn{
+    background-color: lightsteelblue;
+}
 .suggestplaylist{
     text-align: center;
     margin: 5px;
@@ -21,12 +25,12 @@
 }
 
 option{
-    background-color:navy;
+    background-color:rgb(222, 163, 163);
     text-align: center;
 }
 
 #playlist{
-    background-color:rgb(23, 23, 173);
+    background-color:lightslategrey;
     border-radius: 12px;
     text-decoration: none;
     border: 0px;
@@ -35,7 +39,7 @@ option{
 }
 
 .display-playlist{
-    text-align: center;
+    text-align: justify;
     line-height: 20px;
 }
 

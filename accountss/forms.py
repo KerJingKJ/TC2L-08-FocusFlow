@@ -57,15 +57,7 @@ class ProfileForm(forms.ModelForm):
         if len(location) > 100:
             raise forms.ValidationError('Location cannot exceed 100 characters')
         return location    
-    
-    def clean_avatar(self):
-        avatar = self.cleaned_data['avatar']
-        if avatar:
-            if avatar.size > 1024*1024:  # 1MB
-                raise forms.ValidationError('Avatar image file is too large')
-            if not avatar.content_type.startswith('image/'):
-                raise forms.ValidationError('Avatar image file is not a valid image')
-        return avatar
+
 
 
 # class UserUpdateForm(UserChangeForm):

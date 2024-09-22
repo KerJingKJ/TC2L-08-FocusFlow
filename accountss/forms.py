@@ -58,6 +58,7 @@ class ProfileForm(forms.ModelForm):
             raise forms.ValidationError('Location cannot exceed 100 characters')
         return location    
 
+#I've did some changes
 
 
 # class UserUpdateForm(UserChangeForm):

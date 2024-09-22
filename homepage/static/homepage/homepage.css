@@ -1,17 +1,16 @@
 body {
-    background-color: #c5c5f7;
-
+    background-color:rgb(252, 236, 252);
 }
 
 h1 {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
     text-align: center;
 
 }
 
 p {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 40px;
     text-align: center;
 }
@@ -21,20 +20,27 @@ p {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color:darkblue;
+    background-color:rgb(101, 42, 102);
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
     border: none;
-    margin-left: 45%;
+    margin-left: 42%;
+}
+
+
+.button-start:hover{
+    background-color:rgb(50, 22, 50);
 }
 
 #slogan{
     font-size: 4rem;
     font-family:  serif bold;
     text-align: center;
-    color: aquamarine;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    color:darkslateblue;
 
+}
+
+#welcome{
+    color: #061724;
 }

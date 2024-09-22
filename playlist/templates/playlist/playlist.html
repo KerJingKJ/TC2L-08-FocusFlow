@@ -24,9 +24,9 @@
 
 
 <form>
-    <label for="playlist"><strong>Select Playlist:</strong></label>
+    {% comment %} <label for="playlist"><strong>Select Playlist:</strong></label> {% endcomment %}
     <select name="playlist_id" id="playlist" hx-get={% url 'select_playlist' %} hx-target="#selected">
-        <option value="" id="choose">Click to choose Playlist</option>
+        <option value="" id="choose">-- Click to choose Playlist -- </option>
         {% for playlist in playlists %}
             <option value="{{ playlist.id }}" {% if selected_playlist and selected_playlist.id == playlist.id %}selected{% endif %}>{{ playlist.name }}</option>
         {% endfor %}

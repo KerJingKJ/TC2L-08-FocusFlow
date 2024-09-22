@@ -1,9 +1,10 @@
 *{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
+
 /* Ensure the parent container takes up the full viewport width */
 body, html {
     margin: 0;
@@ -48,7 +49,7 @@ h1 {
     margin:10px;
     width:90%;
     resize:vertical;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     padding: 10px;
 }
@@ -60,7 +61,7 @@ h1 {
     width:90%;
     resize:vertical;
     font-size: 15px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 10px;
 }
 
@@ -285,7 +286,7 @@ a{
 
 
 .container-playlist {
-    width: 30%; 
+    width: 25%; 
     background-color: rgb(237, 235, 235);
     border-radius: 12px;
     padding: 20px;

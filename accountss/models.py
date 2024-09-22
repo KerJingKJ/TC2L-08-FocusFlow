@@ -11,5 +11,6 @@ class Profile(models.Model):
     location = models.CharField(max_length=255, blank=True)
     avatar = models.ImageField(upload_to='avatars', blank=True, null=True) # allow user to not upload profile
 
+
     def __str__(self):
         return self.user.username

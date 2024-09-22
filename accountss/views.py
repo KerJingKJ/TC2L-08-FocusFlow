@@ -88,9 +88,9 @@ class ProfileView(LoginRequiredMixin, View):
 
 @login_required
 def profile(request):
-    form = ProfileForm(instance=request.user.profile)  # <--- Change here
+    form = ProfileForm(instance=request.user.profile) 
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=request.user.profile)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile) #added request.Files to allow user to upload it
         if form.is_valid():
             form.save()
             return redirect('home')

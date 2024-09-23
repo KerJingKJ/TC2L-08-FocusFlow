@@ -3,15 +3,11 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
-from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 import logging
 from django.urls import reverse
-
 from .forms import LoginForm, SignUpForm, ProfileForm
-from .models import Profile
 from accountss.forms import CustomPasswordChangeForm
 
 logger = logging.getLogger(__name__)
@@ -72,6 +68,7 @@ class ProfileView(LoginRequiredMixin, View):
             return render(request, 'profile.html', {'form': form})
 
 
+
 @login_required
 def profile(request):
     form = ProfileForm(instance=request.user.profile) 
@@ -116,5 +113,6 @@ def home_view(request):
 
 def homepage(request):
     return render(request, 'homepage/homepage.html')
+
 
 

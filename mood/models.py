@@ -33,12 +33,5 @@ class MoodHistory(models.Model):
         return f"{self.mood.user.username}'s mood history on {self.history_date}"
 
 
-class MoodTracking(models.Model):
-    mood = models.ForeignKey(Mood, on_delete=models.CASCADE)
-    tracking_date = models.DateField(auto_now_add=True)
-    tracking_notes = models.TextField(blank=True)
-
-    def __str__(self):
-        return f"{self.mood.user.username}'s mood tracking on {self.tracking_date}"
 
 

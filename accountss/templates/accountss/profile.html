@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Profile</title>
-    <link href="{% static 'accountss/style.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'accountss/profile.css' %}" type="text/css" rel="stylesheet" />
 
 </head>
 <body>
@@ -14,7 +14,7 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}  <!-- Renders the form fields as paragraphs -->
-            <button type="submit">Save</button>
+            <button type="submit" class="save-button">Save</button>
         </form>
     </div>
 {% comment %} this works {% endcomment %}
@@ -22,11 +22,4 @@
 </body>
 </html>
 
-<!--{% comment %} this works {% endcomment %}
-=
-{% if user.is_superuser %}
-    <p>Welcome, Admin {{ user.username }}</p>
-{% else %}
-    <p>Welcome, {{ user.username }}</p>
-{% endif %}
 

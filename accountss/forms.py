@@ -59,6 +59,7 @@ class ProfileForm(forms.ModelForm):
             raise forms.ValidationError('Location cannot exceed 100 characters')
         return location    
 
+    
 class CustomPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

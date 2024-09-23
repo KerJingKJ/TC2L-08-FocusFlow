@@ -1,2 +1,2 @@
-web: gunicorn FocusFlow.wsgi
+web: gunicorn focusflow.wsgi
 

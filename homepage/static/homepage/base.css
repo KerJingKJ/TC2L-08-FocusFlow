@@ -1,22 +1,23 @@
 *{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .container-home{
-    background-image: linear-gradient(to right, #230757ed , rgb(37, 131, 208));
+    background-image: linear-gradient(to right, blue, rgb(230, 175, 184));
     overflow: hidden;
     display: flex;
     border-radius: 12px;
 }
 
-.title:hover, .goals:hover, .timers:hover, .motivation:hover, .select_playlist:hover, .logout:hover, .profile:hover, .mood:hover{
-    color: aquamarine;
+.title:hover, .logout:hover, .display-profile:hover, .mood-history:hover{
+    color:purple;
+    border-radius: 12px;
 }
 
-.title, .goals, .timers, .motivation, .select_playlist, .logout, .profile, .mood{
+.title, .logout, .display-profile, .mood-history{
     margin-right: 20px;
     margin-left: 20px;
-    color: #C3B1E1;
+    color:whitesmoke;
     text-decoration: none;
     text-align: center;
     line-height: 60px;

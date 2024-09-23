@@ -41,16 +41,13 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'goals.apps.GoalsConfig',
     'timer.apps.TimerConfig',
-    #'accountss.apps.AccountssConfig',
     'mood.apps.MoodConfig',
     'motivation.apps.MotivationConfig',
     'import_export',
-    'background.apps.BackgroundConfig',
-    #'allauth',
-    #'allauth.account',
-    #'allauth.socialaccount',
     'playlist.apps.PlaylistConfig',
     'accountss.apps.AccountsConfig',
+    'django_js_utils',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -58,8 +55,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    #'allauth.account.middleware.AccountMiddleware', 
+    'django.contrib.auth.middleware.AuthenticationMiddleware', 
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -78,6 +74,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # 'libraries': {
+            #     'django_js_utils': 'django_js_utils.templatetags.django_js_utils',
         },
     },
 ]

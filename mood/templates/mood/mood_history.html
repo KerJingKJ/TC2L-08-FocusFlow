@@ -1,18 +1,21 @@
 <!-- mood_history.html -->
-<div class="mood-history-container">
-    <h1>Mood History</h1>
-    <ul>
-      <li>
-        <span class="date">2023-02-20</span>
-        <span class="mood">Happy</span>
-      </li>
-      <li>
-        <span class="date">2023-02-19</span>
-        <span class="mood">Neutral</span>
-      </li>
-      <li>
-        <span class="date">2023-02-18</span>
-        <span class="mood">Sad</span>
-      </li>
-    </ul>
-  </div>
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+{% load static %}
+<link href="{% static 'mood/mood_history.css' %}" type="text/css" rel="stylesheet" />
+<h1>Mood History</h1>
+<ul>
+  {% for mood in moods %}
+    <li>
+      <p class="logged-on">Logged on: {{ mood.date }}</p>
+      <p class="mood">Mood: {{ mood.mood }}</p>
+      <!--<p class="notes">Notes: {{ mood.notes }}</p>-->
+    </li>
+  {% empty %}
+    <p class="no-moods">No moods logged yet.</p>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}

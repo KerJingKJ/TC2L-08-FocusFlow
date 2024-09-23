@@ -23,7 +23,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect(reverse('home')) 
+            return redirect(reverse('profile')) # Redirect to profile view
         else:
             return render(request, 'accountss/login.html', {'error': 'Invalid username or password'})
     return render(request, 'accountss/login.html')
@@ -55,11 +55,11 @@ def signup(request):
 # Profile Views
 class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
-        form = ProfileForm(instance=request.user)
+        form = ProfileForm(instance=request.user.profile)
         return render(request, 'profile.html', {'form': form})
 
     def post(self, request):
-        form = ProfileForm(request.POST, instance=request.user)
+        form = ProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             try:
                 form.save()
@@ -70,17 +70,45 @@ class ProfileView(LoginRequiredMixin, View):
         else:
             return render(request, 'profile.html', {'form': form})
 
+# @login_required
+# def profile(request):
+#     profile = request.user.profile
+
+# @login_required
+# def profile(request):
+#     profile = request.user.profile
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, instance=profile)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home')
+#         form = ProfileForm(instance=profile)
+
+#     return render(request, 'profile.html', {'form': form})
+
 @login_required
 def profile(request):
-    profile = request.user.profile
+    form = ProfileForm(instance=request.user.profile) 
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=profile)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile) #added request.Files to allow user to upload it
         if form.is_valid():
             form.save()
-            return redirect('home') #Kerjing: trying to redirect it to home, it works for user but not working for superuser
-    else:
-        form = ProfileForm(instance=profile)
+            return redirect('home')
     return render(request, 'profile.html', {'form': form})
+
+# Profile Display View
+# @login_required
+# def profile_display(request):
+#     profile = request.user.profile
+#     return render(request, 'accountss/profile_display.html', {'profile': profile})
+
+@login_required
+def profile_display(request):
+    if hasattr(request.user, 'profile'):
+        profile = request.user.profile
+        return render(request, 'accountss/profile_display.html', {'profile': profile})
+    else:
+        return redirect('profile')
 
 # Password Change Views
 @login_required
@@ -95,6 +123,10 @@ def password_change(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'password_change.html', {'form': form})
 
+@login_required
+def password_change_done(request):
+     return render(request, 'password_change_done.html')
+
 # Homepage Views
 @login_required
 def home_view(request):
@@ -102,3 +134,9 @@ def home_view(request):
 
 def homepage(request):
     return render(request, 'homepage/homepage.html')
+
+# views.py
+from django.shortcuts import render
+
+def homepage(request):
+    return render(request, 'homepage.html')

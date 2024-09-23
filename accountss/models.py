@@ -9,7 +9,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     location = models.CharField(max_length=255, blank=True)
-    avatar = models.ImageField(upload_to='avatars', blank=True)
+    avatar = models.ImageField(upload_to='avatars', blank=True, null=True) # allow user to not upload profile
 
-    def str(self):
+
+    def __str__(self):
         return self.user.username

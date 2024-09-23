@@ -1,0 +1,65 @@
+/* mood_log.css */
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.log-mood-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.log-mood-container h2 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.log-mood-container label {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.emoji-picker {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.emoji-picker .emoji {
+  font-size: 36px;
+  cursor: pointer;
+  color: #666;
+}
+
+.emoji-picker .emoji:hover {
+  transform: scale(1.1);
+  color: #333;
+}
+
+.log-mood-container p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.log-mood-container a.focus {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.log-mood-container a.focus:hover {
+  background-color: #3e8e41;
+}

@@ -3,3 +3,4 @@ gunicorn
 whitenoise
 psycopg2-binary  
 django-js-utils  
+django-import-export

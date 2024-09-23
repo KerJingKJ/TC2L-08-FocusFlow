@@ -8,11 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
-    <!-- FONT -->
+    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- ICONS -->
+    <!-- icons -->
     <script src="https://kit.fontawesome.com/6f3103b13c.js" crossorigin="anonymous"></script>
 
 
@@ -25,28 +25,22 @@
         <div id="timer-container">
             <h2>Pomodoro Timer</h2>
             <section>
-                <div class="container\>
+                <div class="container">
                     <h1 id="pomodoro"></h1>
         
-                    <div class="painel">
-                        <p id="work">work</p>
-                        <p id="break">break</p>
-                    </div>
-        
+                <div class="container-time">
                     <div class="timer">
                         <div class="circle">
-                            <div class="time">
-                                <p id="minutes"></p>
-                                <p>:</p>
-                                <p id="seconds"></p>
-                            </div>
+                            <P class="time">
+                                <span id="minutes">25</span>:<span id="seconds">00</span>
+                           
+                            </P>
                         </div>
                     </div>
-        
+                </div>
                     <div class="controls">
-                        <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
+                        <button id="start" onclick="start()">Start <i class="fa-solid fa-play"></i></button>
         
-                        {% comment %} <a id="reset" href="./"><i class="fa-solid fa-arrow-rotate-left"></i></a> {% endcomment %}
                         <button id="reset"  onclick="reset()" class="fa-solid fa-arrow-rotate-left" style="display:none;">Reset</button>
                     </div>
                 </div>
@@ -55,7 +49,6 @@
         
 
 
-    <!-- SCRIPT -->
     <script src="{% static 'timer/countdown.js' %}"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 from .models import Profile
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -58,14 +59,10 @@ class ProfileForm(forms.ModelForm):
             raise forms.ValidationError('Location cannot exceed 100 characters')
         return location    
 
-#I've did some changes
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields.pop('old_password')
 
 
-# class UserUpdateForm(UserChangeForm):
-#     email = forms.EmailField(max_length=200, help_text='Required', widget=forms.EmailInput())
-#     first_name = forms.CharField(max_length=100, help_text='Optional')
-#     last_name = forms.CharField(max_length=100, help_text='Optional')
 
-#     class Meta:
-#         model = User
-#         fields = ('username', 'email', 'first_name', 'last_name')

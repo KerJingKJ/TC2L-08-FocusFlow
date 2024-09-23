@@ -12,6 +12,7 @@ from django.urls import reverse
 
 from .forms import LoginForm, SignUpForm, ProfileForm
 from .models import Profile
+from accountss.forms import CustomPasswordChangeForm
 
 logger = logging.getLogger(__name__)
 
@@ -70,21 +71,6 @@ class ProfileView(LoginRequiredMixin, View):
         else:
             return render(request, 'profile.html', {'form': form})
 
-# @login_required
-# def profile(request):
-#     profile = request.user.profile
-
-# @login_required
-# def profile(request):
-#     profile = request.user.profile
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, instance=profile)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('home')
-#         form = ProfileForm(instance=profile)
-
-#     return render(request, 'profile.html', {'form': form})
 
 @login_required
 def profile(request):
@@ -96,11 +82,7 @@ def profile(request):
             return redirect('home')
     return render(request, 'profile.html', {'form': form})
 
-# Profile Display View
-# @login_required
-# def profile_display(request):
-#     profile = request.user.profile
-#     return render(request, 'accountss/profile_display.html', {'profile': profile})
+
 
 @login_required
 def profile_display(request):
@@ -114,13 +96,13 @@ def profile_display(request):
 @login_required
 def password_change(request):
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = CustomPasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect('password_change_done')
+            return redirect('login')
     else:
-        form = PasswordChangeForm(request.user)
+        form = CustomPasswordChangeForm(request.user)
     return render(request, 'password_change.html', {'form': form})
 
 @login_required
@@ -135,8 +117,4 @@ def home_view(request):
 def homepage(request):
     return render(request, 'homepage/homepage.html')
 
-# views.py
-from django.shortcuts import render
 
-def homepage(request):
-    return render(request, 'homepage.html')

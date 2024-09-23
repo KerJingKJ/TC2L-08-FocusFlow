@@ -74,29 +74,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            # 'libraries': {
-            #     'django_js_utils': 'django_js_utils.templatetags.django_js_utils',
         },
     },
 ]
 
-#TEMPLATES = [
-    #{
-        #'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        #'APP_DIRS': True,
-        #'OPTIONS': {
-            #'context_processors': [
-                #'django.template.context_processors.debug',
-                #'django.template.context_processors.request',
-                #'django.contrib.auth.context_processors.auth',
-                #'django.contrib.messages.context_processors.messages',
-                #'allauth.account.context_processors.account',
-                #'allauth.socialaccount.context_processors.socialaccount',
-            #],
-        #},
-    #},
-#]
+
 
 #AUTHENTICATION_BACKENDS = [
     #'allauth.account.auth_backends.AuthenticationBackend',

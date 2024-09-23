@@ -15,25 +15,17 @@ Start Focus
     <title>Goals</title>
 </head>
 <body>
-    <background>
-<div class='container-2'>
-    {% comment %} <div class='container-time'>
-    {% include 'timer/countdown.html' %}
+
+<div class="container-wrapper">
+    <div class="container-motivation">
+        {% include 'motivation/motivation.html' %} 
     </div>
     <div class='container-playlist'>
-    {% include 'playlist/playlist.html' %}
-    </div> {% endcomment %}
-     </div>
-     <div class="container-wrapper">
-        <div class="container-motivation">
-            {% include 'motivation/motivation.html' %} 
-            </div>
-        <div class='container-playlist'>
-            {% include 'playlist/playlist.html' %}
-            </div>
-            <div class='container-time' id="timer-container" hx-get="{% url 'timer' %}" hx-trigger="load" hx-swap="outerHTML>
-                {% include 'timer/countdown.html' %}
-                </div>
+        {% include 'playlist/playlist.html' %}
+    </div>
+    <div class='container-time' id="timer-container" hx-get="{% url 'timer' %}" hx-trigger="load" hx-swap="outerHTML>
+        {% include 'timer/countdown.html' %}
+    </div>
 </div>
 
 <nav> 

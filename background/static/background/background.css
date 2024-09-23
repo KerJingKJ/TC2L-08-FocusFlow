@@ -18,7 +18,7 @@ body {
     bottom: 20px;
     transform: translateX(-50%);
     display: flex;
-    flex-direction: row; /* Changed from column to row */
+    flex-direction: row; 
     background-color: rgba(0, 0, 0, 0.6);
     padding: 10px;
     border-radius: 8px;
@@ -29,7 +29,7 @@ body {
     border: none;
     color: #230757ed;
     padding: 10px 20px;
-    margin-right: 10px; /* Change margin to right for horizontal spacing */
+    margin-right: 10px;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
@@ -39,8 +39,6 @@ body {
 .sidebar button:hover {
     background-color: pink;
 }
-
-/* Video backgrounds */
 .background-video, .default-video {
     position: fixed;
     top: 0;
@@ -49,11 +47,11 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
 .show {
-    display: block; /* Show selected video */
+    display: block;
 }
 
 .default-bg {

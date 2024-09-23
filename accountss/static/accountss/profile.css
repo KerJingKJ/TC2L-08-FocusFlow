@@ -36,7 +36,7 @@
 }
 
 .profile-form button[type="submit"] {
-  background-color: #007bff;
+  background-color: rgb(23, 23, 173);
   color: #fff;
   padding: 10px 20px;
   border: none;

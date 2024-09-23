@@ -125,7 +125,7 @@ def password_change(request):
 
 @login_required
 def password_change_done(request):
-     return render(request, 'password_change_done.html')
+     return render(request, 'login')
 
 # Homepage Views
 @login_required

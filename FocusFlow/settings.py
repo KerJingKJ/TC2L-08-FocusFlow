@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-%iff)0p23u082jo1mo+9syp8fca0mq2h*aus(%d2k4e(5pvo9t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['FocusFlow.onrender.com','localhost']
-
+ALLOWED_HOSTS = ['.onrender.com','localhost', '127.0.0.1']
 
 # Application definition
 

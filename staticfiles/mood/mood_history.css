@@ -1,0 +1,45 @@
+/* mood_history.css */
+
+body {
+  background-color: #f7f7f7; /* nearly plain white */
+}
+
+h1 {
+  color: #6c5ce7; /* purple */
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: #fff; /* white */
+  border: 1px solid #ddd; /* light gray */
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logged-on {
+  color: #03a9f4; /* blue */
+  font-weight: bold;
+}
+
+.mood {
+  color: #ff69b4; /* pink */
+}
+
+.no-moods {
+  color: #666; /* dark gray */
+  text-align: center;
+  padding: 20px;
+}
+
+/* gradient effect on the background */
+body {
+  background-image: linear-gradient(to bottom, #f7f7f7, #f2f2f2);
+}

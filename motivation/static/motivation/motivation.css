@@ -11,8 +11,9 @@ main {
 }
 
 .container {
-    background-color: purple;
+    background-color: white;
     height: 50%;
+    border-radius: 10px;
 }
 
 .parent {
@@ -31,7 +32,7 @@ main {
 
 .child-2 {
     background-color: purple;
-    min-height: 100px; /* Adjust as needed */
+    min-height: 100px; 
     width: 85%;
     padding: 10px;
 }
@@ -77,30 +78,30 @@ select::-ms-expand {
     display: flex;
     width: 75%;
     height: 3em;
-    line-height: 3em; /* Ensure height and line-height match */
-    background: purple; /* Ensure a background color is set */
+    line-height: 3em; 
+    background: purple;
     overflow: hidden;
     border-radius: .25em;
 }
 
 .select::after {
-    content: '\25BC'; /* Downward arrow */
+    content: '\25BC';
     position: absolute;
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: whitesmoke; /* Ensure a background color is set */
+    background: whitesmoke; 
     cursor: pointer;
     pointer-events: none;
     transition: .25s all ease;
 }
 
 .select:hover::after {
-    color: #fff; /* Color change on hover */
+    color: #fff;
 }
 
 .generate-quote{
-    background-color: blue; /* Color */
+    background-color: rgb(23, 23, 173);;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -108,11 +109,11 @@ select::-ms-expand {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    cursor: pointer; /* Added cursor for better UX */
-    border-radius: .25em; /* Optional: Add rounded corners */
-    transition: background-color 0.3s ease; /* Optional: Add transition for hover effect */
+    cursor: pointer;
+    border-radius: .25em; 
+    transition: background-color 0.3s ease; 
 }
 
 .generate-quote:hover {
-    background-color: black; /* Darker shade on hover (optional) */
+    background-color: black; 
 }

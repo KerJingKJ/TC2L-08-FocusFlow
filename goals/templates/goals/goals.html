@@ -15,17 +15,20 @@ Start Focus
     <title>Goals</title>
 </head>
 <body>
-
-<div class="container-wrapper">
-    <div class="container-motivation">
-        {% include 'motivation/motivation.html' %} 
-    </div>
-    <div class='container-playlist'>
-        {% include 'playlist/playlist.html' %}
-    </div>
-    <div class='container-time' id="timer-container" hx-get="{% url 'timer' %}" hx-trigger="load" hx-swap="outerHTML>
-        {% include 'timer/countdown.html' %}
-    </div>
+    
+<div class='container-2'>
+     </div>
+     <div class="container-wrapper">
+        <div class="container-motivation">
+            <h2>Motivation Generator</h2>
+            {% include 'motivation/motivation.html' %} 
+            </div>
+        <div class='container-playlist'>
+            {% include 'playlist/playlist.html' %}
+            </div>
+            <div class='container-time' hx-get="{% url 'timer' %}" hx-trigger="load" hx-swap="outerHTML>
+                {% include 'timer/countdown.html' %}
+                </div>
 </div>
 
 <nav> 
@@ -36,7 +39,6 @@ Start Focus
     <div class="container-aboutgoals">
         <div class="forms">
             <h1>Set your goals!</h1>
-            {% comment %} <form hx-post="{% url 'set_goals' %}" hx-target="#displaying" hx-trigger="submit"> {% endcomment %}
             <form hx-post="{% if editing %}{% url 'edit' goal.id %}{% else %}{% url 'set_goals' %}{% endif %}"
             hx-target="#displaying" hx-trigger="submit">
                 {% csrf_token %}

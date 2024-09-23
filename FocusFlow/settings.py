@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%iff)0p23u082jo1mo+9syp8fca0mq2h*aus(%d2k4e(5pvo9t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['focusflow-wqb4.onrender.com', 'localhost', '127.0.0.1']
 
@@ -156,5 +156,6 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Ensure this directory exists
+
 WHITENOISE_USE_FINDERS = True

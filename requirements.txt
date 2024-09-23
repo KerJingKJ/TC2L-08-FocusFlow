@@ -4,3 +4,4 @@ whitenoise
 psycopg2-binary  
 django-js-utils  
 django-import-export
+Pillow==10.4.0

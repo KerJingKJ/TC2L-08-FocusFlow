@@ -91,7 +91,6 @@ def profile_display(request):
         return redirect('profile')
 
 # Password Change Views
-@login_required
 def password_change(request):
     if request.method == 'POST':
         form = CustomPasswordChangeForm(request.user, request.POST)
@@ -105,8 +104,7 @@ def password_change(request):
 
 @login_required
 def password_change_done(request):
-    messages.success(request, 'Your password has been successfully changed!')
-    return redirect('login')
+    return render(request, 'login')
 
 # Homepage Views
 @login_required

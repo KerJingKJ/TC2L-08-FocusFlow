@@ -66,7 +66,8 @@ ROOT_URLCONF = 'FocusFlow.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'accountss/templates/accountss', BASE_DIR / 'mood/templates/mood'],
+        'DIRS': [
+            BASE_DIR / 'templates', BASE_DIR / 'accountss/templates', BASE_DIR / 'mood/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,7 +133,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+LOGIN_URL = 'login'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 

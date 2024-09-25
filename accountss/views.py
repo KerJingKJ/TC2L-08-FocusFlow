@@ -39,6 +39,7 @@ def signup(request):
         if form.is_valid():
             try:
                 user = form.save()
+                login(request, user)
                 messages.success(request, ('Registration successful! Please login to continue.'))
                 return redirect('login')  # Redirect to login page
             except Exception as e:
@@ -100,11 +101,12 @@ def password_change(request):
             return redirect('login')
     else:
         form = CustomPasswordChangeForm(request.user)
-    return render(request, 'password_change.html', {'form': form})
+    return render(request, 'accountss/password_change.html', {'form': form})
 
 @login_required
 def password_change_done(request):
-     return render(request, 'login')
+    messages.success(request, 'Your password has been successfully changed!')
+    return redirect('login')
 
 # Homepage Views
 @login_required

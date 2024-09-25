@@ -54,7 +54,7 @@ def signup(request):
 class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         form = ProfileForm(instance=request.user.profile)
-        return render(request, 'profile.html', {'form': form})
+        return render(request, 'accountss/profile.html', {'form': form})
 
     def post(self, request):
         form = ProfileForm(request.POST, instance=request.user.profile)
@@ -64,9 +64,9 @@ class ProfileView(LoginRequiredMixin, View):
                 return redirect('homepage')
             except Exception as e:
                 logger.error(f"Error saving profile: {e}")
-                return render(request, 'profile.html', {'form': form, 'error': 'Error saving profile'})
+                return render(request, 'accountss/profile.html', {'form': form, 'error': 'Error saving profile'})
         else:
-            return render(request, 'profile.html', {'form': form})
+            return render(request, 'accountss/profile.html', {'form': form})
 
 
 
@@ -78,7 +78,7 @@ def profile(request):
         if form.is_valid():
             form.save()
             return redirect('home')
-    return render(request, 'profile.html', {'form': form})
+    return render(request, 'accountss/profile.html', {'form': form})
 
 
 
@@ -91,6 +91,7 @@ def profile_display(request):
         return redirect('profile')
 
 # Password Change Views
+@login_required
 def password_change(request):
     if request.method == 'POST':
         form = CustomPasswordChangeForm(request.user, request.POST)
@@ -104,7 +105,8 @@ def password_change(request):
 
 @login_required
 def password_change_done(request):
-    return render(request, 'login')
+    messages.success(request, 'Your password has been successfully changed!')
+    return redirect('login')
 
 # Homepage Views
 @login_required

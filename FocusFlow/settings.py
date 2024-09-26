@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+SESSION_COOKIE_SECURE = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -24,10 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%iff)0p23u082jo1mo+9syp8fca0mq2h*aus(%d2k4e(5pvo9t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['FocusFlow.onrender.com','localhost']
-
+ALLOWED_HOSTS = ['focusflow-wqb4.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -67,7 +66,8 @@ ROOT_URLCONF = 'FocusFlow.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'accountss/templates/accountss', BASE_DIR / 'mood/templates/mood'],
+        'DIRS': [
+            BASE_DIR / 'templates', BASE_DIR / 'accountss/templates', BASE_DIR / 'mood/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,14 +102,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'my_postgres_db': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER': 'myuser',
-        'PASSWORD': 'mypassword',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
 }
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -141,7 +133,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+LOGIN_URL = 'login'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
@@ -157,5 +149,6 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Ensure this directory exists
+
 WHITENOISE_USE_FINDERS = True

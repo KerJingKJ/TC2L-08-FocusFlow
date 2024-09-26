@@ -1,1 +1,2 @@
-web: gunicorn FocusFlow.wsgi --log-file -
+web: gunicorn FocusFlow.wsgi
+

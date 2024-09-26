@@ -11,7 +11,7 @@ def mood(request):
 # Mood History
 @login_required
 def mood_history(request):
-    moods = Mood.objects.filter(user=request.user).order_by('-date')
+    moods = Mood.objects.filter(user=request.user).order_by('-date', '-created_at')
 
     mood_dates = [mood.date.strftime('%Y-%m-%d') for mood in moods]  # Convert dates to a readable format
     mood_levels =  [MOOD_LEVELS[mood.mood] for mood in moods]  # Assuming 'mood_level' holds the mood value
@@ -39,4 +39,3 @@ def log_mood(request):
     return render(request, 'mood/log_mood.html', {'form': form})
 def homepage(request):
     return render(request, 'homepage.html')
-

@@ -39,5 +39,10 @@ class MoodHistory(models.Model):
     history_date = models.DateField(auto_now_add=True)
     history_notes = models.TextField(blank=True)
 
-    def str(self):
+    def __str__(self):
         return f"{self.mood.user.username}'s mood history on {self.history_date}"
+
+
+
+
+

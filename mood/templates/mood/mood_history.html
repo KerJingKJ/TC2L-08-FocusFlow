@@ -8,6 +8,9 @@
 
 <!-- Keep the "Your mood distribution" heading -->
 <h1>Your mood distribution:</h1>
+
+<!-- Removed the emoji and number list -->
+
 <div>
   <canvas id="moodChart" width="max-content" height="80%"></canvas>
 </div>
@@ -54,7 +57,7 @@
     const moods = weekMoods[week];
     const sum = moods.reduce((a, b) => a + b, 0);
     const averageMood = sum / moods.length;
-    weekLabels.push(Week ${week});  // Label for each week (e.g., "Week 1", "Week 2")
+    weekLabels.push(`Week ${week}`);  // Label for each week (e.g., "Week 1", "Week 2")
     weeksData.push(averageMood);  // Store the average mood for that week
   });
 
@@ -72,7 +75,7 @@
       datasets: [{
         label: 'Average Mood per Week',
         data: weeksData,  // Weekly average mood levels on the y-axis
-        backgroundColor: 'rgba(0,0,0,0)',  // Fill color below the line
+        backgroundColor: 'rgba(0,0,0,0)',  
         borderWidth: 2,
         borderColor: gradient,
         fill: true

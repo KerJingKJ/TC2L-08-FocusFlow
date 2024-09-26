@@ -4,6 +4,63 @@
 {% block content %}
 {% load static %}
 <link href="{% static 'mood/mood_history.css' %}" type="text/css" rel="stylesheet" />
+
+
+<h1>Your mood distribution:</h1>
+<ul style="display:flex ; justify-content:center;">
+<li>😊= 4 </li>
+<li>😐= 3 </li>
+<li>😢= 2 </li>
+<li>😠= 1 </li>
+<li>😡= 0 </li>
+</ul>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div>
+    <canvas id="moodChart" width="max-content" height="80%"></canvas>
+</div>
+
+<!-- Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  // Get the data passed from the Django view
+  const moodDates = {{ mood_dates|safe }};  // List of dates for the x-axis
+  const moodLevels = {{ mood_levels|safe }};  // List of mood levels for the y-axis
+
+  // Get the context of the canvas where the chart will be rendered
+  const ctx = document.getElementById('moodChart').getContext('2d');
+  const gradient = ctx.createLinearGradient(0, 0, 0, 400); // Change the height as needed
+  gradient.addColorStop(0, 'cornflowerblue');    // Start color
+  gradient.addColorStop(1, 'plum');
+  // Create the chart using Chart.js
+  const moodChart = new Chart(ctx, {
+    type: 'line',  // Chart type can be 'bar', 'line', etc.
+    data: {
+      labels: moodDates,  // Dates on the x-axis
+      datasets: [{
+        label: 'Mood Levels',
+        data: moodLevels,  // Mood levels on the y-axis
+        backgroundColor: 'rgba(0,0,0,0)',  // Fill color below the line
+        borderWidth: 2,
+        borderColor: gradient,
+        fill: true
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          min: 0,  // Set the minimum value of the y-axis
+          max: 4,
+        ticks:{
+          stepSize:1,
+        }
+        }
+      }
+    }
+  });
+</script>
+
 <h1>Mood History</h1>
 <ul>
   {% for mood in moods %}

@@ -14,6 +14,14 @@ MOOD_CHOICES = (
     ('😡', 'Furious'),
 )
 
+MOOD_LEVELS = {
+    '😊': 4,
+    '😐': 3,
+    '😢': 2,
+    '😠': 1,
+    '😡': 0,
+}
+
 class Mood(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(default=timezone.now)

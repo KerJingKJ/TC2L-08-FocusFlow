@@ -2,6 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import Mood, MoodHistory
 
+
 @receiver(post_save, sender=Mood)
 def update_mood_history(sender, instance, **kwargs):
     # Create a new MoodHistory instance

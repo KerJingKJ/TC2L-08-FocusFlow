@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+
 MOOD_CHOICES = (
     ('😊', 'Happy'),
     ('😐', 'Neutral'),
@@ -13,6 +14,15 @@ MOOD_CHOICES = (
     ('😠', 'Angry'),
     ('😡', 'Furious'),
 )
+
+MOOD_LEVELS = {
+    '😊': 4,
+    '😐': 3,
+    '😢': 2,
+    '😠': 1,
+    '😡': 0,
+}
+
 
 class Mood(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -31,6 +41,7 @@ class MoodHistory(models.Model):
 
     def __str__(self):
         return f"{self.mood.user.username}'s mood history on {self.history_date}"
+
 
 
 

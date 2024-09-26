@@ -24,7 +24,6 @@
 
 
 <form>
-    {% comment %} <label for="playlist"><strong>Select Playlist:</strong></label> {% endcomment %}
     <select name="playlist_id" id="playlist" hx-get={% url 'select_playlist' %} hx-target="#selected">
         <option value="" id="choose">-- Click to choose Playlist -- </option>
         {% for playlist in playlists %}
@@ -56,7 +55,7 @@
     let tracks = [];
     let currentTrackIndex = 0;
 
-    // Initialize playlist controls
+    // Initialize playlist controls 'start from playlist 0'
     function initializePlaylistControls() {
         // Re-collect all audio elements
         tracks = document.querySelectorAll("audio");

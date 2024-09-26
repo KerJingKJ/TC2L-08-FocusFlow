@@ -21,7 +21,7 @@ from django.urls import path, include
 from accountss import views as v
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),  # <--- added this line
+    path('accounts/', include('django.contrib.auth.urls')),  
     path('home/', include("homepage.urls")),
     path('', include("accountss.urls")),
     path('mood/', include("mood.urls")),
